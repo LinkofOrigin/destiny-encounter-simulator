@@ -1,14 +1,18 @@
 class_name State
 extends Node
 
+@export_category("State Dependencies")
 
-func enter():
+@export_category("Functional Dependencies")
+
+
+func enter(delta: float):
 	pass
 
 
-func exit():
+func exit(delta: float):
 	pass
 
 
-func update():
+func update(delta: float):
 	pass

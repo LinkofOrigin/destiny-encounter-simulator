@@ -1,9 +1,8 @@
-class_name JumpingState
+class_name DoubleJumpingState
 extends State
 
 @export_category("State Dependencies")
 @export var grounded: GroundedState
-@export var double_jump: DoubleJumpingState
 
 @export_category("Functional Dependencies")
 @export var input: InputHandlerComponent
@@ -20,9 +19,7 @@ func exit(delta: float):
 
 
 func update(delta: float):
-	if input.jump_button_just_pressed():
-		return double_jump
-	elif movement.just_touched_floor():
+	if movement.just_touched_floor():
 		return grounded
 	
 	var movement_vector = input.get_movement_vector()

@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://truukch58tcx"]
+[gd_scene load_steps=10 format=3 uid="uid://truukch58tcx"]
 
 [ext_resource type="Script" path="res://Player/player_character.gd" id="1_25k8w"]
+[ext_resource type="PackedScene" uid="uid://dunp6fyinkllo" path="res://Systems/Core/Components/input_handler_component.tscn" id="2_6lopj"]
+[ext_resource type="PackedScene" uid="uid://b2t0geemlapw3" path="res://Systems/Core/StateMachine/state_machine.tscn" id="2_y60t5"]
+[ext_resource type="PackedScene" uid="uid://3sqwp63vmvtn" path="res://Systems/Core/Components/movement_component.tscn" id="3_5j1xn"]
+[ext_resource type="PackedScene" uid="uid://cbkyjdt0nrghm" path="res://Systems/Core/StateMachine/States/grounded.tscn" id="3_qaj5p"]
+[ext_resource type="PackedScene" uid="uid://xelukfn3wonr" path="res://Systems/Core/StateMachine/States/Jumping.tscn" id="4_2ufpr"]
+[ext_resource type="PackedScene" uid="uid://dykq1ucont5ww" path="res://Systems/Core/StateMachine/States/double_jumping.tscn" id="5_kxbyg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6klvk"]
 
@@ -19,3 +25,27 @@ mesh = SubResource("CapsuleMesh_6klvk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_fv4kc")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_y60t5")]
+initial_state = NodePath("Grounded")
+
+[node name="Grounded" parent="StateMachine" node_paths=PackedStringArray("jumping", "input", "movement") instance=ExtResource("3_qaj5p")]
+jumping = NodePath("../Jumping")
+input = NodePath("../../InputHandlerComponent")
+movement = NodePath("../../MovementComponent")
+
+[node name="Jumping" parent="StateMachine" node_paths=PackedStringArray("grounded", "double_jump", "input", "movement") instance=ExtResource("4_2ufpr")]
+grounded = NodePath("../Grounded")
+double_jump = NodePath("../DoubleJumping")
+input = NodePath("../../InputHandlerComponent")
+movement = NodePath("../../MovementComponent")
+
+[node name="DoubleJumping" parent="StateMachine" node_paths=PackedStringArray("grounded", "input", "movement") instance=ExtResource("5_kxbyg")]
+grounded = NodePath("../Grounded")
+input = NodePath("../../InputHandlerComponent")
+movement = NodePath("../../MovementComponent")
+
+[node name="InputHandlerComponent" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_6lopj")]
+camera = NodePath("../Camera3D")
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_5j1xn")]
