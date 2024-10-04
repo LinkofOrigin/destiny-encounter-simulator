@@ -12,7 +12,7 @@ func _ready():
 func process_state(delta: float):
 	var new_state = _current_state.update(delta)
 	if new_state != null and is_instance_valid(new_state):
-		print("state transition to: ", new_state)
+		#print("state transition to: ", new_state)
 		transition_to(new_state, delta)
 
 

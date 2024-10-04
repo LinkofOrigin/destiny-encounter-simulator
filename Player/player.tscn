@@ -15,6 +15,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 input_ray_pickable = false
+floor_snap_length = 0.2
 script = ExtResource("1_25k8w")
 
 [node name="Camera3D" type="Camera3D" parent="."]

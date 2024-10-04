@@ -6,13 +6,13 @@ extends Node
 @export_category("Functional Dependencies")
 
 
-func enter(delta: float):
+func enter(_delta: float):
 	pass
 
 
-func exit(delta: float):
+func exit(_delta: float):
 	pass
 
 
-func update(delta: float):
+func update(_delta: float):
 	pass

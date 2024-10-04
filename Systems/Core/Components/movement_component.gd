@@ -29,12 +29,12 @@ func move_in_direction(delta: float, direction: Vector2, with_jump: bool = false
 		new_velocity.z = move_toward(new_velocity.z, 0, lateral_acceleration * delta)
 	
 	if with_jump:
-		new_velocity.y += vertical_acceleration
+		new_velocity.y = vertical_acceleration
 	
 	parent.velocity = new_velocity
 	
 	parent.move_and_slide()
 
 
-func just_touched_floor():
+func is_touching_floor():
 	return parent.is_on_floor()

@@ -17,7 +17,7 @@ func exit(delta: float):
 
 
 func update(delta: float):
-	if input.jump_button_just_pressed():
+	if input.jump_button_just_pressed() or not movement.is_touching_floor():
 		return jumping
 	
 	var movement_vector = input.get_movement_vector()

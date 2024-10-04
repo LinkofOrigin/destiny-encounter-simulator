@@ -19,7 +19,7 @@ func exit(delta: float):
 
 
 func update(delta: float):
-	if movement.just_touched_floor():
+	if movement.is_touching_floor():
 		return grounded
 	
 	var movement_vector = input.get_movement_vector()
