@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://d4w6xqdipel0"]
+
+[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://Player/player.tscn" id="1_gn72u"]
+[ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://Systems/Core/Components/Interaction/interactable_component.tscn" id="2_nvmf0"]
+[ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://Systems/Core/Components/Interaction/interaction_zone.tscn" id="3_her48"]
+[ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://Systems/Core/Components/Interaction/interaction_target.tscn" id="4_4vln6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sacd3"]
+sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)
+sky_horizon_color = Color(0.628258, 0.654909, 0.699664, 1)
+ground_horizon_color = Color(0.628258, 0.654909, 0.699664, 1)
+
+[sub_resource type="Sky" id="Sky_2re5s"]
+sky_material = SubResource("ProceduralSkyMaterial_sacd3")
+
+[sub_resource type="Environment" id="Environment_0kf1k"]
+background_mode = 2
+sky = SubResource("Sky_2re5s")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yfpoq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy371"]
+albedo_color = Color(0.185321, 0.134257, 0.0572268, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijsao"]
+size = Vector3(2.08521, 0.277832, 2.39087)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_grktp"]
+height = 3.88778
+radius = 0.27522
+
+[node name="TestPlayerInteraction" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.00872656, -0.492405, 0.870323, 0, 0.870356, 0.492424, -0.999962, -0.00429716, 0.00759521, 0, 7.84363, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0kf1k")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(11.3015, 0, 0, 0, 11.3015, 0, 0, 0, 11.3015, 0, 0, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_yfpoq")
+material = SubResource("StandardMaterial3D_oy371")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_gn72u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00837469, 0.976458, 7.8022)
+
+[node name="TestInteractableObject" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281035, 1.0446, -4.06369)
+
+[node name="ObjectSphere" type="CSGSphere3D" parent="TestInteractableObject"]
+
+[node name="InteractableComponent" parent="TestInteractableObject" instance=ExtResource("2_nvmf0")]
+
+[node name="InteractionZone" parent="TestInteractableObject/InteractableComponent" instance=ExtResource("3_her48")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestInteractableObject/InteractableComponent/InteractionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0821533, -0.361084, 1.49841)
+shape = SubResource("BoxShape3D_ijsao")
+
+[node name="InteractionTarget" parent="TestInteractableObject/InteractableComponent" instance=ExtResource("4_4vln6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestInteractableObject/InteractableComponent/InteractionTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0580926)
+shape = SubResource("CylinderShape3D_grktp")

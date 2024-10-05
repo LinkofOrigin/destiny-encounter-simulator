@@ -1,0 +1,2 @@
+class_name InteractionZone
+extends Area3D

@@ -8,6 +8,7 @@ extends State
 @export var input: InputHandlerComponent
 @export var movement: MovementComponent
 
+
 func enter(delta: float):
 	pass
 

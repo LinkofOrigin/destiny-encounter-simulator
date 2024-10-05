@@ -18,6 +18,7 @@ func _ready():
 func move_in_direction(delta: float, direction: Vector2, with_jump: bool = false):
 	var new_velocity = parent.velocity
 	new_velocity.y -= gravity * delta
+	direction = direction.rotated(parent.rotation.y * -1)
 	
 	if direction != Vector2(0,0):
 		# Accelerate

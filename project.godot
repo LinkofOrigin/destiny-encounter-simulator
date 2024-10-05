@@ -17,6 +17,14 @@ config/icon="res://icon.svg"
 [autoload]
 
 InputActions="*res://Systems/Globals/input_actions.gd"
+GlobalSignals="*res://Systems/Globals/global_signals.gd"
+
+[debug]
+
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=1
 
 [input]
 
@@ -82,6 +90,13 @@ JoystickCameraDown={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Objects"
+3d_physics/layer_4="Interaction"
 
 [physics]
 
