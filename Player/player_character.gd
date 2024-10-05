@@ -23,10 +23,10 @@ func _ready():
 
 func _process(delta: float) -> void:
 	# FIXME: remove after testing
-	input_handler.handle_interaction(delta)
+	#input_handler.handle_interaction(delta)
 	if _can_interact():
 		# use input handler to interact
-		print("player can interact!")
+		#print("player can interact!")
 		input_handler.handle_interaction(delta)
 
 

@@ -31,6 +31,7 @@ mesh = SubResource("CapsuleMesh_6klvk")
 shape = SubResource("ConvexPolygonShape3D_fv4kc")
 
 [node name="InteractionDetector" parent="." instance=ExtResource("8_wnl0e")]
+target_position = Vector3(0, 0, -2)
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_y60t5")]
 initial_state = NodePath("Grounded")

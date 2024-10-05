@@ -15,6 +15,7 @@ const MIN_CAMERA_DOWN: float = PI / -2.0
 
 var _current_interaction_time: float = 0.0
 var _time_to_complete_interaction: float = 1.0
+var _input_lock: bool = false
 
 
 func get_movement_vector() -> Vector2:
@@ -41,14 +42,16 @@ func get_camera_vector() -> Vector2:
 
 
 func handle_interaction(delta: float):
-	if Input.is_action_pressed(InputActions.Player.INTERACT):
+	if Input.is_action_pressed(InputActions.Player.INTERACT) and not _input_lock:
 		_current_interaction_time += delta
 		if _current_interaction_time >= _time_to_complete_interaction:
 			print("player finished interacting!")
 			interaction_complete.emit()
-	elif _current_interaction_time > 0:
+			_input_lock = true
+	elif Input.is_action_just_released(InputActions.Player.INTERACT):
 		# reset the current interaction time
 		_current_interaction_time = 0
+		_input_lock = false
 
 
 func jump_button_just_pressed() -> bool:
