@@ -7,7 +7,7 @@ extends Node
 @export var vertical_acceleration: float = 5
 @export var max_vertical_velocity: float = 60
 
-@onready var parent: Node3D = get_parent()
+@onready var parent: CharacterBody3D = get_parent()
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
@@ -16,7 +16,7 @@ func _ready():
 
 
 func move_in_direction(delta: float, direction: Vector2, with_jump: bool = false):
-	var new_velocity = parent.velocity
+	var new_velocity := parent.velocity
 	new_velocity.y -= gravity * delta
 	direction = direction.rotated(parent.rotation.y * -1)
 	

@@ -11,15 +11,15 @@ extends State
 
 
 func enter(delta: float):
-	var movement_vector = input.get_movement_vector()
-	var should_jump = false
+	var movement_vector := input.get_movement_vector()
+	var should_jump := false
 	if input.jump_button_just_pressed():
 		should_jump = true
 	
 	movement.move_in_direction(delta, movement_vector, should_jump)
 
 
-func exit(delta: float):
+func exit(_delta: float):
 	pass
 
 
@@ -29,5 +29,5 @@ func update(delta: float):
 	elif movement.is_touching_floor():
 		return grounded
 	
-	var movement_vector = input.get_movement_vector()
+	var movement_vector := input.get_movement_vector()
 	movement.move_in_direction(delta, movement_vector, false)

@@ -54,14 +54,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281035, 1.0446, -4.06369)
 [node name="ObjectSphere" type="CSGSphere3D" parent="TestInteractableObject"]
 
 [node name="InteractableComponent" parent="TestInteractableObject" instance=ExtResource("2_nvmf0")]
+prompt_text = "Deposit"
 
 [node name="InteractionZone" parent="TestInteractableObject/InteractableComponent" instance=ExtResource("3_her48")]
+input_ray_pickable = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestInteractableObject/InteractableComponent/InteractionZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0821533, -0.361084, 1.49841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.361, 1.498)
 shape = SubResource("BoxShape3D_ijsao")
 
 [node name="InteractionTarget" parent="TestInteractableObject/InteractableComponent" instance=ExtResource("4_4vln6")]
+input_ray_pickable = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestInteractableObject/InteractableComponent/InteractionTarget"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.188608)

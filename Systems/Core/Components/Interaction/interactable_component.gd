@@ -1,6 +1,12 @@
 class_name InteractableComponent
 extends Node3D
 
+@export_category("Interaction Settings")
+@export var input_icon: Texture2D = preload("res://addons/controller_icons/assets/xboxseries/x.png")
+@export var prompt_text: String = "INTERACT"
+## Time in seconds to complete interaction
+@export_range(0.2, 5.0, 0.1) var interact_time: float = 1.0
+
 var _interaction_zone: InteractionZone
 var _interaction_target: InteractionTarget
 
@@ -15,17 +21,3 @@ func _ready():
 	# TODO: Change this to be @tool script logic or something
 	assert(_interaction_zone != null, "Interaction Zone is not set")
 	assert(_interaction_target != null, "Interaction Target is not set")
-	
-	# TODO: Consider making the child classes emit a signal for player specifically
-	_interaction_zone.body_entered.connect(_on_zone_body_entered)
-	_interaction_zone.body_exited.connect(_on_zone_body_exited)
-
-
-func _on_zone_body_entered(body: Node3D):
-	print("interaction zone entered!")
-	GlobalSignals.body_entered_interaction_zone.emit(body, _interaction_zone)
-
-
-func _on_zone_body_exited(body: Node3D):
-	print("interaction zone exited!")
-	GlobalSignals.body_exited_interaction_zone.emit(body, _interaction_zone)
