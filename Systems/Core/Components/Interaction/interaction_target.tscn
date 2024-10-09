@@ -5,4 +5,5 @@
 [node name="InteractionTarget" type="Area3D"]
 collision_layer = 8
 collision_mask = 2
+input_ray_pickable = false
 script = ExtResource("1_6kxi1")

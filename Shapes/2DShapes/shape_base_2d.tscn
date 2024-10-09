@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://d246jhqbmxxdb"]
+
+[ext_resource type="Texture2D" uid="uid://dr86xwy7uei2s" path="res://icon.svg" id="1_78paq"]
+[ext_resource type="Script" path="res://Shapes/2DShapes/shape_base_2d.gd" id="2_ajeg4"]
+[ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://Systems/Core/Components/Interaction/interactable_component.tscn" id="3_40c03"]
+[ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://Systems/Core/Components/Interaction/interaction_zone.tscn" id="4_f673x"]
+[ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://Systems/Core/Components/Interaction/interaction_target.tscn" id="5_iolxs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k2svy"]
+size = Vector3(4, 0.161, 4)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_phy1j"]
+height = 1.27694
+radius = 0.474893
+
+[node name="ShapeBase2D" type="Node3D"]
+script = ExtResource("2_ajeg4")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.263307, 0)
+billboard = 1
+texture = ExtResource("1_78paq")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_40c03")]
+prompt_text = "Pick Up"
+interact_time = 0.8
+
+[node name="InteractionZone" parent="InteractableComponent" instance=ExtResource("4_f673x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52594, 0)
+shape = SubResource("BoxShape3D_k2svy")
+
+[node name="InteractionTarget" parent="InteractableComponent" instance=ExtResource("5_iolxs")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionTarget"]
+shape = SubResource("CylinderShape3D_phy1j")

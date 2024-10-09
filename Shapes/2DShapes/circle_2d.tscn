@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dib4ygu3bj6t2"]
+
+[ext_resource type="PackedScene" uid="uid://d246jhqbmxxdb" path="res://Shapes/2DShapes/shape_base_2d.tscn" id="1_l7dro"]
+[ext_resource type="Texture2D" uid="uid://bqc0xflkhrngs" path="res://Shapes/2DShapes/2D Shapes Spritesheet.png" id="2_diuuh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei71e"]
+atlas = ExtResource("2_diuuh")
+region = Rect2(128, 0, 128, 128)
+
+[node name="Circle2D" instance=ExtResource("1_l7dro")]
+shape_id = 1
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color(0.1008, 0.3588, 0.72, 1)
+texture = SubResource("AtlasTexture_ei71e")

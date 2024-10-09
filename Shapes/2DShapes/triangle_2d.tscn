@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bosfxvif8fmvs"]
+
+[ext_resource type="PackedScene" uid="uid://d246jhqbmxxdb" path="res://Shapes/2DShapes/shape_base_2d.tscn" id="1_imn6a"]
+[ext_resource type="Texture2D" uid="uid://bqc0xflkhrngs" path="res://Shapes/2DShapes/2D Shapes Spritesheet.png" id="2_3qu3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55f31"]
+atlas = ExtResource("2_3qu3r")
+region = Rect2(0, 0, 128, 128)
+
+[node name="Triangle2D" instance=ExtResource("1_imn6a")]
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color(0.1334, 0.46, 0.291257, 1)
+texture = SubResource("AtlasTexture_55f31")
