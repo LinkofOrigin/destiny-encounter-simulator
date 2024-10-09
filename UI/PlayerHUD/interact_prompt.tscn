@@ -17,6 +17,7 @@ offset_left = -48.0
 offset_top = -32.0
 offset_right = 39.0
 offset_bottom = 30.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ob36")
 script = ExtResource("1_ayjrk")
 metadata/_edit_use_anchors_ = true

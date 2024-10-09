@@ -23,7 +23,7 @@ floor_snap_length = 0.2
 script = ExtResource("1_25k8w")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.989272, 0.146083, 0, -0.146083, 0.989272, 0, 1.039, 0)
+transform = Transform3D(1, 0, 0, 0, 0.989272, 0.146083, 0, -0.146083, 0.989272, 0, 0.767386, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_6klvk")

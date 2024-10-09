@@ -17,8 +17,6 @@ var _active_interactable: InteractableComponent
 
 
 func _ready():
-	mesh_instance.visible = false # Hide the player character model for 1st person view
-	
 	interactable_detector.can_interact_with.connect(_on_can_interact_with)
 	interactable_detector.can_not_interact.connect(_on_can_not_interact)
 
@@ -37,12 +35,11 @@ func _physics_process(delta: float):
 
 func _handle_camera(delta: float):
 	var new_rotation := input_handler.get_camera_movement_vector(delta)
+	if new_rotation != Vector2(0,0):
+		#print("rotate: ", new_rotation)
+		pass
 	
-	var new_turn_rotation = fmod(rotation.y + (new_rotation.x * -1), 2 * PI)
-	var new_camera_rotation = clamp(camera.rotation.x + new_rotation.y, MIN_CAMERA_DOWN, MAX_CAMERA_UP)
-	
-	rotation.y = new_turn_rotation 
-	camera.rotation.x = new_camera_rotation
+	_apply_look_rotation(new_rotation.x, new_rotation.y)
 
 
 func _on_can_interact_with(interactable: InteractableComponent) -> void:
@@ -57,3 +54,17 @@ func _on_can_not_interact() -> void:
 	_can_interact = false
 	_active_interactable = null
 	player_hud.hide_interact_prompt()
+
+
+func _apply_look_rotation(horizontal_rotation: float, vertical_rotation: float):
+	rotate_y(horizontal_rotation)
+	camera.rotate_x(vertical_rotation)
+	
+	rotation.y = fmod(rotation.y, 2 * PI) # Don't let the rotation go up/down forever and hit a number storage boundary
+	camera.rotation.x = clamp(camera.rotation.x, MIN_CAMERA_DOWN, MAX_CAMERA_UP) # Prevent looking past straight up or down
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var mouse_motion := input_handler.get_mouse_motion_vector_from_event(event as InputEventMouseMotion)
+		_apply_look_rotation(mouse_motion.x, mouse_motion.y)
