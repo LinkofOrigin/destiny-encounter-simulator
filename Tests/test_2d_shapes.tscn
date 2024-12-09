@@ -45,4 +45,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00344, 0.683819, -2.02648)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35062, 0.683819, -2.49969)
 
 [node name="Circle2D" parent="." instance=ExtResource("4_p3o71")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101889, 0.683819, -3.22295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428, 0.684, -3.223)

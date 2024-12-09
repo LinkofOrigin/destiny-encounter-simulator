@@ -54,6 +54,7 @@ func _on_can_not_interact() -> void:
 	_can_interact = false
 	_active_interactable = null
 	player_hud.hide_interact_prompt()
+	#	testing git
 
 
 func _apply_look_rotation(horizontal_rotation: float, vertical_rotation: float):
