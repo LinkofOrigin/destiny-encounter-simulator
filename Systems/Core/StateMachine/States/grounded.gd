@@ -9,14 +9,15 @@ extends State
 @export var movement: MovementComponent
 
 
-func enter(_delta: float):
+func enter(_delta: float) -> void:
 	pass
 
 
-func exit(_delta: float):
+func exit(_delta: float) -> void:
 	pass
 
 
+@warning_ignore("untyped_declaration")
 func update(delta: float):
 	if input.jump_button_just_pressed() or not movement.is_touching_floor():
 		return jumping

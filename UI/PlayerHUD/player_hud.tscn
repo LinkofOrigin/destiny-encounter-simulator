@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7d6o1x6lr2kv"]
+[gd_scene load_steps=4 format=3 uid="uid://b7d6o1x6lr2kv"]
 
 [ext_resource type="PackedScene" uid="uid://byqtby35oet10" path="res://UI/PlayerHUD/interact_prompt.tscn" id="1_qyr75"]
 [ext_resource type="Script" path="res://UI/PlayerHUD/player_hud.gd" id="1_s2n7p"]
+[ext_resource type="PackedScene" uid="uid://0llwbeo3isjv" path="res://UI/PlayerHUD/effect_display/effect_display.tscn" id="3_3bcma"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -20,3 +21,5 @@ offset_bottom = -302.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
+
+[node name="EffectDisplay" parent="." instance=ExtResource("3_3bcma")]

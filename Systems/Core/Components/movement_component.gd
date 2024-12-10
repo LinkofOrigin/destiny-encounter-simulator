@@ -11,11 +11,11 @@ extends Node
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
-func _ready():
+func _ready() -> void:
 	pass
 
 
-func move_in_direction(delta: float, direction: Vector2, with_jump: bool = false):
+func move_in_direction(delta: float, direction: Vector2, with_jump: bool = false) -> void:
 	var new_velocity := parent.velocity
 	new_velocity.y -= gravity * delta
 	direction = direction.rotated(parent.rotation.y * -1)
@@ -37,5 +37,5 @@ func move_in_direction(delta: float, direction: Vector2, with_jump: bool = false
 	parent.move_and_slide()
 
 
-func is_touching_floor():
+func is_touching_floor() -> bool:
 	return parent.is_on_floor()

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=3 format=3 uid="uid://8ti37f57fvf7"]
+
+[ext_resource type="Script" path="res://UI/PlayerHUD/effect_display/effect_resources/effect.gd" id="1_lc472"]
+[ext_resource type="Texture2D" uid="uid://dp3bl7yq5514g" path="res://assets/2d_shapes/test/plain-circle.png" id="1_wdmdc"]
+
+[resource]
+script = ExtResource("1_lc472")
+icon = ExtResource("1_wdmdc")
+text = "Circle"
+expiration_time = 0.0
+priority = 10

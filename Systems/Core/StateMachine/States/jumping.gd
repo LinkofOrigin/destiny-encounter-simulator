@@ -10,7 +10,7 @@ extends State
 @export var movement: MovementComponent
 
 
-func enter(delta: float):
+func enter(delta: float) -> void:
 	var movement_vector := input.get_movement_vector()
 	var should_jump := false
 	if input.jump_button_just_pressed():
@@ -19,10 +19,11 @@ func enter(delta: float):
 	movement.move_in_direction(delta, movement_vector, should_jump)
 
 
-func exit(_delta: float):
+func exit(_delta: float) -> void:
 	pass
 
 
+@warning_ignore("untyped_declaration")
 func update(delta: float):
 	if input.jump_button_just_pressed():
 		return double_jump

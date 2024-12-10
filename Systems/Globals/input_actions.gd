@@ -1,3 +1,4 @@
+# class_name InputActions
 extends Node
 
 const Player: Dictionary = {

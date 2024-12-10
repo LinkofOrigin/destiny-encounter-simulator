@@ -6,13 +6,14 @@ extends Node
 @export_category("Functional Dependencies")
 
 
-func enter(_delta: float):
+func enter(_delta: float) -> void:
 	pass
 
 
-func exit(_delta: float):
+func exit(_delta: float) -> void:
 	pass
 
 
+@warning_ignore("untyped_declaration")
 func update(_delta: float):
 	pass

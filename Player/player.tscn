@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://truukch58tcx"]
+[gd_scene load_steps=11 format=3 uid="uid://truukch58tcx"]
 
 [ext_resource type="Script" path="res://Player/player_character.gd" id="1_25k8w"]
 [ext_resource type="PackedScene" uid="uid://dunp6fyinkllo" path="res://Systems/Core/Components/input_handler_component.tscn" id="2_6lopj"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://xelukfn3wonr" path="res://Systems/Core/StateMachine/States/Jumping.tscn" id="4_2ufpr"]
 [ext_resource type="PackedScene" uid="uid://dykq1ucont5ww" path="res://Systems/Core/StateMachine/States/double_jumping.tscn" id="5_kxbyg"]
 [ext_resource type="PackedScene" uid="uid://cwsubyev1jlbq" path="res://Systems/Core/Components/Interaction/interactable_detector.tscn" id="8_wnl0e"]
-[ext_resource type="PackedScene" uid="uid://b7d6o1x6lr2kv" path="res://UI/PlayerHUD/player_hud.tscn" id="9_bdf0w"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6klvk"]
 
@@ -56,5 +55,3 @@ movement = NodePath("../../MovementComponent")
 camera = NodePath("../Camera3D")
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_5j1xn")]
-
-[node name="PlayerHud" parent="." instance=ExtResource("9_bdf0w")]

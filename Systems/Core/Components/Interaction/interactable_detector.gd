@@ -14,8 +14,8 @@ var _zone_interactable: InteractableComponent
 
 
 func _physics_process(_delta: float) -> void:
-	var colliding_with_target = _check_for_target()
-	var colliding_with_zone = _check_for_zone()
+	var colliding_with_target := _check_for_target()
+	var colliding_with_zone := _check_for_zone()
 	
 	# If one of them changed...
 	if _target_colliding != colliding_with_target or _zone_colliding != colliding_with_zone:

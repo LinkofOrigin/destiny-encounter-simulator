@@ -1,0 +1,4 @@
+[gd_resource type="Theme" format=3 uid="uid://bblko8qxhthl0"]
+
+[resource]
+BuffLabel/base_type = &"Label"

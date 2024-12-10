@@ -1,6 +1,11 @@
 class_name PlayerCharacter
 extends CharacterBody3D
 
+signal can_interact(interactable: InteractableComponent)
+signal can_not_interact
+signal interact_progress_made(current_progress: float)
+signal interaction_complete
+
 const MAX_CAMERA_UP: float = PI / 2.0
 const MIN_CAMERA_DOWN: float = PI / -2.0
 
@@ -10,30 +15,31 @@ const MIN_CAMERA_DOWN: float = PI / -2.0
 @onready var state_machine: StateMachine = $StateMachine
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var interactable_detector: InteractableDetector = $InteractableDetector
-@onready var player_hud: PlayerHUD = $PlayerHud
 
 var _can_interact: bool = false
 var _active_interactable: InteractableComponent
 
 
-func _ready():
+func _ready() -> void:
 	interactable_detector.can_interact_with.connect(_on_can_interact_with)
 	interactable_detector.can_not_interact.connect(_on_can_not_interact)
+	input_handler.interaction_complete.connect(_on_input_handler_interact_complete)
 
 
 func _process(delta: float) -> void:
 	if _can_interact:
 		# use input handler to interact
 		var current_progress := input_handler.handle_interaction(delta, _active_interactable.interact_time)
-		player_hud.set_interact_progress(current_progress)
+		interact_progress_made.emit(current_progress)
+		GlobalSignals.emit_player_interact_progress_made(current_progress)
 
 
-func _physics_process(delta: float):
+func _physics_process(delta: float) -> void:
 	_handle_camera(delta)
 	state_machine.process_state(delta)
 
 
-func _handle_camera(delta: float):
+func _handle_camera(delta: float) -> void:
 	var new_rotation := input_handler.get_camera_movement_vector(delta)
 	if new_rotation != Vector2(0,0):
 		#print("rotate: ", new_rotation)
@@ -42,22 +48,29 @@ func _handle_camera(delta: float):
 	_apply_look_rotation(new_rotation.x, new_rotation.y)
 
 
+func _on_input_handler_interact_complete() -> void:
+	_active_interactable.complete_interaction()
+	interaction_complete.emit()
+	GlobalSignals.emit_player_interaction_complete(_active_interactable)
+
+
 func _on_can_interact_with(interactable: InteractableComponent) -> void:
-	print("player can interact!")
+	#print("player can interact!")
 	_can_interact = true
 	_active_interactable = interactable
-	player_hud.display_interact_prompt_for_interactable(interactable)
+	can_interact.emit(interactable)
+	GlobalSignals.emit_player_can_interact(interactable)
 
 
 func _on_can_not_interact() -> void:
-	print("player can NOT interact!")
+	#print("player can NOT interact!")
 	_can_interact = false
 	_active_interactable = null
-	player_hud.hide_interact_prompt()
-	#	testing git
+	can_not_interact.emit()
+	GlobalSignals.emit_player_can_not_interact()
 
 
-func _apply_look_rotation(horizontal_rotation: float, vertical_rotation: float):
+func _apply_look_rotation(horizontal_rotation: float, vertical_rotation: float) -> void:
 	rotate_y(horizontal_rotation)
 	camera.rotate_x(vertical_rotation)
 	

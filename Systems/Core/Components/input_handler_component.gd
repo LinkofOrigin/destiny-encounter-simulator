@@ -17,9 +17,8 @@ var _current_interaction_time: float = 0.0
 var _input_lock: bool = false
 
 
-func _ready():
+func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 
 
 func get_movement_vector() -> Vector2:
@@ -27,14 +26,14 @@ func get_movement_vector() -> Vector2:
 
 
 func get_camera_movement_vector(delta: float) -> Vector2:
-	var camera_vector = get_camera_vector()
+	var camera_vector := get_camera_vector()
 	camera_vector *= camera_speed * delta / 10
 	return camera_vector
 
 
 func get_camera_vector() -> Vector2:
 	# Note that this vector is a weird order because we map each joystick axis to a different axis in 3D space
-	var joystick_camera_vector = Input.get_vector(
+	var joystick_camera_vector := Input.get_vector(
 			InputActions.Camera.JOY_LEFT,
 			InputActions.Camera.JOY_RIGHT,
 			InputActions.Camera.JOY_UP,
@@ -50,7 +49,7 @@ func handle_interaction(delta: float, time_to_complete: float) -> float:
 	if Input.is_action_pressed(InputActions.Player.INTERACT) and not _input_lock:
 		_current_interaction_time += delta
 		if _current_interaction_time >= time_to_complete:
-			print("player finished interacting!")
+			#print("player finished interacting!")
 			interaction_complete.emit()
 			_input_lock = true # Prevent repeated interactions without first releasing the button
 	elif Input.is_action_just_released(InputActions.Player.INTERACT):

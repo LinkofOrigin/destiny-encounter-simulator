@@ -5,18 +5,18 @@ extends Node
 var _current_state: State
 
 
-func _ready():
+func _ready() -> void:
 	_current_state = initial_state
 
 
-func process_state(delta: float):
+func process_state(delta: float) -> void:
 	var new_state: State = _current_state.update(delta)
 	if new_state != null and is_instance_valid(new_state):
 		#print("state transition to: ", new_state)
 		transition_to(new_state, delta)
 
 
-func transition_to(state: State, delta: float):
+func transition_to(state: State, delta: float) -> void:
 	_current_state.exit(delta)
 	_current_state = state
 	_current_state.enter(delta)
