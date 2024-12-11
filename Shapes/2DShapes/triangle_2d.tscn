@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d246jhqbmxxdb" path="res://Shapes/2DShapes/shape_base_2d.tscn" id="1_imn6a"]
 [ext_resource type="Texture2D" uid="uid://bqc0xflkhrngs" path="res://Shapes/2DShapes/2D Shapes Spritesheet.png" id="2_3qu3r"]
-[ext_resource type="Resource" uid="uid://c7s5hrsfdv44" path="res://UI/PlayerHUD/effect_display/effect_resources/2d_shapes/triangle.tres" id="2_v8dqa"]
+[ext_resource type="Resource" uid="uid://c7s5hrsfdv44" path="res://Systems/Core/components/effect_management/effect_resources/shapes/2d_shapes/triangle.tres" id="2_v8dqa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55f31"]
 atlas = ExtResource("2_3qu3r")

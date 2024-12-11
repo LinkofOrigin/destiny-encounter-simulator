@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://d4w6xqdipel0"]
 
-[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://Player/player.tscn" id="1_gn72u"]
-[ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://Systems/Core/Components/Interaction/interactable_component.tscn" id="2_nvmf0"]
-[ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://Systems/Core/Components/Interaction/interaction_zone.tscn" id="3_her48"]
-[ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://Systems/Core/Components/Interaction/interaction_target.tscn" id="4_4vln6"]
+[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://Player/player_character.tscn" id="1_gn72u"]
+[ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://Systems/Core/components/interaction/interactable/interactable_component.tscn" id="2_nvmf0"]
+[ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://Systems/Core/components/interaction/zone/interaction_zone.tscn" id="3_her48"]
+[ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://Systems/Core/components/interaction/target/interaction_target.tscn" id="4_4vln6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sacd3"]
 sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)

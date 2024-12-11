@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dib4ygu3bj6t2"]
 
 [ext_resource type="PackedScene" uid="uid://d246jhqbmxxdb" path="res://Shapes/2DShapes/shape_base_2d.tscn" id="1_l7dro"]
-[ext_resource type="Resource" uid="uid://8ti37f57fvf7" path="res://UI/PlayerHUD/effect_display/effect_resources/2d_shapes/circle.tres" id="2_4olxc"]
+[ext_resource type="Resource" uid="uid://8ti37f57fvf7" path="res://Systems/Core/components/effect_management/effect_resources/shapes/2d_shapes/circle.tres" id="2_4olxc"]
 [ext_resource type="Texture2D" uid="uid://bqc0xflkhrngs" path="res://Shapes/2DShapes/2D Shapes Spritesheet.png" id="2_diuuh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei71e"]

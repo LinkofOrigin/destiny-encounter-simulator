@@ -8,40 +8,23 @@ signal expired(effect: Effect)
 @onready var time_label: Label = %TimeRemaining
 @onready var icon_texture: TextureRect = %Icon
 @onready var text_label: Label = %Text
-@onready var timer: Timer = %Timer
 
 
 func _ready() -> void:
-	if effect.icon != null:
-		icon_texture.texture = effect.icon
+	if effect.data.icon != null:
+		icon_texture.texture = effect.data.icon
 	
-	if not effect.text.is_empty():
-		text_label.text = effect.text
+	if not effect.data.text.is_empty():
+		text_label.text = effect.data.text
 	
 	
-	if effect.expiration_time > 0:
-		timer.wait_time = effect.expiration_time
-		timer.start()
-	else:
+	if effect.data.expiration_time <= 0:
 		time_label.visible_characters = 0
 
 
 func _process(_delta: float) -> void:
-	var new_time: String = _format_time_for_label(timer.time_left)
+	var new_time: String = _format_time_for_label(effect.timer.time_left)
 	time_label.text = new_time
-
-
-func pause_timer() -> void:
-	timer.paused = true
-
-
-func resume_timer() -> void:
-	timer.paused = false
-
-
-func refresh_timer() -> void:
-	if effect.expiration_time > 0:
-		timer.wait_time = effect.expiration_time
 
 
 func _format_time_for_label(seconds: float) -> String:

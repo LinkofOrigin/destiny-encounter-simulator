@@ -13,18 +13,14 @@ theme = ExtResource("1_bgrx7")
 theme_override_constants/separation = 10
 script = ExtResource("2_l533g")
 
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-process_mode = 1
-one_shot = true
-
 [node name="TimeRemaining" type="Label" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "0:13"
 horizontal_alignment = 2
-visible_ratio = -0.25
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Icon" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -41,5 +37,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Triangle"
 text_overrun_behavior = 3
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

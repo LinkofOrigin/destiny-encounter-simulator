@@ -15,6 +15,8 @@ const MIN_CAMERA_DOWN: float = PI / -2.0
 @onready var state_machine: StateMachine = $StateMachine
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var interactable_detector: InteractableDetector = $InteractableDetector
+@onready var effect_manager: EffectManager = $EffectManager
+
 
 var _can_interact: bool = false
 var _active_interactable: InteractableComponent
@@ -56,6 +58,7 @@ func _on_input_handler_interact_complete() -> void:
 
 func _on_can_interact_with(interactable: InteractableComponent) -> void:
 	#print("player can interact!")
+	#var passes_condition := interactable.passes_interact_condition(interaction_state_manager)
 	_can_interact = true
 	_active_interactable = interactable
 	can_interact.emit(interactable)

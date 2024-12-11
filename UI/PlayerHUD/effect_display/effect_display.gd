@@ -12,7 +12,6 @@ var thread: Thread
 var mutex: Mutex
 var semaphore: Semaphore
 var exit_thread := false
-
 var effect_queue: Array[Effect] ## Holds a list of effects that need to be instantiated for the display, to be processed by the child thread
 var prepared_effects: Array[EffectRow] ## Holds a list of EffectRow objects ready to be added to the tree
 
@@ -25,7 +24,7 @@ func _ready() -> void:
 	thread.start(_thread_function)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var prepared_effect: EffectRow
 	mutex.lock()
 	if not prepared_effects.is_empty():
@@ -64,18 +63,18 @@ func _thread_function() -> void:
 		# Check if there are any effects in the queue
 		# If there are none, the semaphore will wait
 		# If is at least one, the thread will instantiate a new EffectRow
-		var effect_to_create: Effect
+		var effect_to_display: Effect
 		mutex.lock()
 		if effect_queue.is_empty():
 			mutex.unlock()
 			semaphore.wait()
 		else:
-			effect_to_create = effect_queue.pop_front()
+			effect_to_display = effect_queue.pop_front()
 		mutex.unlock()
 		
-		if effect_to_create != null:
+		if effect_to_display != null:
 			var new_effect_row: EffectRow = effect_row_packed.instantiate()
-			new_effect_row.effect = effect_to_create
+			new_effect_row.effect = effect_to_display
 			new_effect_row.expired.connect(_on_effect_expired)
 			mutex.lock()
 			effect_row_mapping[new_effect_row.effect] = new_effect_row

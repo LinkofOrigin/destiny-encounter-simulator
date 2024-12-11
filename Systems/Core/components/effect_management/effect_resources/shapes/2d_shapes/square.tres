@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShapeEffect" load_steps=3 format=3 uid="uid://c7w777vrr2omv"]
+
+[ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="1_pe0is"]
+[ext_resource type="Script" path="res://Systems/Core/components/effect_management/effect_resources/shapes/shape_effect_data.gd" id="2_a6gyk"]
+
+[resource]
+script = ExtResource("2_a6gyk")
+icon = ExtResource("1_pe0is")
+text = "Square"
+expiration_time = 0.0
+priority = 10

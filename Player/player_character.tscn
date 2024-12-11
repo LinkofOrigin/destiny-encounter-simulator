@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://truukch58tcx"]
+[gd_scene load_steps=12 format=3 uid="uid://truukch58tcx"]
 
 [ext_resource type="Script" path="res://Player/player_character.gd" id="1_25k8w"]
-[ext_resource type="PackedScene" uid="uid://dunp6fyinkllo" path="res://Systems/Core/Components/input_handler_component.tscn" id="2_6lopj"]
+[ext_resource type="PackedScene" uid="uid://dunp6fyinkllo" path="res://Systems/Core/components/input_handler/input_handler_component.tscn" id="2_6lopj"]
 [ext_resource type="PackedScene" uid="uid://b2t0geemlapw3" path="res://Systems/Core/StateMachine/state_machine.tscn" id="2_y60t5"]
-[ext_resource type="PackedScene" uid="uid://3sqwp63vmvtn" path="res://Systems/Core/Components/movement_component.tscn" id="3_5j1xn"]
+[ext_resource type="PackedScene" uid="uid://3sqwp63vmvtn" path="res://Systems/Core/components/movement/movement_component.tscn" id="3_5j1xn"]
 [ext_resource type="PackedScene" uid="uid://cbkyjdt0nrghm" path="res://Systems/Core/StateMachine/States/grounded.tscn" id="3_qaj5p"]
 [ext_resource type="PackedScene" uid="uid://xelukfn3wonr" path="res://Systems/Core/StateMachine/States/Jumping.tscn" id="4_2ufpr"]
 [ext_resource type="PackedScene" uid="uid://dykq1ucont5ww" path="res://Systems/Core/StateMachine/States/double_jumping.tscn" id="5_kxbyg"]
-[ext_resource type="PackedScene" uid="uid://cwsubyev1jlbq" path="res://Systems/Core/Components/Interaction/interactable_detector.tscn" id="8_wnl0e"]
+[ext_resource type="PackedScene" uid="uid://cwsubyev1jlbq" path="res://Systems/Core/components/interaction/detector/interactable_detector.tscn" id="8_wnl0e"]
+[ext_resource type="PackedScene" uid="uid://b6dj0kteviwhj" path="res://Systems/Core/components/effect_management/effect_manager.tscn" id="9_cmhsu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6klvk"]
 
@@ -55,3 +56,5 @@ movement = NodePath("../../MovementComponent")
 camera = NodePath("../Camera3D")
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_5j1xn")]
+
+[node name="EffectManager" parent="." instance=ExtResource("9_cmhsu")]

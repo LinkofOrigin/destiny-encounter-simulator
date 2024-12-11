@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bj21f0rungq4h"]
 
-[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://Player/player.tscn" id="1_35t7k"]
+[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://Player/player_character.tscn" id="1_35t7k"]
 [ext_resource type="Script" path="res://Encounters/Verity/level_geometry.gd" id="2_50qwr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfkgj"]

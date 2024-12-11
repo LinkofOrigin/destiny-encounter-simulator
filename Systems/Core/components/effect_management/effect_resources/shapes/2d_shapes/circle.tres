@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShapeEffect" load_steps=3 format=3 uid="uid://8ti37f57fvf7"]
+
+[ext_resource type="Texture2D" uid="uid://dp3bl7yq5514g" path="res://assets/2d_shapes/test/plain-circle.png" id="1_wdmdc"]
+[ext_resource type="Script" path="res://Systems/Core/components/effect_management/effect_resources/shapes/shape_effect_data.gd" id="2_difas"]
+
+[resource]
+script = ExtResource("2_difas")
+icon = ExtResource("1_wdmdc")
+text = "Circle"
+expiration_time = 0.0
+priority = 10
