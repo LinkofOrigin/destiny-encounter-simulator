@@ -51,7 +51,7 @@ func _handle_camera(delta: float) -> void:
 
 
 func _on_input_handler_interact_complete() -> void:
-	_active_interactable.complete_interaction()
+	_active_interactable.complete_interaction(effect_manager)
 	interaction_complete.emit()
 	GlobalSignals.emit_player_interaction_complete(_active_interactable)
 
@@ -59,10 +59,11 @@ func _on_input_handler_interact_complete() -> void:
 func _on_can_interact_with(interactable: InteractableComponent) -> void:
 	#print("player can interact!")
 	#var passes_condition := interactable.passes_interact_condition(interaction_state_manager)
-	_can_interact = true
-	_active_interactable = interactable
-	can_interact.emit(interactable)
-	GlobalSignals.emit_player_can_interact(interactable)
+	if interactable.check_interact_condition(effect_manager):
+		_can_interact = true
+		_active_interactable = interactable
+		can_interact.emit(interactable)
+		GlobalSignals.emit_player_can_interact(interactable)
 
 
 func _on_can_not_interact() -> void:

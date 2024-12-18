@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dib4ygu3bj6t2"]
+[gd_scene load_steps=6 format=3 uid="uid://dib4ygu3bj6t2"]
 
 [ext_resource type="PackedScene" uid="uid://d246jhqbmxxdb" path="res://Shapes/2DShapes/shape_base_2d.tscn" id="1_l7dro"]
 [ext_resource type="Resource" uid="uid://8ti37f57fvf7" path="res://Systems/Core/components/effect_management/effect_resources/shapes/2d_shapes/circle.tres" id="2_4olxc"]
 [ext_resource type="Texture2D" uid="uid://bqc0xflkhrngs" path="res://Shapes/2DShapes/2D Shapes Spritesheet.png" id="2_diuuh"]
+[ext_resource type="Resource" uid="uid://bnuc2nqx1vo1t" path="res://Systems/Core/components/interaction/requirements/shape_2d_requirements/circle_shape_requirement.tres" id="4_mj5m7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei71e"]
 atlas = ExtResource("2_diuuh")
@@ -15,3 +16,6 @@ effect = ExtResource("2_4olxc")
 [node name="Sprite" parent="." index="0"]
 modulate = Color(0.1008, 0.3588, 0.72, 1)
 texture = SubResource("AtlasTexture_ei71e")
+
+[node name="InteractableComponent" parent="." index="1"]
+requirement = ExtResource("4_mj5m7")

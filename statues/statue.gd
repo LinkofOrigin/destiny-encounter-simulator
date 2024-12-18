@@ -10,6 +10,7 @@ func _ready() -> void:
 	pass
 
 
-
 func _on_interactable_component_interacted_with() -> void:
+	print("Statue was interated with!")
+	# TODO: Signal to a EncounterManager or something?
 	pass # Replace with function body.

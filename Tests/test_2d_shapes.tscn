@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3h1l7k8gu4rf"]
+[gd_scene load_steps=10 format=3 uid="uid://b3h1l7k8gu4rf"]
 
 [ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://Player/player_character.tscn" id="1_og33q"]
 [ext_resource type="PackedScene" uid="uid://bosfxvif8fmvs" path="res://Shapes/2DShapes/triangle_2d.tscn" id="2_aavig"]
 [ext_resource type="PackedScene" uid="uid://8dr7242bspga" path="res://Shapes/2DShapes/square_2d.tscn" id="3_mnah6"]
 [ext_resource type="PackedScene" uid="uid://dib4ygu3bj6t2" path="res://Shapes/2DShapes/circle_2d.tscn" id="4_p3o71"]
+[ext_resource type="PackedScene" uid="uid://cww11uvruk34m" path="res://statues/statue.tscn" id="5_1vjf0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wksdw"]
 sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)
@@ -46,3 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35062, 0.683819, -2.49969)
 
 [node name="Circle2D" parent="." instance=ExtResource("4_p3o71")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684, -3.223)
+
+[node name="Statue" parent="." instance=ExtResource("5_1vjf0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.04246, 0, 3.2099)

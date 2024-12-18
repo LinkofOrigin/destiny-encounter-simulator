@@ -20,6 +20,8 @@ func _ready() -> void:
 	
 	if effect.data.expiration_time <= 0:
 		time_label.visible_characters = 0
+	
+	effect.tree_exiting.connect(_on_effect_exiting_tree)
 
 
 func _process(_delta: float) -> void:
@@ -42,3 +44,7 @@ func _format_time_for_label(seconds: float) -> String:
 
 func _on_timer_timeout() -> void:
 	expired.emit(effect)
+
+
+func _on_effect_exiting_tree() -> void:
+	queue_free()

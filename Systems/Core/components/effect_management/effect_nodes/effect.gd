@@ -4,6 +4,7 @@ extends Node
 signal expired
 
 @export var data: EffectData
+
 @onready var timer: Timer = $Timer
 
 
