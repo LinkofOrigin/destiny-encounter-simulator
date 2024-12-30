@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbkyjdt0nrghm"]
-
-[ext_resource type="Script" path="res://Systems/Core/StateMachine/States/grounded.gd" id="1_my528"]
-
-[node name="Grounded" type="Node"]
-script = ExtResource("1_my528")

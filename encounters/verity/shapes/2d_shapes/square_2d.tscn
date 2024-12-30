@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://8dr7242bspga"]
+
+[ext_resource type="PackedScene" uid="uid://d246jhqbmxxdb" path="res://encounters/verity/shapes/2d_shapes/shape_base_2d.tscn" id="1_lip8h"]
+[ext_resource type="Resource" uid="uid://c7w777vrr2omv" path="res://systems/core/components/effect_management/effect_resources/shapes/2d_shapes/square.tres" id="2_o1t0i"]
+[ext_resource type="Texture2D" uid="uid://bqc0xflkhrngs" path="res://encounters/verity/shapes/2d_shapes/2D Shapes Spritesheet.png" id="2_xer55"]
+[ext_resource type="Resource" uid="uid://dbtl5106ahsvt" path="res://systems/core/components/interaction/requirements/shape_2d_requirements/square_shape_requirement.tres" id="4_id7u2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1alx"]
+atlas = ExtResource("2_xer55")
+region = Rect2(256, 0, 128, 128)
+
+[node name="Square2D" instance=ExtResource("1_lip8h")]
+shape_id = 2
+effect = ExtResource("2_o1t0i")
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color(0.65, 0.065, 0.15275, 1)
+texture = SubResource("AtlasTexture_u1alx")
+
+[node name="InteractableComponent" parent="." index="1"]
+requirement = ExtResource("4_id7u2")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EffectData" load_steps=3 format=3 uid="uid://c7w777vrr2omv"]
 
 [ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="1_pe0is"]
-[ext_resource type="Script" path="res://Systems/Core/components/effect_management/effect_resources/effect_data.gd" id="2_f2m1w"]
+[ext_resource type="Script" path="res://systems/core/components/effect_management/effect_resources/effect_data.gd" id="2_f2m1w"]
 
 [resource]
 script = ExtResource("2_f2m1w")

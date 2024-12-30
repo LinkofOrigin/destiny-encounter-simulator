@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfxnnjltu0rl2"]
+
+[ext_resource type="Script" path="res://encounters/verity/test_scenes/test_solo_rooms/test_solo_rooms.gd" id="1_m1571"]
+[ext_resource type="PackedScene" uid="uid://doh0b47v1pmic" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.tscn" id="2_hvjt8"]
+[ext_resource type="PackedScene" uid="uid://cmm848yr108hd" path="res://systems/tools/teleporter/debug_teleporter.tscn" id="3_3t6bl"]
+[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="4_eqo5y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_phjlm"]
+sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)
+sky_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
+ground_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
+
+[sub_resource type="Sky" id="Sky_8q33y"]
+sky_material = SubResource("ProceduralSkyMaterial_phjlm")
+
+[sub_resource type="Environment" id="Environment_rp3ii"]
+background_mode = 2
+sky = SubResource("Sky_8q33y")
+tonemap_mode = 2
+
+[node name="TestSoloRooms" type="Node3D"]
+script = ExtResource("1_m1571")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rp3ii")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -1.32814e-09, 1.51808e-08, -1.51808e-08, -0.173648, 0.984808, 1.32815e-09, -0.984808, -0.173648, 0, 27.3434, 0)
+shadow_enabled = true
+
+[node name="LeftSoloKeyBuilding" parent="." instance=ExtResource("2_hvjt8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.3821, 0, 0)
+
+[node name="LeftTeleportMarker" type="Marker3D" parent="LeftSoloKeyBuilding"]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -20.5356, 2.88114, -7.65486)
+
+[node name="CenterDebugTeleporter3" parent="LeftSoloKeyBuilding" node_paths=PackedStringArray("teleport_location") instance=ExtResource("3_3t6bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.849, 1.39004, 7.93191)
+teleport_location = NodePath("../../CenterSoloKeyBuilding/CenterTeleportMarker")
+text_indicator = "Center"
+
+[node name="RightDebugTeleporterRight3" parent="LeftSoloKeyBuilding" node_paths=PackedStringArray("teleport_location") instance=ExtResource("3_3t6bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.88739, 1.39004, 7.93191)
+teleport_location = NodePath("../../RightSoloKeyBuilding/RightTeleportMarker")
+text_indicator = "Right"
+
+[node name="CenterSoloKeyBuilding" parent="." instance=ExtResource("2_hvjt8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63.7442)
+
+[node name="CenterTeleportMarker" type="Marker3D" parent="CenterSoloKeyBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.472628, 2.80554, 3.80476)
+
+[node name="LeftDebugTeleporter2" parent="CenterSoloKeyBuilding" node_paths=PackedStringArray("teleport_location") instance=ExtResource("3_3t6bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79493, 1.39004, 9.78269)
+teleport_location = NodePath("../../LeftSoloKeyBuilding/LeftTeleportMarker")
+text_indicator = "Left"
+
+[node name="RightDebugTeleporterRight2" parent="CenterSoloKeyBuilding" node_paths=PackedStringArray("teleport_location") instance=ExtResource("3_3t6bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.94146, 1.39004, 9.78269)
+teleport_location = NodePath("../../RightSoloKeyBuilding/RightTeleportMarker")
+text_indicator = "Right"
+
+[node name="RightSoloKeyBuilding" parent="." instance=ExtResource("2_hvjt8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.6029, 0, 0)
+
+[node name="RightTeleportMarker" type="Marker3D" parent="RightSoloKeyBuilding"]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 22.0895, 2.4146, -6.71517)
+
+[node name="LeftDebugTeleporter" parent="RightSoloKeyBuilding" node_paths=PackedStringArray("teleport_location") instance=ExtResource("3_3t6bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.30643, 1.39004, 11.0742)
+teleport_location = NodePath("../../LeftSoloKeyBuilding/LeftTeleportMarker")
+text_indicator = "Left"
+
+[node name="CenterDebugTeleporterRight" parent="RightSoloKeyBuilding" node_paths=PackedStringArray("teleport_location") instance=ExtResource("3_3t6bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.43, 1.39004, 11.0742)
+teleport_location = NodePath("../../CenterSoloKeyBuilding/CenterTeleportMarker")
+text_indicator = "Center"
+
+[node name="BaseFloor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93005, -0.252266, -30.7937)
+size = Vector3(172.382, 1, 134.277)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("4_eqo5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0868, 1.23281, 20.3376)

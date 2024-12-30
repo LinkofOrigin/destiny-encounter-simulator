@@ -75,6 +75,8 @@ func _get_raw_movement_vector() -> Vector2:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventKey and event.is_action_pressed("Menu"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventMouseButton and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:

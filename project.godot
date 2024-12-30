@@ -16,9 +16,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-InputActions="*res://Systems/Globals/input_actions.gd"
-GlobalSignals="*res://Systems/Globals/global_signals.gd"
-PlayerHudManager="*res://Systems/Globals/player_hud_manager/player_hud_manager.tscn"
+InputActions="*res://systems/globals/input_actions.gd"
+GlobalSignals="*res://systems/globals/global_signals.gd"
+PlayerHudManager="*res://systems/globals/player_hud_manager/player_hud_manager.tscn"
 
 [debug]
 
@@ -44,7 +44,7 @@ Player=""
 
 [gui]
 
-theme/custom="res://UI/Themes/des_theme.tres"
+theme/custom="res://ui/themes/des_theme.tres"
 
 [input]
 
