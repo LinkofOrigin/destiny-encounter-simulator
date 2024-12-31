@@ -1,6 +1,7 @@
 class_name InteractableComponent
 extends Node3D
 
+signal interaction_complete
 signal interacted_with(obj: Variant)
 
 @export_category("Interaction Settings")
@@ -36,6 +37,7 @@ func check_interact_condition(effect_manager: EffectManager) -> bool:
 func complete_interaction(effect_manager: EffectManager) -> void:
 	if requirement != null:
 		requirement.resolve_interaction(effect_manager)
+	interaction_complete.emit()
 
 
 func _on_requirement_resolved(obj: Variant) -> void:

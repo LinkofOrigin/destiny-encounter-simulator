@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 InputActions="*res://systems/globals/input_actions.gd"
 GlobalSignals="*res://systems/globals/global_signals.gd"
+MenuManager="*res://ui/menus/menu_manager.tscn"
 PlayerHudManager="*res://systems/globals/player_hud_manager/player_hud_manager.tscn"
 
 [debug]
@@ -112,7 +113,8 @@ JoystickCameraDown={
 }
 PrimaryFire={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(234, 13),"global_position":Vector2(243, 59),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(234, 13),"global_position":Vector2(243, 59),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 

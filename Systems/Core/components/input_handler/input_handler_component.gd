@@ -23,10 +23,14 @@ func _ready() -> void:
 
 
 func get_movement_vector() -> Vector2:
+	if MenuManager.is_paused():
+		return Vector2(0,0)
 	return _get_raw_movement_vector().rotated(camera.rotation.y * -1)
 
 
 func get_camera_movement_vector(delta: float) -> Vector2:
+	if MenuManager.is_paused():
+		return Vector2(0,0)
 	var camera_vector := get_camera_vector()
 	camera_vector *= camera_speed * delta / 10
 	return camera_vector
@@ -47,23 +51,33 @@ func get_camera_vector() -> Vector2:
 
 
 func handle_interaction(delta: float, time_to_complete: float):
+	if MenuManager.is_paused():
+		_current_interaction_time = 0
+		interaction_progress.emit(0)
+		release_interact_lock()
+		return
+	
 	var progress_percent := clampf(_current_interaction_time / time_to_complete, 0, 1) * 100 # Percentage
 	if Input.is_action_pressed(InputActions.Player.INTERACT) and not _input_lock:
 		_current_interaction_time += delta
 		if _current_interaction_time >= time_to_complete:
 			#print("player finished interacting!")
+			_current_interaction_time = 0
 			interaction_complete.emit()
 			_input_lock = true # Prevent repeated interactions without first releasing the button
 		else:
 			interaction_progress.emit(progress_percent)
 	elif Input.is_action_just_released(InputActions.Player.INTERACT):
 		# reset the current interaction time
+		_current_interaction_time = 0
+		interaction_progress.emit(0)
 		release_interact_lock()
 
 
 func release_interact_lock():
 	_input_lock = false
 	_current_interaction_time = 0
+
 
 func jump_button_just_pressed() -> bool:
 	return Input.is_action_just_pressed(InputActions.Player.JUMP)
@@ -81,8 +95,6 @@ func _get_raw_movement_vector() -> Vector2:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if event is InputEventKey and event.is_action_pressed("Menu"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventMouseButton and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

@@ -12,10 +12,11 @@ signal picked_up
 
 
 func _ready() -> void:
+	# TODO: animate?
 	pass
 
 
-func _on_interactable_component_interacted_with() -> void:
+func _on_interactable_component_interaction_complete() -> void:
 	print("2D Shape interacted with")
 	interactable_component.process_mode = Node.PROCESS_MODE_DISABLED
 	picked_up.emit()

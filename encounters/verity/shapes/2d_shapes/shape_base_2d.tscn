@@ -38,4 +38,4 @@ shape = SubResource("BoxShape3D_k2svy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionTarget"]
 shape = SubResource("CylinderShape3D_phy1j")
 
-[connection signal="interacted_with" from="InteractableComponent" to="." method="_on_interactable_component_interacted_with"]
+[connection signal="interaction_complete" from="InteractableComponent" to="." method="_on_interactable_component_interaction_complete"]

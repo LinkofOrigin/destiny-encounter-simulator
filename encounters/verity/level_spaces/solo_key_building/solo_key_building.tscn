@@ -29,6 +29,7 @@ emission = Color(0.194535, 0.209007, 0.241045, 1)
 emission_energy_multiplier = 1.83
 
 [node name="SoloKeyBuilding" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_3jf8a")
 
 [node name="ShapeSpawner" parent="." instance=ExtResource("2_sgmor")]

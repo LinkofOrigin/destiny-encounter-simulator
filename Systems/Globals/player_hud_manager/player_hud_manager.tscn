@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7d6o1x6lr2kv" path="res://ui/player_hud/player_hud.tscn" id="2_itafs"]
 
 [node name="PlayerHudManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_o0h1u")
 
 [node name="PlayerHud" parent="." instance=ExtResource("2_itafs")]

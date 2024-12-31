@@ -41,6 +41,7 @@ emission = Color(0.194535, 0.209007, 0.241045, 1)
 emission_energy_multiplier = 1.83
 
 [node name="BaseLevel" type="Node3D"]
+process_mode = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hqi7a")

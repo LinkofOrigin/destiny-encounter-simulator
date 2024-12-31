@@ -19,6 +19,7 @@ sky = SubResource("Sky_8q33y")
 tonemap_mode = 2
 
 [node name="TestSoloRooms" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_m1571")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
