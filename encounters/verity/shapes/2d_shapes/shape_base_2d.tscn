@@ -17,7 +17,9 @@ radius = 0.474893
 script = ExtResource("2_ajeg4")
 
 [node name="Sprite" type="Sprite3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.263307, 0)
+modulate = Color(0.18, 0.18, 0.18, 0)
 billboard = 1
 texture = ExtResource("1_78paq")
 

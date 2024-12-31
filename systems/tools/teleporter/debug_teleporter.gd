@@ -10,15 +10,14 @@ extends Area3D
 
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	if not is_instance_valid(teleport_location):
-		var children := find_children("*", "Marker3D")
-		assert(not children.is_empty(), "No location for teleporter!")
-		teleport_location = children.pop_front()
-	
 	label_indicator.text = text_indicator
+	
+	if not Engine.is_editor_hint():
+		if not is_instance_valid(teleport_location):
+			var children := find_children("*", "Marker3D")
+			assert(not children.is_empty(), "No location for teleporter!")
+			teleport_location = children.pop_front()
+	
 
 
 func teleport_body(body: Node3D):

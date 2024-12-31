@@ -24,32 +24,41 @@ func add_effect(data: EffectData) -> void:
 	GlobalSignals.emit_effect_acquired(new_effect)
 
 
-func remove_effects_by_data(data: EffectData) -> void:
+func remove_effects_by_data(data: EffectData) -> Array[EffectData]:
+	var removed_data: Array[EffectData] = []
 	for effect: Effect in effect_mapping[data]:
-		effect.queue_free()
-		(effect_mapping[data] as Array).erase.call_deferred(effect)
+		var rem_data := _remove_effect(effect)
+		removed_data.push_back(rem_data)
+	
+	return removed_data
 
 
-func has_effect(effect: EffectData) -> bool:
-	var data_list: Array[EffectData] = effect_mapping.keys()
-	for data: EffectData in data_list:
-		if data == effect:
-			return true
-	return false
+func has_effect(data: EffectData) -> bool:
+	return effect_mapping.has(data) and not (effect_mapping[data] as Array).is_empty()
 
 
 func has_effect_of_type(type: EffectData.TYPES) -> bool:
 	var data_list: Array = effect_mapping.keys()
 	for data: EffectData in data_list:
-		if data.type == type:
+		if data.type == type and not (effect_mapping[data] as Array).is_empty():
 			return true
 	return false
 
 
-func clear_effects_of_type(type: EffectData.TYPES) -> void:
+func clear_effects_of_type(type: EffectData.TYPES) -> Array[EffectData]:
+	var cleared_effects: Array[EffectData] = []
 	var data_list: Array = effect_mapping.keys()
 	for data: EffectData in data_list:
 		if data.type == type:
-			for effect: Effect in effect_mapping[data]:
-				effect.queue_free()
-				(effect_mapping[data] as Array).erase.call_deferred(effect)
+			var removed_effects := remove_effects_by_data(data)
+			cleared_effects.append_array(removed_effects)
+	
+	return cleared_effects
+
+
+func _remove_effect(effect: Effect) -> EffectData:
+	var data := effect.data
+	effect.queue_free()
+	(effect_mapping[data] as Array).erase.call_deferred(effect)
+	current_effects.erase.call_deferred(effect)
+	return data

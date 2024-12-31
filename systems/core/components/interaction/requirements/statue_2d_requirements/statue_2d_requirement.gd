@@ -9,5 +9,6 @@ func meets_requirements(effect_manager: EffectManager) -> bool:
 
 
 func resolve_interaction(effect_manager: EffectManager) -> void:
-	effect_manager.clear_effects_of_type(effect_type)
+	var cleared_effects := effect_manager.clear_effects_of_type(effect_type)
+	resolved_interaction.emit(cleared_effects)
 	print("2d Statue cleared effects!")

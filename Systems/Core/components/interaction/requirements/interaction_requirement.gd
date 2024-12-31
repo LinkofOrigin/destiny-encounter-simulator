@@ -1,6 +1,8 @@
 class_name InteractionRequirement
 extends Resource
 
+signal resolved_interaction(obj: Variant)
+
 
 func meets_requirements(effect_manager: EffectManager) -> bool:
 	return false

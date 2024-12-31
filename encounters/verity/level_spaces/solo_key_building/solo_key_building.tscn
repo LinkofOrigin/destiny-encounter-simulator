@@ -32,25 +32,28 @@ emission_energy_multiplier = 1.83
 script = ExtResource("1_3jf8a")
 
 [node name="ShapeSpawner" parent="." instance=ExtResource("2_sgmor")]
-
-[node name="PlayerSpawn" type="Marker3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78038, 6.92097)
-
-[node name="LeftShapeSpawn" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5198, 1.17274, -22.6136)
-
-[node name="CenterShapeSpawn" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591082, 4.09107, -6.67706)
-
-[node name="RightShapeSpawn" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7559, 1.17274, -22.6136)
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 script = ExtResource("1_ngay2")
+
+[node name="Spawns" type="Node3D" parent="LevelGeometry"]
+
+[node name="PlayerSpawn" type="Marker3D" parent="LevelGeometry/Spawns"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78038, 6.92097)
+
+[node name="LeftShapeSpawn" type="Marker3D" parent="LevelGeometry/Spawns"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5198, 1.17274, -22.6136)
+
+[node name="CenterShapeSpawn" type="Marker3D" parent="LevelGeometry/Spawns"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591082, 4.09107, -6.67706)
+
+[node name="RightShapeSpawn" type="Marker3D" parent="LevelGeometry/Spawns"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7559, 1.17274, -22.6136)
 
 [node name="LevelBox" type="Node3D" parent="LevelGeometry"]
 
@@ -152,12 +155,15 @@ radius = 6.64343
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)
 
 [node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("3_epaw3")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
 
 [node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("3_epaw3")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
 
-[node name="CenterStatue2" parent="LevelGeometry/Statues" instance=ExtResource("3_epaw3")]
+[node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("3_epaw3")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
 
 [node name="BackArea" type="Node3D" parent="LevelGeometry"]

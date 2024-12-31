@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0l1qyahp6fun"]
-
-[ext_resource type="Script" path="res://systems/core/components/interaction/resolver/interaction_resolver.gd" id="1_rblkr"]
-
-[node name="InteractionResolver" type="Node"]
-script = ExtResource("1_rblkr")

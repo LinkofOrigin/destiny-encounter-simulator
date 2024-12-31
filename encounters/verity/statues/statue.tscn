@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://encounters/verity/statues/statue.gd" id="1_cl66n"]
 [ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="2_mw7qm"]
-[ext_resource type="Resource" uid="uid://bnna5v2ur1uxp" path="res://systems/core/components/interaction/requirements/statue_2d_requirement.tres" id="3_ek0ku"]
+[ext_resource type="Resource" uid="uid://bnna5v2ur1uxp" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.tres" id="3_ek0ku"]
 [ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://systems/core/components/interaction/zone/interaction_zone.tscn" id="3_wjmd7"]
 [ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://systems/core/components/interaction/target/interaction_target.tscn" id="4_ej8e2"]
 

@@ -10,7 +10,7 @@ var triangle_packed := preload("res://encounters/verity/shapes/2d_shapes/triangl
 var square_packed := preload("res://encounters/verity/shapes/2d_shapes/square_2d.tscn")
 
 
-func spawn_new_shape_at_location(shape: SHAPES, location: Vector3, parent: Node3D = null):
+func spawn_new_shape_at_location(shape: SHAPES, location: Vector3, parent: Node3D = null) -> ShapeBase2D:
 	var new_shape := _create_shape_by_id(shape)
 	var shape_parent = new_shape_parent
 	if shape_parent == null:
@@ -18,6 +18,7 @@ func spawn_new_shape_at_location(shape: SHAPES, location: Vector3, parent: Node3
 	
 	shape_parent.add_child(new_shape)
 	new_shape.global_position = location
+	return new_shape
 
 
 func _create_shape_by_id(shape_id: SHAPES) -> ShapeBase2D:

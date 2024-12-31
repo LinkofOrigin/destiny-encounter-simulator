@@ -26,14 +26,13 @@ func _ready() -> void:
 	interactable_detector.can_interact_with.connect(_on_can_interact_with)
 	interactable_detector.can_not_interact.connect(_on_can_not_interact)
 	input_handler.interaction_complete.connect(_on_input_handler_interact_complete)
+	input_handler.interaction_progress.connect(_on_input_handler_interaction_progress)
 
 
 func _process(delta: float) -> void:
-	if _can_interact:
+	if _can_interact and is_instance_valid(_active_interactable):
 		# use input handler to interact
-		var current_progress := input_handler.handle_interaction(delta, _active_interactable.interact_time)
-		interact_progress_made.emit(current_progress)
-		GlobalSignals.emit_player_interact_progress_made(current_progress)
+		input_handler.handle_interaction(delta, _active_interactable.interact_time)
 
 
 func _physics_process(delta: float) -> void:
@@ -48,6 +47,11 @@ func _handle_camera(delta: float) -> void:
 		pass
 	
 	_apply_look_rotation(new_rotation.x, new_rotation.y)
+
+
+func _on_input_handler_interaction_progress(percent: float):
+	interact_progress_made.emit(percent)
+	GlobalSignals.emit_player_interact_progress_made(percent)
 
 
 func _on_input_handler_interact_complete() -> void:
@@ -69,6 +73,7 @@ func _on_can_interact_with(interactable: InteractableComponent) -> void:
 func _on_can_not_interact() -> void:
 	#print("player can NOT interact!")
 	_can_interact = false
+	input_handler.release_interact_lock()
 	_active_interactable = null
 	can_not_interact.emit()
 	GlobalSignals.emit_player_can_not_interact()

@@ -85,3 +85,13 @@ size = Vector3(172.382, 1, 134.277)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_eqo5y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0868, 1.23281, 20.3376)
+
+[connection signal="center_statue_received_effects" from="LeftSoloKeyBuilding" to="." method="_on_left_solo_key_building_center_statue_received_effects"]
+[connection signal="left_statue_received_effects" from="LeftSoloKeyBuilding" to="." method="_on_left_solo_key_building_left_statue_received_effects"]
+[connection signal="right_statue_received_effects" from="LeftSoloKeyBuilding" to="." method="_on_left_solo_key_building_right_statue_received_effects"]
+[connection signal="center_statue_received_effects" from="CenterSoloKeyBuilding" to="." method="_on_center_solo_key_building_center_statue_received_effects"]
+[connection signal="left_statue_received_effects" from="CenterSoloKeyBuilding" to="." method="_on_center_solo_key_building_left_statue_received_effects"]
+[connection signal="right_statue_received_effects" from="CenterSoloKeyBuilding" to="." method="_on_center_solo_key_building_right_statue_received_effects"]
+[connection signal="center_statue_received_effects" from="RightSoloKeyBuilding" to="." method="_on_right_solo_key_building_center_statue_received_effects"]
+[connection signal="left_statue_received_effects" from="RightSoloKeyBuilding" to="." method="_on_right_solo_key_building_left_statue_received_effects"]
+[connection signal="right_statue_received_effects" from="RightSoloKeyBuilding" to="." method="_on_right_solo_key_building_right_statue_received_effects"]

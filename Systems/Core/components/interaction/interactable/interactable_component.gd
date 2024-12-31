@@ -1,7 +1,7 @@
 class_name InteractableComponent
 extends Node3D
 
-signal interacted_with
+signal interacted_with(obj: Variant)
 
 @export_category("Interaction Settings")
 @export var requirement: InteractionRequirement
@@ -14,6 +14,7 @@ var _interaction_target: InteractionTarget
 
 
 func _ready() -> void:
+	requirement.resolved_interaction.connect(_on_requirement_resolved)
 	for area: Area3D in get_children():
 		if area is InteractionZone:
 			_interaction_zone = area
@@ -35,4 +36,7 @@ func check_interact_condition(effect_manager: EffectManager) -> bool:
 func complete_interaction(effect_manager: EffectManager) -> void:
 	if requirement != null:
 		requirement.resolve_interaction(effect_manager)
-	interacted_with.emit()
+
+
+func _on_requirement_resolved(obj: Variant) -> void:
+	interacted_with.emit(obj)

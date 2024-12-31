@@ -1,6 +1,7 @@
 class_name InputHandlerComponent
 extends Node
 
+signal interaction_progress(percent: float)
 signal interaction_complete
 
 const MAX_CAMERA_UP: float = PI / 2.0
@@ -45,20 +46,24 @@ func get_camera_vector() -> Vector2:
 	return joystick_camera_vector
 
 
-func handle_interaction(delta: float, time_to_complete: float) -> float:
+func handle_interaction(delta: float, time_to_complete: float):
+	var progress_percent := clampf(_current_interaction_time / time_to_complete, 0, 1) * 100 # Percentage
 	if Input.is_action_pressed(InputActions.Player.INTERACT) and not _input_lock:
 		_current_interaction_time += delta
 		if _current_interaction_time >= time_to_complete:
 			#print("player finished interacting!")
 			interaction_complete.emit()
 			_input_lock = true # Prevent repeated interactions without first releasing the button
+		else:
+			interaction_progress.emit(progress_percent)
 	elif Input.is_action_just_released(InputActions.Player.INTERACT):
 		# reset the current interaction time
-		_current_interaction_time = 0
-		_input_lock = false
-	
-	return clampf(_current_interaction_time / time_to_complete, 0, 1) * 100 # Percentage
+		release_interact_lock()
 
+
+func release_interact_lock():
+	_input_lock = false
+	_current_interaction_time = 0
 
 func jump_button_just_pressed() -> bool:
 	return Input.is_action_just_pressed(InputActions.Player.JUMP)
