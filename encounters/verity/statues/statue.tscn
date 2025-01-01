@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cww11uvruk34m"]
+[gd_scene load_steps=14 format=3 uid="uid://cww11uvruk34m"]
 
 [ext_resource type="Script" path="res://encounters/verity/statues/statue.gd" id="1_cl66n"]
+[ext_resource type="PackedScene" uid="uid://dgj8cvuy4impl" path="res://systems/core/components/shape_spawner/shape_spawner.tscn" id="2_0jwnk"]
 [ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="2_mw7qm"]
-[ext_resource type="Resource" uid="uid://bnna5v2ur1uxp" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.tres" id="3_ek0ku"]
+[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="3_ujrub"]
 [ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://systems/core/components/interaction/zone/interaction_zone.tscn" id="3_wjmd7"]
 [ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://systems/core/components/interaction/target/interaction_target.tscn" id="4_ej8e2"]
 
@@ -20,6 +21,10 @@ height = 0.35
 height = 0.364132
 radius = 0.824459
 
+[sub_resource type="Resource" id="Resource_7apid"]
+resource_local_to_scene = true
+script = ExtResource("3_ujrub")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2tp8h"]
 size = Vector3(2, 0.2, 2)
 
@@ -29,6 +34,9 @@ radius = 0.55
 
 [node name="Statue" type="Node3D"]
 script = ExtResource("1_cl66n")
+
+[node name="ShapeSpawner" parent="." instance=ExtResource("2_0jwnk")]
+unique_name_in_owner = true
 
 [node name="BodyMarker" type="Marker3D" parent="."]
 unique_name_in_owner = true
@@ -44,6 +52,10 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyMarker/Body"]
 shape = SubResource("BoxShape3D_yb8hc")
 
+[node name="HeldShapeMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73456, 1.14332)
+
 [node name="Podium" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
 
@@ -57,7 +69,7 @@ shape = SubResource("CylinderShape3D_tc7xr")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("2_mw7qm")]
 unique_name_in_owner = true
-requirement = ExtResource("3_ek0ku")
+requirement = SubResource("Resource_7apid")
 prompt_text = "Deposit"
 interact_time = 0.8
 

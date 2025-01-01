@@ -1,5 +1,6 @@
-class_name ShapeBase2D
-extends Node3D
+class_name Base2DShape
+extends Sprite3D
+
 
 signal picked_up
 signal despawned
@@ -9,23 +10,32 @@ signal despawned
 @export var effect: EffectData
 @export var despawn_time: int = 20
 
-@onready var interactable_component: InteractableComponent = $InteractableComponent
-@onready var sprite: Sprite3D = %Sprite
+@onready var interactable_component: InteractableComponent = %InteractableComponent
 @onready var timer: Timer = %Timer
 
 
 func _ready() -> void:
 	# TODO: animate?
-	timer.wait_time = despawn_time
 	timer.timeout.connect(_on_timer_timeout)
-	timer.start()
+	start_despawn_timer(despawn_time)
+
+
+func start_despawn_timer(new_time: int = 0):
+	despawn_time = new_time
+	if despawn_time > 0:
+		timer.wait_time = despawn_time
+		timer.start()
 
 
 func despawn() -> void:
 	interactable_component.process_mode = Node.PROCESS_MODE_DISABLED
 	var tween := get_tree().create_tween()
-	tween.tween_property(sprite, "modulate", Color(0,0,0,0), 2)
+	tween.tween_property(self, "modulate", Color(0,0,0,0), 2)
 	tween.tween_callback(_handle_despawned)
+
+
+func disable_interaction() -> void:
+	interactable_component.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _handle_despawned() -> void:

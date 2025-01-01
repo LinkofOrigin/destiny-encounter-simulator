@@ -1,0 +1,2 @@
+class_name Base3DShape
+extends MeshInstance3D

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dolkgg3p8wvty"]
+
+[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_2y50l"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ua203"]
+top_radius = 0.0
+height = 1.0
+cap_top = false
+
+[node name="Cone" type="MeshInstance3D"]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_ua203")
+script = ExtResource("1_2y50l")

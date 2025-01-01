@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b3h1l7k8gu4rf"]
 
 [ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="1_i72fr"]
-[ext_resource type="PackedScene" uid="uid://bosfxvif8fmvs" path="res://encounters/verity/shapes/2d_shapes/triangle_2d.tscn" id="2_47mu5"]
-[ext_resource type="PackedScene" uid="uid://8dr7242bspga" path="res://encounters/verity/shapes/2d_shapes/square_2d.tscn" id="3_b1l7r"]
-[ext_resource type="PackedScene" uid="uid://dib4ygu3bj6t2" path="res://encounters/verity/shapes/2d_shapes/circle_2d.tscn" id="4_p8dgo"]
+[ext_resource type="PackedScene" uid="uid://bosfxvif8fmvs" path="res://encounters/verity/shapes/2d_shapes/triangle_2d_old.tscn" id="2_47mu5"]
+[ext_resource type="PackedScene" uid="uid://8dr7242bspga" path="res://encounters/verity/shapes/2d_shapes/square_2d_old.tscn" id="3_b1l7r"]
+[ext_resource type="PackedScene" uid="uid://dib4ygu3bj6t2" path="res://encounters/verity/shapes/2d_shapes/circle_2d_old.tscn" id="4_p8dgo"]
 [ext_resource type="PackedScene" uid="uid://cww11uvruk34m" path="res://encounters/verity/statues/statue.tscn" id="5_irqpm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wksdw"]

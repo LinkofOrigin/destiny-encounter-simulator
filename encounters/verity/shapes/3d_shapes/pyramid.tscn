@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://m8h2ndu2t7j7"]
+
+[ext_resource type="ArrayMesh" uid="uid://dq4384g1ks0n0" path="res://assets/3d_models/shapes/tetrahedron.obj" id="1_lvypo"]
+[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_ppd8o"]
+
+[node name="Pyramid" type="MeshInstance3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = ExtResource("1_lvypo")
+script = ExtResource("1_ppd8o")

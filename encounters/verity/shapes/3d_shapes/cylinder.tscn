@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://biheldwtxjrcj"]
+
+[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_amv68"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i4v4v"]
+height = 1.0
+
+[node name="Cylinder" type="MeshInstance3D"]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
+mesh = SubResource("CylinderMesh_i4v4v")
+script = ExtResource("1_amv68")

@@ -1,20 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://bosfxvif8fmvs"]
+[gd_scene load_steps=10 format=3 uid="uid://2intyrv7cic"]
 
-[ext_resource type="PackedScene" uid="uid://d246jhqbmxxdb" path="res://encounters/verity/shapes/2d_shapes/shape_base_2d.tscn" id="1_imn6a"]
-[ext_resource type="Texture2D" uid="uid://bqc0xflkhrngs" path="res://encounters/verity/shapes/2d_shapes/2D Shapes Spritesheet.png" id="2_3qu3r"]
+[ext_resource type="Script" path="res://encounters/verity/shapes/2d_shapes/base_2d_shape.gd" id="1_dnnli"]
+[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/triforce.png" id="1_r8n84"]
 [ext_resource type="Resource" uid="uid://c7s5hrsfdv44" path="res://systems/core/components/effect_management/effect_resources/shapes/2d_shapes/triangle.tres" id="2_v8dqa"]
-[ext_resource type="Resource" uid="uid://ce5sqd0mqk2fg" path="res://systems/core/components/interaction/requirements/shape_2d_requirements/triangle_shape_requirement.tres" id="4_cw45x"]
+[ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="4_wpu0y"]
+[ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://systems/core/components/interaction/zone/interaction_zone.tscn" id="5_fbh07"]
+[ext_resource type="Resource" uid="uid://ce5sqd0mqk2fg" path="res://systems/core/components/interaction/requirements/shape_2d_requirements/triangle_shape_requirement.tres" id="5_n0uph"]
+[ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://systems/core/components/interaction/target/interaction_target.tscn" id="6_cbtwk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_55f31"]
-atlas = ExtResource("2_3qu3r")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7g23u"]
+size = Vector3(4, 0.161, 4)
 
-[node name="Triangle2D" instance=ExtResource("1_imn6a")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ysp4v"]
+height = 1.27694
+radius = 0.474893
+
+[node name="Triangle2D" type="Sprite3D"]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, 0, 0)
+modulate = Color(0.133, 0.46, 0.291, 1)
+billboard = 1
+texture = ExtResource("1_r8n84")
+script = ExtResource("1_dnnli")
 effect = ExtResource("2_v8dqa")
 
-[node name="Sprite" parent="." index="0"]
-modulate = Color(0.1334, 0.46, 0.291257, 1)
-texture = SubResource("AtlasTexture_55f31")
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
 
-[node name="InteractableComponent" parent="." index="1"]
-requirement = ExtResource("4_cw45x")
+[node name="InteractableComponent" parent="." instance=ExtResource("4_wpu0y")]
+unique_name_in_owner = true
+requirement = ExtResource("5_n0uph")
+prompt_text = "Pick Up"
+interact_time = 0.8
+
+[node name="InteractionZone" parent="InteractableComponent" instance=ExtResource("5_fbh07")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52594, 0)
+shape = SubResource("BoxShape3D_7g23u")
+
+[node name="InteractionTarget" parent="InteractableComponent" instance=ExtResource("6_cbtwk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionTarget"]
+shape = SubResource("CylinderShape3D_ysp4v")
