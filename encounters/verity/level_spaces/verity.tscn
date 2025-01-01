@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj21f0rungq4h"]
+
+[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="1_dhbcf"]
+[ext_resource type="PackedScene" uid="uid://doh0b47v1pmic" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.tscn" id="2_6s3r6"]
+[ext_resource type="PackedScene" uid="uid://bhujlbkfoc4h5" path="res://encounters/verity/level_spaces/team_dissection/team_dissection.tscn" id="3_ilsqh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfkgj"]
+sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)
+sky_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
+ground_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
+
+[sub_resource type="Sky" id="Sky_3qeuo"]
+sky_material = SubResource("ProceduralSkyMaterial_sfkgj")
+
+[sub_resource type="Environment" id="Environment_hqi7a"]
+background_mode = 2
+sky = SubResource("Sky_3qeuo")
+tonemap_mode = 2
+
+[node name="Verity" type="Node3D"]
+process_mode = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hqi7a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -1.32815e-09, 1.51808e-08, -1.51808e-08, -0.173648, 0.984808, 1.32815e-09, -0.984808, -0.173648, 0, 27.3434, 0)
+shadow_enabled = true
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50357, 35.8208)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_dhbcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50357, 35.8208)
+
+[node name="TeamDissection" parent="." instance=ExtResource("3_ilsqh")]
+
+[node name="LeftSoloKeyBuilding" parent="." instance=ExtResource("2_6s3r6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289.713, 0, 0)
+
+[node name="CenterSoloKeyBuilding" parent="." instance=ExtResource("2_6s3r6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -289.713)
+
+[node name="RightSoloKeyBuilding" parent="." instance=ExtResource("2_6s3r6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.713, 0, 0)

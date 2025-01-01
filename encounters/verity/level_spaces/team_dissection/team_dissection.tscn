@@ -1,21 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bj21f0rungq4h"]
+[gd_scene load_steps=11 format=3 uid="uid://bhujlbkfoc4h5"]
 
-[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="1_35t7k"]
-[ext_resource type="Script" path="res://encounters/verity/level_spaces/level_geometry.gd" id="2_50qwr"]
-[ext_resource type="PackedScene" uid="uid://doh0b47v1pmic" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.tscn" id="2_ibyde"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfkgj"]
-sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)
-sky_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
-ground_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
-
-[sub_resource type="Sky" id="Sky_3qeuo"]
-sky_material = SubResource("ProceduralSkyMaterial_sfkgj")
-
-[sub_resource type="Environment" id="Environment_hqi7a"]
-background_mode = 2
-sky = SubResource("Sky_3qeuo")
-tonemap_mode = 2
+[ext_resource type="Script" path="res://encounters/verity/level_spaces/team_dissection/team_dissection.gd" id="1_hqie8"]
+[ext_resource type="PackedScene" uid="uid://dgj8cvuy4impl" path="res://systems/core/components/shape_spawner/shape_spawner.tscn" id="2_3klrl"]
+[ext_resource type="Script" path="res://encounters/verity/level_spaces/level_geometry.gd" id="2_lqv5j"]
+[ext_resource type="PackedScene" uid="uid://cww11uvruk34m" path="res://encounters/verity/statues/statue.tscn" id="2_u17j5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mss3n"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
@@ -40,34 +28,73 @@ emission_enabled = true
 emission = Color(0.194535, 0.209007, 0.241045, 1)
 emission_energy_multiplier = 1.83
 
-[node name="BaseLevel" type="Node3D"]
-process_mode = 3
+[node name="TeamDissection" type="Node3D"]
+script = ExtResource("1_hqie8")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_hqi7a")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, -1.32815e-09, 1.51808e-08, -1.51808e-08, -0.173648, 0.984808, 1.32815e-09, -0.984808, -0.173648, 0, 27.3434, 0)
-shadow_enabled = true
-
-[node name="PlayerSpawn" type="Marker3D" parent="."]
+[node name="ShapeSpawner" parent="." instance=ExtResource("2_3klrl")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50357, 35.8208)
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("1_35t7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50357, 35.8208)
-
-[node name="LeftSoloKeyBuilding" parent="." instance=ExtResource("2_ibyde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -289.713, 0, 0)
-
-[node name="CenterSoloKeyBuilding" parent="." instance=ExtResource("2_ibyde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -289.713)
-
-[node name="RightSoloKeyBuilding" parent="." instance=ExtResource("2_ibyde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.713, 0, 0)
 
 [node name="LevelGeometry" type="Node3D" parent="."]
-script = ExtResource("2_50qwr")
+script = ExtResource("2_lqv5j")
+
+[node name="Spawns" type="Node3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50357, 35.8208)
+
+[node name="Players" type="Node3D" parent="LevelGeometry/Spawns"]
+
+[node name="PlayerOneSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Players"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64088, 0, 0.509773)
+
+[node name="PlayerTwoSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Players"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69159, 0, 0.613155)
+
+[node name="PlayerThreeSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Players"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25724, 0, 2.38103)
+
+[node name="PlayerFourSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Players"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81515, 0, 3.6505)
+
+[node name="PlayerFiveSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Players"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10194, 0, 3.78082)
+
+[node name="PlayerSixSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Players"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88463, 0, 2.28737)
+
+[node name="Shapes" type="Node3D" parent="LevelGeometry/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.50357, -47.0205)
+
+[node name="LeftShapeSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Shapes"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5198, 1.17274, -22.6136)
+
+[node name="CenterShapeSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Shapes"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591082, 4.09107, -6.67706)
+
+[node name="RightShapeSpawn" type="Marker3D" parent="LevelGeometry/Spawns/Shapes"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7559, 1.17274, -22.6136)
+
+[node name="Statues" type="Node3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.636)
+
+[node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
+
+[node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
+
+[node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
 
 [node name="LevelBox" type="Node3D" parent="LevelGeometry"]
 
@@ -117,83 +144,29 @@ material = SubResource("StandardMaterial3D_8bpgr")
 [node name="FrontStatues" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7897)
 
-[node name="Statue1" type="Node3D" parent="LevelGeometry/FrontStatues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6854, 0.961837, 18.2406)
+[node name="PlayerOneStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(0.267995, 0, 0.96342, 0, 1, 0, -0.96342, 0, 0.267995, -16.6816, 0.243139, 18.0398)
 
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/FrontStatues/Statue1"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
+[node name="PlayerTwoStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(0.565572, 0, 0.824699, 0, 1, 0, -0.824699, 0, 0.565572, -13.3167, 0.243139, 11.1036)
 
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/FrontStatues/Statue1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
+[node name="PlayerThreeStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(0.989, 0, 0.147913, 0, 1, 0, -0.147913, 0, 0.989, -5.38512, 0.243139, 7.1881)
 
-[node name="Statue2" type="Node3D" parent="LevelGeometry/FrontStatues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2323, 0.961837, 11.5425)
+[node name="PlayerFourStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(0.987175, 0, -0.15964, 0, 1, 0, 0.15964, 0, 0.987175, 5.61655, 0.243139, 7.85655)
 
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/FrontStatues/Statue2"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
+[node name="PlayerFiveStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(0.548921, 0, -0.835875, 0, 1, 0, 0.835875, 0, 0.548921, 13.2401, 0.243139, 11.3057)
 
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/FrontStatues/Statue2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
-
-[node name="Statue3" type="Node3D" parent="LevelGeometry/FrontStatues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53266, 0.961837, 7.81893)
-
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/FrontStatues/Statue3"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
-
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/FrontStatues/Statue3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
-
-[node name="Statue4" type="Node3D" parent="LevelGeometry/FrontStatues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.533, 0.962, 7.819)
-
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/FrontStatues/Statue4"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
-
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/FrontStatues/Statue4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
-
-[node name="Statue5" type="Node3D" parent="LevelGeometry/FrontStatues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.232, 0.962, 11.542)
-
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/FrontStatues/Statue5"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
-
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/FrontStatues/Statue5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
-
-[node name="Statue6" type="Node3D" parent="LevelGeometry/FrontStatues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.685, 0.962, 18.241)
-
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/FrontStatues/Statue6"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
-
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/FrontStatues/Statue6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
+[node name="PlayerSixStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+unique_name_in_owner = true
+transform = Transform3D(0.142543, 0, -0.989789, 0, 1, 0, 0.989789, 0, 0.142543, 16.7248, 0.243139, 18.1872)
 
 [node name="CenterStructure" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.54346)
@@ -247,47 +220,6 @@ radius = 6.64343
 
 [node name="BackArea" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)
-
-[node name="Statues" type="Node3D" parent="LevelGeometry/BackArea"]
-
-[node name="StatueLeft" type="Node3D" parent="LevelGeometry/BackArea/Statues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4054, 0.961837, -9.137)
-
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/BackArea/Statues/StatueLeft"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
-
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/BackArea/Statues/StatueLeft"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
-
-[node name="StatueMiddle" type="Node3D" parent="LevelGeometry/BackArea/Statues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0776987, 0.961837, 4.77705)
-
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/BackArea/Statues/StatueMiddle"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
-
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/BackArea/Statues/StatueMiddle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
-
-[node name="StatueRight" type="Node3D" parent="LevelGeometry/BackArea/Statues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4546, 0.961837, -9.05779)
-
-[node name="StatuePodium" type="CSGCylinder3D" parent="LevelGeometry/BackArea/Statues/StatueRight"]
-use_collision = true
-radius = 0.978256
-height = 1.49031
-
-[node name="StatueBody" type="CSGBox3D" parent="LevelGeometry/BackArea/Statues/StatueRight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62293, 0)
-use_collision = true
-size = Vector3(1, 6.03125, 1)
 
 [node name="RaisedFloor" type="Node3D" parent="LevelGeometry/BackArea"]
 

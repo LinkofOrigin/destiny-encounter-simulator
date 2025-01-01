@@ -24,49 +24,49 @@ func _ready() -> void:
 	right_statue.received_effects.connect(_on_right_statue_received_effects)
 
 
-func spawn_circle():
+func spawn_circle() -> void:
 	# Left
 	var new_circle := shape_spawner.spawn_new_shape_at_location(ShapeSpawner.SHAPES.CIRCLE, left_shape_spawn.global_position)
 	new_circle.picked_up.connect(_on_circle_picked_up)
 
 
-func spawn_triangle():
+func spawn_triangle() -> void:
 	# Middle
 	var new_triangle := shape_spawner.spawn_new_shape_at_location(ShapeSpawner.SHAPES.TRIANGLE, center_shape_spawn.global_position)
 	new_triangle.picked_up.connect(_on_triangle_picked_up)
 
 
-func spawn_square():
+func spawn_square() -> void:
 	# Right
 	var new_square := shape_spawner.spawn_new_shape_at_location(ShapeSpawner.SHAPES.SQUARE, right_shape_spawn.global_position)
 	new_square.picked_up.connect(_on_square_picked_up)
 
 
-func _on_circle_picked_up():
+func _on_circle_picked_up() -> void:
 	await get_tree().create_timer(3).timeout
 	spawn_circle()
 
 
-func _on_triangle_picked_up():
+func _on_triangle_picked_up() -> void:
 	await get_tree().create_timer(3).timeout
 	spawn_triangle()
 
 
-func _on_square_picked_up():
+func _on_square_picked_up() -> void:
 	await get_tree().create_timer(3).timeout
 	spawn_square()
 
 
-func _on_left_statue_received_effects(effects: Array[EffectData]):
+func _on_left_statue_received_effects(effects: Array[EffectData]) -> void:
 	print("solo room received effects in left statue!")
 	left_statue_received_effects.emit(effects)
 
 
-func _on_center_statue_received_effects(effects: Array[EffectData]):
+func _on_center_statue_received_effects(effects: Array[EffectData]) -> void:
 	print("solo room received effects in center statue!")
 	center_statue_received_effects.emit(effects)
 
 
-func _on_right_statue_received_effects(effects: Array[EffectData]):
+func _on_right_statue_received_effects(effects: Array[EffectData]) -> void:
 	print("solo room received effects in right statue!")
 	right_statue_received_effects.emit(effects)

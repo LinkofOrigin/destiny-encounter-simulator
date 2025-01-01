@@ -16,6 +16,11 @@ radius = 0.474893
 [node name="ShapeBase2D" type="Node3D"]
 script = ExtResource("2_ajeg4")
 
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
 [node name="Sprite" type="Sprite3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.263307, 0)
