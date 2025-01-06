@@ -50,7 +50,7 @@ func get_camera_vector() -> Vector2:
 	return joystick_camera_vector
 
 
-func handle_interaction(delta: float, time_to_complete: float):
+func handle_interaction(delta: float, time_to_complete: float) -> void:
 	if MenuManager.is_paused():
 		_current_interaction_time = 0
 		interaction_progress.emit(0)
@@ -74,7 +74,7 @@ func handle_interaction(delta: float, time_to_complete: float):
 		release_interact_lock()
 
 
-func release_interact_lock():
+func release_interact_lock() -> void:
 	_input_lock = false
 	_current_interaction_time = 0
 

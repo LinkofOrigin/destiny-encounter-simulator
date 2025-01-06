@@ -11,15 +11,15 @@ extends Node3D
 @onready var left_shape_spawn: Marker3D = %LeftShapeSpawn
 @onready var center_shape_spawn: Marker3D = %CenterShapeSpawn
 @onready var right_shape_spawn: Marker3D = %RightShapeSpawn
-@onready var left_statue: Statue = %LeftStatue
-@onready var center_statue: Statue = %CenterStatue
-@onready var right_statue: Statue = %RightStatue
-@onready var player_one_statue: Statue = %PlayerOneStatue
-@onready var player_two_statue: Statue = %PlayerTwoStatue
-@onready var player_three_statue: Statue = %PlayerThreeStatue
-@onready var player_four_statue: Statue = %PlayerFourStatue
-@onready var player_five_statue: Statue = %PlayerFiveStatue
-@onready var player_six_statue: Statue = %PlayerSixStatue
+@onready var left_statue: Statue3D = %LeftStatue
+@onready var center_statue: Statue3D = %CenterStatue
+@onready var right_statue: Statue3D = %RightStatue
+@onready var player_one_statue: StatueGhost = %PlayerOneStatue
+@onready var player_two_statue: StatueGhost = %PlayerTwoStatue
+@onready var player_three_statue: StatueGhost = %PlayerThreeStatue
+@onready var player_four_statue: StatueGhost = %PlayerFourStatue
+@onready var player_five_statue: StatueGhost = %PlayerFiveStatue
+@onready var player_six_statue: StatueGhost = %PlayerSixStatue
 @onready var shape_spawner: ShapeSpawner = %ShapeSpawner
 
 var _circle_used := false
@@ -50,7 +50,8 @@ func resolve_shape_state() -> void:
 
 func spawn_circle() -> void:
 	# Left
-	var new_circle := shape_spawner.spawn_new_shape_at_location(ShapeSpawner.SHAPES.CIRCLE, left_shape_spawn.global_position)
+	var new_circle := shape_spawner.create_new_2d_shape(EffectLibrary.SHAPE_2D_TYPES.CIRCLE)
+	left_shape_spawn.add_child(new_circle)
 	new_circle.picked_up.connect(_register_circle_consumed)
 	new_circle.despawned.connect(_register_circle_consumed)
 	_circle_used = false
@@ -58,7 +59,8 @@ func spawn_circle() -> void:
 
 func spawn_triangle() -> void:
 	# Middle
-	var new_triangle := shape_spawner.spawn_new_shape_at_location(ShapeSpawner.SHAPES.TRIANGLE, center_shape_spawn.global_position)
+	var new_triangle := shape_spawner.create_new_2d_shape(EffectLibrary.SHAPE_2D_TYPES.TRIANGLE)
+	center_shape_spawn.add_child(new_triangle)
 	new_triangle.picked_up.connect(_register_triangle_consumed)
 	new_triangle.despawned.connect(_register_triangle_consumed)
 	_triangle_used = false
@@ -66,7 +68,8 @@ func spawn_triangle() -> void:
 
 func spawn_square() -> void:
 	# Right
-	var new_square := shape_spawner.spawn_new_shape_at_location(ShapeSpawner.SHAPES.SQUARE, right_shape_spawn.global_position)
+	var new_square := shape_spawner.create_new_2d_shape(EffectLibrary.SHAPE_2D_TYPES.SQUARE)
+	right_shape_spawn.add_child(new_square)
 	new_square.picked_up.connect(_register_square_consumed)
 	new_square.despawned.connect(_register_square_consumed)
 	_square_used = false

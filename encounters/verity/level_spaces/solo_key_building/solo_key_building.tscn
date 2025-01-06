@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://doh0b47v1pmic"]
+[gd_scene load_steps=15 format=3 uid="uid://doh0b47v1pmic"]
 
 [ext_resource type="Script" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.gd" id="1_3jf8a"]
 [ext_resource type="Script" path="res://encounters/verity/level_spaces/level_geometry.gd" id="1_ngay2"]
 [ext_resource type="PackedScene" uid="uid://dgj8cvuy4impl" path="res://systems/core/components/shape_spawner/shape_spawner.tscn" id="2_sgmor"]
-[ext_resource type="PackedScene" uid="uid://cww11uvruk34m" path="res://encounters/verity/statues/statue.tscn" id="3_epaw3"]
+[ext_resource type="PackedScene" uid="uid://85q2ix0badu6" path="res://encounters/verity/statues/statue_2d/statue_2d.tscn" id="4_as3xx"]
+[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="5_rtsvd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydc8j"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
@@ -27,6 +28,18 @@ shading_mode = 2
 emission_enabled = true
 emission = Color(0.194535, 0.209007, 0.241045, 1)
 emission_energy_multiplier = 1.83
+
+[sub_resource type="Resource" id="Resource_137ia"]
+resource_local_to_scene = true
+script = ExtResource("5_rtsvd")
+
+[sub_resource type="Resource" id="Resource_dequu"]
+resource_local_to_scene = true
+script = ExtResource("5_rtsvd")
+
+[sub_resource type="Resource" id="Resource_m1f07"]
+resource_local_to_scene = true
+script = ExtResource("5_rtsvd")
 
 [node name="SoloKeyBuilding" type="Node3D"]
 process_mode = 3
@@ -155,17 +168,20 @@ radius = 6.64343
 [node name="Statues" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)
 
-[node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("3_epaw3")]
+[node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
+interaction_behavior = SubResource("Resource_137ia")
 
-[node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("3_epaw3")]
+[node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
+interaction_behavior = SubResource("Resource_dequu")
 
-[node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("3_epaw3")]
+[node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
+interaction_behavior = SubResource("Resource_m1f07")
 
 [node name="BackArea" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)

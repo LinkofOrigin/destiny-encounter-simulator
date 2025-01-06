@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci84ug6or057n"]
+[gd_scene load_steps=4 format=3 uid="uid://ci84ug6or057n"]
 
 [ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_id8id"]
+[ext_resource type="Resource" uid="uid://b2xxbu6l1mu82" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/prism_effect.tres" id="2_0pcvj"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_e81do"]
 size = Vector3(1, 0.866, 1)
@@ -9,3 +10,4 @@ size = Vector3(1, 0.866, 1)
 transform = Transform3D(-0.399452, 0.0209344, -9.15073e-10, 0, -1.74846e-08, -0.4, -0.0209344, -0.399452, 1.74606e-08, 0, 0, 0)
 mesh = SubResource("PrismMesh_e81do")
 script = ExtResource("1_id8id")
+effect = ExtResource("2_0pcvj")

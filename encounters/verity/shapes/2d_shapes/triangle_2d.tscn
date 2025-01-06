@@ -1,27 +1,28 @@
 [gd_scene load_steps=10 format=3 uid="uid://2intyrv7cic"]
 
 [ext_resource type="Script" path="res://encounters/verity/shapes/2d_shapes/base_2d_shape.gd" id="1_dnnli"]
-[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/triforce.png" id="1_r8n84"]
-[ext_resource type="Resource" uid="uid://c7s5hrsfdv44" path="res://systems/core/components/effect_management/effect_resources/shapes/2d_shapes/triangle.tres" id="2_v8dqa"]
+[ext_resource type="Resource" uid="uid://c7s5hrsfdv44" path="res://systems/core/components/effect_management/effect_resources/shapes/2d_shapes/triangle_effect.tres" id="2_bp7et"]
+[ext_resource type="PackedScene" uid="uid://dqca688bm8id1" path="res://encounters/verity/shapes/2d_shapes/triangle_sprite.tscn" id="3_bi4sq"]
 [ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="4_wpu0y"]
 [ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://systems/core/components/interaction/zone/interaction_zone.tscn" id="5_fbh07"]
 [ext_resource type="Resource" uid="uid://ce5sqd0mqk2fg" path="res://systems/core/components/interaction/requirements/shape_2d_requirements/triangle_shape_requirement.tres" id="5_n0uph"]
 [ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://systems/core/components/interaction/target/interaction_target.tscn" id="6_cbtwk"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7g23u"]
-size = Vector3(4, 0.161, 4)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q5r01"]
+height = 0.155
+radius = 3.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ysp4v"]
-height = 1.27694
-radius = 0.474893
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qf6pp"]
+height = 1.47449
+radius = 0.41
 
-[node name="Triangle2D" type="Sprite3D"]
-transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, 0, 0)
-modulate = Color(0.133, 0.46, 0.291, 1)
-billboard = 1
-texture = ExtResource("1_r8n84")
+[node name="Triangle2D" type="Node3D"]
 script = ExtResource("1_dnnli")
-effect = ExtResource("2_v8dqa")
+effect = ExtResource("2_bp7et")
+
+[node name="Sprite" parent="." instance=ExtResource("3_bi4sq")]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.918265, 0)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -37,10 +38,11 @@ interact_time = 0.8
 [node name="InteractionZone" parent="InteractableComponent" instance=ExtResource("5_fbh07")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52594, 0)
-shape = SubResource("BoxShape3D_7g23u")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0238293, 0)
+shape = SubResource("CylinderShape3D_q5r01")
 
 [node name="InteractionTarget" parent="InteractableComponent" instance=ExtResource("6_cbtwk")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionTarget"]
-shape = SubResource("CylinderShape3D_ysp4v")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14277, 0)
+shape = SubResource("CylinderShape3D_qf6pp")

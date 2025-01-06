@@ -3,5 +3,4 @@
 [ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="1_mamew"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_mamew")

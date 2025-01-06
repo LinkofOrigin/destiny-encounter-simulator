@@ -49,7 +49,7 @@ func _handle_camera(delta: float) -> void:
 	_apply_look_rotation(new_rotation.x, new_rotation.y)
 
 
-func _on_input_handler_interaction_progress(percent: float):
+func _on_input_handler_interaction_progress(percent: float) -> void:
 	interact_progress_made.emit(percent)
 	GlobalSignals.emit_player_interact_progress_made(percent)
 

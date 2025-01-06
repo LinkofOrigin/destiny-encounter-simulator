@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqca688bm8id1"]
+
+[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/triforce.png" id="1_jnbbj"]
+
+[node name="TriangleSprite" type="Sprite3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+modulate = Color(0.133, 0.46, 0.291, 1)
+billboard = 1
+texture = ExtResource("1_jnbbj")

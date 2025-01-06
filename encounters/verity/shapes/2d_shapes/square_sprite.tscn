@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://inalc1aniio4"]
+
+[ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="1_dhhx1"]
+
+[node name="SquareSprite" type="Sprite3D"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+modulate = Color(0.65, 0.065, 0.153, 1)
+billboard = 1
+texture = ExtResource("1_dhhx1")

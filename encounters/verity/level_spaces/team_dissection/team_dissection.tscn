@@ -1,9 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhujlbkfoc4h5"]
+[gd_scene load_steps=16 format=3 uid="uid://bhujlbkfoc4h5"]
 
 [ext_resource type="Script" path="res://encounters/verity/level_spaces/team_dissection/team_dissection.gd" id="1_hqie8"]
 [ext_resource type="PackedScene" uid="uid://dgj8cvuy4impl" path="res://systems/core/components/shape_spawner/shape_spawner.tscn" id="2_3klrl"]
 [ext_resource type="Script" path="res://encounters/verity/level_spaces/level_geometry.gd" id="2_lqv5j"]
-[ext_resource type="PackedScene" uid="uid://cww11uvruk34m" path="res://encounters/verity/statues/statue.tscn" id="2_u17j5"]
+[ext_resource type="PackedScene" uid="uid://dd0ruri7sfqku" path="res://encounters/verity/statues/statue_3d/statue_3d.tscn" id="4_0he2e"]
+[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_3d_requirements/statue_3d_requirement.gd" id="5_talw2"]
+[ext_resource type="PackedScene" uid="uid://ctkb27qfadydf" path="res://encounters/verity/statues/statue_ghost/statue_ghost.tscn" id="6_6alg0"]
+
+[sub_resource type="Resource" id="Resource_wmspd"]
+resource_local_to_scene = true
+script = ExtResource("5_talw2")
+
+[sub_resource type="Resource" id="Resource_47r47"]
+resource_local_to_scene = true
+script = ExtResource("5_talw2")
+
+[sub_resource type="Resource" id="Resource_seghy"]
+resource_local_to_scene = true
+script = ExtResource("5_talw2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mss3n"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
@@ -84,17 +98,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7559, 1.17274, -22.6136)
 [node name="Statues" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.636)
 
-[node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("2_u17j5")]
+[node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
+interaction_behavior = SubResource("Resource_wmspd")
 
-[node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("2_u17j5")]
+[node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
+interaction_behavior = SubResource("Resource_47r47")
 
-[node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("2_u17j5")]
+[node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
+interaction_behavior = SubResource("Resource_seghy")
 
 [node name="LevelBox" type="Node3D" parent="LevelGeometry"]
 
@@ -144,27 +161,27 @@ material = SubResource("StandardMaterial3D_8bpgr")
 [node name="FrontStatues" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7897)
 
-[node name="PlayerOneStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+[node name="PlayerOneStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.267995, 0, 0.96342, 0, 1, 0, -0.96342, 0, 0.267995, -16.6816, 0.243139, 18.0398)
 
-[node name="PlayerTwoStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+[node name="PlayerTwoStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
-transform = Transform3D(0.565572, 0, 0.824699, 0, 1, 0, -0.824699, 0, 0.565572, -13.3167, 0.243139, 11.1036)
+transform = Transform3D(0.267995, 0, 0.96342, 0, 1, 0, -0.96342, 0, 0.267995, -13.3167, 0.243139, 11.1036)
 
-[node name="PlayerThreeStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+[node name="PlayerThreeStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.989, 0, 0.147913, 0, 1, 0, -0.147913, 0, 0.989, -5.38512, 0.243139, 7.1881)
 
-[node name="PlayerFourStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+[node name="PlayerFourStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.987175, 0, -0.15964, 0, 1, 0, 0.15964, 0, 0.987175, 5.61655, 0.243139, 7.85655)
 
-[node name="PlayerFiveStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+[node name="PlayerFiveStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
-transform = Transform3D(0.548921, 0, -0.835875, 0, 1, 0, 0.835875, 0, 0.548921, 13.2401, 0.243139, 11.3057)
+transform = Transform3D(0.548921, 0, -0.835874, 0, 1, 0, 0.835874, 0, 0.548921, 13.2401, 0.243139, 11.3057)
 
-[node name="PlayerSixStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("2_u17j5")]
+[node name="PlayerSixStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.142543, 0, -0.989789, 0, 1, 0, 0.989789, 0, 0.142543, 16.7248, 0.243139, 18.1872)
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Shape3DEffectData" load_steps=2 format=3 uid="uid://rs4dxg47jvcl"]
+
+[ext_resource type="Script" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/shape_3d_effect_data.gd" id="1_81gle"]
+
+[resource]
+script = ExtResource("1_81gle")
+shape = 4
+comprised_type_one = 0
+comprised_type_two = 1
+type = 2
+name = "Cone"
+expiration_time = 0.0
+priority = 0

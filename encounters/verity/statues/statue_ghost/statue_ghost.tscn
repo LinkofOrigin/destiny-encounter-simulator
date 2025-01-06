@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctkb27qfadydf"]
+
+[ext_resource type="Script" path="res://encounters/verity/statues/statue_ghost/statue_ghost.gd" id="1_yisse"]
+[ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="2_0fmcl"]
+[ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://systems/core/components/interaction/zone/interaction_zone.tscn" id="3_menow"]
+[ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://systems/core/components/interaction/target/interaction_target.tscn" id="4_iy7rf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uvegc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tksox"]
+size = Vector3(1, 2.023, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tl3lm"]
+top_radius = 0.7
+bottom_radius = 0.75
+height = 0.35
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5yxwn"]
+height = 0.364132
+radius = 0.824459
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0akh1"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xbj7k"]
+height = 1.0
+radius = 0.55
+
+[node name="StatueGhost" type="Node3D"]
+script = ExtResource("1_yisse")
+
+[node name="BodyMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4479, 0)
+
+[node name="Body" type="StaticBody3D" parent="BodyMarker"]
+unique_name_in_owner = true
+
+[node name="Mesh" type="MeshInstance3D" parent="BodyMarker/Body"]
+mesh = SubResource("CapsuleMesh_uvegc")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyMarker/Body"]
+shape = SubResource("BoxShape3D_tksox")
+
+[node name="Podium" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Podium"]
+mesh = SubResource("CylinderMesh_tl3lm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Podium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0437491, 0)
+shape = SubResource("CylinderShape3D_5yxwn")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_0fmcl")]
+unique_name_in_owner = true
+prompt_text = "Deposit"
+interact_time = 0.8
+
+[node name="InteractionZone" parent="InteractableComponent" instance=ExtResource("3_menow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.55)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionZone"]
+shape = SubResource("BoxShape3D_0akh1")
+
+[node name="InteractionTarget" parent="InteractableComponent" instance=ExtResource("4_iy7rf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.872, 0.284)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent/InteractionTarget"]
+shape = SubResource("CylinderShape3D_xbj7k")

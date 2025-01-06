@@ -14,8 +14,8 @@ func _ready() -> void:
 	if effect.data.icon != null:
 		icon_texture.texture = effect.data.icon
 	
-	if not effect.data.text.is_empty():
-		text_label.text = effect.data.text
+	if not effect.data.name.is_empty():
+		text_label.text = effect.data.name
 	
 	
 	if effect.data.expiration_time <= 0:

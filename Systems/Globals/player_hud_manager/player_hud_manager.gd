@@ -24,7 +24,7 @@ func _on_player_interact_progress_made(current_progress: float) -> void:
 	player_hud.set_interact_progress(current_progress)
 
 
-func _on_player_interaction_complete(interactable: InteractableComponent) -> void:
+func _on_player_interaction_complete(_interactable: InteractableComponent) -> void:
 	# TODO: Evaluate if anything else should be done here...?
 	player_hud.set_interact_progress(0) # why no work...
 	player_hud.hide_interact_prompt()

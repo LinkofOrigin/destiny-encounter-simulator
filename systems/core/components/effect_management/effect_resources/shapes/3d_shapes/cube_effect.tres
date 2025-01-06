@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Shape3DEffectData" load_steps=2 format=3 uid="uid://caui5h71ucnkq"]
+
+[ext_resource type="Script" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/shape_3d_effect_data.gd" id="1_u81vy"]
+
+[resource]
+script = ExtResource("1_u81vy")
+shape = 1
+comprised_type_one = 2
+comprised_type_two = 2
+type = 2
+name = "Cube"
+expiration_time = 0.0
+priority = 0

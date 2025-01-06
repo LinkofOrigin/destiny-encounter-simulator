@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck77xxrg4ox8c"]
+
+[ext_resource type="Script" path="res://encounters/verity/test_scenes/test_3d_statue_models.gd" id="1_fs72q"]
+[ext_resource type="PackedScene" uid="uid://cww11uvruk34m" path="res://encounters/verity/statues/statue.tscn" id="1_sbv0y"]
+[ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="2_xeqkb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fqs32"]
+sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)
+sky_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
+ground_horizon_color = Color(0.628258, 0.654909, 0.699665, 1)
+
+[sub_resource type="Sky" id="Sky_8q33y"]
+sky_material = SubResource("ProceduralSkyMaterial_fqs32")
+
+[sub_resource type="Environment" id="Environment_ql472"]
+background_mode = 2
+sky = SubResource("Sky_8q33y")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3jlq"]
+albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
+
+[node name="Test3dStatueModels" type="Node3D"]
+script = ExtResource("1_fs72q")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ql472")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0523359, -0.983458, -0.17341, 1.51808e-08, -0.173648, 0.984808, -0.99863, 0.0515408, 0.00908805, 0, 27.3434, 0)
+shadow_enabled = true
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_xeqkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0353169, 1.23281, 3.02913)
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.12499)
+use_collision = true
+size = Vector3(63.4383, 0.512695, 59.5238)
+material = SubResource("StandardMaterial3D_g3jlq")
+
+[node name="Statues3D" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.852987, 0, -0.521933, 0, 1, 0, 0.521933, 0, 0.852987, 4.22241, 0, -3.48286)
+
+[node name="Statue" parent="Statues3D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93752, 0.356348, -2.67848)
+
+[node name="Statue2" parent="Statues3D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82174, 0.356348, -4.81061)
+
+[node name="Statue3" parent="Statues3D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.515698, 0.356348, -5.05098)
+
+[node name="Statue4" parent="Statues3D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69979, 0.356348, -5.20751)
+
+[node name="Statue5" parent="Statues3D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82621, 0.356348, -4.73252)
+
+[node name="Statue6" parent="Statues3D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49364, 0.356348, -3.04232)
+
+[node name="Statues2D" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.852193, 0, 0.523228, 0, 1, 0, -0.523228, 0, 0.852193, -3.41829, 0, -3.13845)
+
+[node name="Statue" parent="Statues2D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93752, 0.356348, -2.67848)
+
+[node name="Statue2" parent="Statues2D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82174, 0.356348, -4.81061)
+
+[node name="Statue3" parent="Statues2D" instance=ExtResource("1_sbv0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.515698, 0.356348, -5.05098)
