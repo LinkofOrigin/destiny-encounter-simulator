@@ -6,16 +6,16 @@ extends CanvasLayer
 
 
 func _ready() -> void:
-	interact_prompt.visible = false
+	interact_prompt.hide()
 
 
 func display_interact_prompt_for_interactable(interactable: InteractableComponent) -> void:
 	interact_prompt.set_data(interactable.input_icon, interactable.prompt_text)
-	interact_prompt.visible = true
+	interact_prompt.show()
 
 
 func hide_interact_prompt() -> void:
-	interact_prompt.visible = false
+	interact_prompt.hide()
 
 
 func set_interact_progress(progress: float) -> void:

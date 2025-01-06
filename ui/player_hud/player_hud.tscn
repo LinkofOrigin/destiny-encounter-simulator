@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7d6o1x6lr2kv"]
+[gd_scene load_steps=6 format=3 uid="uid://b7d6o1x6lr2kv"]
 
-[ext_resource type="PackedScene" uid="uid://byqtby35oet10" path="res://ui/player_hud/interact_prompt.tscn" id="1_qyr75"]
+[ext_resource type="PackedScene" uid="uid://byqtby35oet10" path="res://ui/player_hud/interact_display/interact_prompt.tscn" id="1_qyr75"]
 [ext_resource type="Script" path="res://ui/player_hud/player_hud.gd" id="1_s2n7p"]
 [ext_resource type="PackedScene" uid="uid://0llwbeo3isjv" path="res://ui/player_hud/effect_display/effect_display.tscn" id="3_3bcma"]
+[ext_resource type="PackedScene" uid="uid://ci115hcg3twey" path="res://ui/player_hud/location_display/location_display.tscn" id="3_c0xbs"]
+[ext_resource type="PackedScene" uid="uid://0pq2037kp7ql" path="res://ui/player_hud/timer_display/timer_display.tscn" id="4_k7w0q"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_s2n7p")
+
+[node name="TimerDisplay" parent="." instance=ExtResource("4_k7w0q")]
+offset_top = 30.0
+offset_bottom = 70.0
+
+[node name="LocationDisplay" parent="." instance=ExtResource("3_c0xbs")]
+offset_left = 22.0
+offset_top = 15.0
+offset_right = 22.0
+offset_bottom = 15.0
+
+[node name="EffectDisplay" parent="." instance=ExtResource("3_3bcma")]
 
 [node name="InteractPrompt" parent="." instance=ExtResource("1_qyr75")]
 anchors_preset = 7
@@ -21,5 +35,3 @@ offset_bottom = -302.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
-
-[node name="EffectDisplay" parent="." instance=ExtResource("3_3bcma")]

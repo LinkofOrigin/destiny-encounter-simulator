@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://d255jgecwwpd0"]
+
+[ext_resource type="Theme" uid="uid://cnco2f5ool2a1" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state.tres" id="1_64ym8"]
+[ext_resource type="Script" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state.gd" id="2_6xulf"]
+[ext_resource type="Texture2D" uid="uid://dp3bl7yq5514g" path="res://assets/2d_shapes/test/plain-circle.png" id="3_tfogt"]
+[ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="4_ft8bw"]
+[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/triforce.png" id="5_ub7yc"]
+
+[node name="DissectionState" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_64ym8")
+script = ExtResource("2_6xulf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="StatueOne" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/StatueOne"]
+layout_mode = 2
+text = "Left"
+horizontal_alignment = 1
+
+[node name="StatueOneIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StatueOne"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_tfogt")
+expand_mode = 5
+
+[node name="StatueOneShapeText" type="Label" parent="MarginContainer/HBoxContainer/StatueOne"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sphere"
+horizontal_alignment = 1
+
+[node name="StatueTwo" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/StatueTwo"]
+layout_mode = 2
+text = "Middle"
+horizontal_alignment = 1
+
+[node name="StatueTwoIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StatueTwo"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_ft8bw")
+expand_mode = 5
+
+[node name="StatueTwoShapeText" type="Label" parent="MarginContainer/HBoxContainer/StatueTwo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cube"
+horizontal_alignment = 1
+
+[node name="StatueThree" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/StatueThree"]
+layout_mode = 2
+text = "Right"
+horizontal_alignment = 1
+
+[node name="StatueThreeIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StatueThree"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_ub7yc")
+expand_mode = 5
+
+[node name="StatueThreeShapeText" type="Label" parent="MarginContainer/HBoxContainer/StatueThree"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pyramid"
+horizontal_alignment = 1

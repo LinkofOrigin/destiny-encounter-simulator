@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://0pq2037kp7ql"]
+
+[ext_resource type="Theme" uid="uid://bgfk76uadgg1l" path="res://ui/player_hud/timer_display/timer_display_theme.tres" id="1_5mtx2"]
+[ext_resource type="Script" path="res://ui/player_hud/timer_display/timer_display.gd" id="1_fkp2h"]
+
+[sub_resource type="Animation" id="Animation_gljyg"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_5m7qe"]
+resource_name = "flash_text"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextContainer:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.95, 0, 0, 0.3, 0, 0.2, -0.333333, 0.799761, 0, 0.799761, 0.95, -0.3, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.5, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_geq36"]
+_data = {
+"RESET": SubResource("Animation_gljyg"),
+"flash_text": SubResource("Animation_5m7qe")
+}
+
+[node name="TimerDisplay" type="Control"]
+custom_minimum_size = Vector2(500, 40)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("1_5mtx2")
+script = ExtResource("1_fkp2h")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_geq36")
+}
+
+[node name="TextContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.95)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.0
+offset_right = 133.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="TimeLabel" type="Label" parent="TextContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "XX:XX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextLabel" type="Label" parent="TextContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TIMER EFFECT"
+vertical_alignment = 1

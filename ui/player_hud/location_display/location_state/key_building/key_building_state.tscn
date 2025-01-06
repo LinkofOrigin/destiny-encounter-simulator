@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8dr3xlslbela"]
+
+[ext_resource type="Script" path="res://ui/player_hud/location_display/location_state/key_building/key_building_state.gd" id="1_ifetk"]
+
+[node name="KeyBuildingState" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ifetk")
