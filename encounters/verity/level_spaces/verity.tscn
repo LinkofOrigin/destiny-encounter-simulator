@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj21f0rungq4h"]
+[gd_scene load_steps=8 format=3 uid="uid://bj21f0rungq4h"]
 
 [ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="1_dhbcf"]
+[ext_resource type="PackedScene" uid="uid://skg175ottunh" path="res://encounters/verity/manager/verity_manager.tscn" id="1_s0tw2"]
 [ext_resource type="PackedScene" uid="uid://doh0b47v1pmic" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.tscn" id="2_6s3r6"]
 [ext_resource type="PackedScene" uid="uid://bhujlbkfoc4h5" path="res://encounters/verity/level_spaces/team_dissection/team_dissection.tscn" id="3_ilsqh"]
 
@@ -26,6 +27,8 @@ environment = SubResource("Environment_hqi7a")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, -1.32815e-09, 1.51808e-08, -1.51808e-08, -0.173648, 0.984808, 1.32815e-09, -0.984808, -0.173648, 0, 27.3434, 0)
 shadow_enabled = true
+
+[node name="VerityManager" parent="." instance=ExtResource("1_s0tw2")]
 
 [node name="PlayerSpawn" type="Marker3D" parent="."]
 unique_name_in_owner = true

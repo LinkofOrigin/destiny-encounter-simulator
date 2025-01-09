@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://skg175ottunh"]
+
+[ext_resource type="Script" path="res://encounters/verity/manager/verity_manager.gd" id="1_w60ek"]
+[ext_resource type="Script" path="res://encounters/verity/manager/phases/freeroam/freeroam_phase.gd" id="2_ruuql"]
+[ext_resource type="Script" path="res://encounters/verity/manager/phases/key_building/key_building_phase.gd" id="3_ic04f"]
+[ext_resource type="Script" path="res://encounters/verity/manager/phases/ghost/ghost_phase.gd" id="4_00r25"]
+[ext_resource type="Script" path="res://encounters/verity/manager/phases/wipe/wipe_phase.gd" id="5_1jkwi"]
+
+[node name="VerityManager" type="Node"]
+script = ExtResource("1_w60ek")
+
+[node name="FreeroamPhase" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_ruuql")
+
+[node name="KeyBuildingPhase" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_ic04f")
+
+[node name="GhostPhase" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_00r25")
+
+[node name="WipePhase" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_1jkwi")
