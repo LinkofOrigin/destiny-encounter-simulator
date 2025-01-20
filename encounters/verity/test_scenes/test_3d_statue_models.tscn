@@ -25,27 +25,27 @@ tonemap_mode = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3jlq"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
 
-[sub_resource type="Resource" id="Resource_k2mck"]
+[sub_resource type="Resource" id="Resource_nmqt5"]
 resource_local_to_scene = true
 script = ExtResource("4_edmec")
 
-[sub_resource type="Resource" id="Resource_8hy8l"]
+[sub_resource type="Resource" id="Resource_1on32"]
 resource_local_to_scene = true
 script = ExtResource("4_edmec")
 
-[sub_resource type="Resource" id="Resource_6hpgs"]
+[sub_resource type="Resource" id="Resource_tw38o"]
 resource_local_to_scene = true
 script = ExtResource("4_edmec")
 
-[sub_resource type="Resource" id="Resource_vqyj2"]
+[sub_resource type="Resource" id="Resource_xx4qe"]
 resource_local_to_scene = true
 script = ExtResource("4_edmec")
 
-[sub_resource type="Resource" id="Resource_i4g3o"]
+[sub_resource type="Resource" id="Resource_fs23p"]
 resource_local_to_scene = true
 script = ExtResource("4_edmec")
 
-[sub_resource type="Resource" id="Resource_t34ha"]
+[sub_resource type="Resource" id="Resource_0jpx1"]
 resource_local_to_scene = true
 script = ExtResource("4_edmec")
 
@@ -74,27 +74,27 @@ transform = Transform3D(0.852987, 0, -0.521933, 0, 1, 0, 0.521933, 0, 0.852987, 
 
 [node name="Statue3d" parent="Statues3D" instance=ExtResource("3_11hkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50135, 0, -5.54907)
-interaction_behavior = SubResource("Resource_k2mck")
+interaction_behavior = SubResource("Resource_nmqt5")
 
 [node name="Statue3d2" parent="Statues3D" instance=ExtResource("3_11hkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.709221, 0, -6.08491)
-interaction_behavior = SubResource("Resource_8hy8l")
+interaction_behavior = SubResource("Resource_1on32")
 
 [node name="Statue3d3" parent="Statues3D" instance=ExtResource("3_11hkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03322, 0, -6.34743)
-interaction_behavior = SubResource("Resource_6hpgs")
+interaction_behavior = SubResource("Resource_tw38o")
 
 [node name="Statue3d4" parent="Statues3D" instance=ExtResource("3_11hkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49494, 0, -6.52169)
-interaction_behavior = SubResource("Resource_vqyj2")
+interaction_behavior = SubResource("Resource_xx4qe")
 
 [node name="Statue3d5" parent="Statues3D" instance=ExtResource("3_11hkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5681, 0, -6.66265)
-interaction_behavior = SubResource("Resource_i4g3o")
+interaction_behavior = SubResource("Resource_fs23p")
 
 [node name="Statue3d6" parent="Statues3D" instance=ExtResource("3_11hkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8115, 0, -6.15616)
-interaction_behavior = SubResource("Resource_t34ha")
+interaction_behavior = SubResource("Resource_0jpx1")
 
 [node name="Statues2D" type="Node3D" parent="."]
 unique_name_in_owner = true

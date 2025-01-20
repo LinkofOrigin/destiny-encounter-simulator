@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 InputActions="*res://systems/globals/input_actions.gd"
+ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 GlobalSignals="*res://systems/globals/global_signals.gd"
 MenuManager="*res://ui/menus/menu_manager.tscn"
 PlayerHudManager="*res://systems/globals/player_hud_manager/player_hud_manager.tscn"
@@ -38,6 +39,10 @@ window/size/viewport_height=1080
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg")
 
 [global_group]
 

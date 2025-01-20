@@ -1,13 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://byqtby35oet10"]
+[gd_scene load_steps=9 format=3 uid="uid://byqtby35oet10"]
 
 [ext_resource type="Script" path="res://ui/player_hud/interact_display/interact_prompt.gd" id="1_ayjrk"]
 [ext_resource type="Texture2D" uid="uid://bhhyrkg5t6jlf" path="res://ui/player_hud/interact_display/ProgressBar-Under.png" id="1_brdjc"]
-[ext_resource type="Texture2D" uid="uid://c0pojbar77pcl" path="res://addons/controller_icons/assets/xboxseries/x.png" id="1_dojg1"]
 [ext_resource type="Texture2D" uid="uid://crwm7wa5ksj43" path="res://ui/player_hud/interact_display/ProgressBar-Over.png" id="2_q356j"]
 [ext_resource type="Texture2D" uid="uid://dgqel1jcd4uay" path="res://ui/player_hud/interact_display/ProgressBar-Progress.png" id="3_3vp4w"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_c0ilk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ob36"]
 bg_color = Color(0.05, 0.05, 0.05, 0.286275)
+
+[sub_resource type="Texture2D" id="Texture2D_325sc"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_c0ilk")
+path = "Interact"
+show_mode = 0
+force_type = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_2odog"]
 font_size = 22
@@ -56,7 +64,7 @@ texture_progress = ExtResource("3_3vp4w")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-texture = ExtResource("1_dojg1")
+texture = SubResource("Texture2D_325sc")
 expand_mode = 5
 stretch_mode = 4
 
