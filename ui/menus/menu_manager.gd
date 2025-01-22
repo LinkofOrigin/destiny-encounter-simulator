@@ -12,12 +12,13 @@ func is_paused() -> bool:
 
 func pause_and_display_menu() -> void:
 	paused = true
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE # TODO: Control via input manager?
 	player_menu.show()
 
 
 func unpause_and_hide_menu() -> void:
 	player_menu.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # TODO: Control via input manager?
 	paused = false
 
 

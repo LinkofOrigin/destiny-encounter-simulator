@@ -1,12 +1,12 @@
 class_name ShapeResolver
 extends Resource
 
-const SPHERE_EFFECT = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/sphere_effect.tres")
-const CUBE_EFFECT = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cube_effect.tres")
-const PYRAMID_EFFECT = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/pyramid_effect.tres")
-const CYLINDER_EFFECT = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cylinder_effect.tres")
-const PRISM_EFFECT = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/prism_effect.tres")
-const CONE_EFFECT = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cone_effect.tres")
+const SPHERE_EFFECT: Shape3DEffectData = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/sphere_effect.tres")
+const CUBE_EFFECT: Shape3DEffectData = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cube_effect.tres")
+const PYRAMID_EFFECT: Shape3DEffectData = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/pyramid_effect.tres")
+const CYLINDER_EFFECT: Shape3DEffectData = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cylinder_effect.tres")
+const PRISM_EFFECT: Shape3DEffectData = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/prism_effect.tres")
+const CONE_EFFECT: Shape3DEffectData = preload("res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cone_effect.tres")
 
 var shape_map := {
 	[SPHERE_EFFECT.get_first_type().shape, SPHERE_EFFECT.get_second_type().shape]: SPHERE_EFFECT,

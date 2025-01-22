@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://w3uh624pkya7"]
+[gd_scene load_steps=4 format=3 uid="uid://w3uh624pkya7"]
 
 [ext_resource type="Script" path="res://ui/menus/main_menu/player_menu.gd" id="2_d6l5a"]
+[ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu_theme.tres" id="2_exytw"]
+[ext_resource type="Theme" uid="uid://ciao1yg8aebw5" path="res://ui/menus/main_menu/coming_soon_theme.tres" id="3_88680"]
 
 [node name="PlayerMenu" type="CanvasLayer"]
 layer = 2
@@ -12,9 +14,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.768627)
+theme = ExtResource("2_exytw")
+color = Color(0, 0, 0, 0.364)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="RightMenuContainer" type="PanelContainer" parent="OpaqueBackground"]
+layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -25,11 +29,115 @@ offset_top = -506.0
 offset_bottom = 517.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_type_variation = &"RightMenu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer"]
 layout_mode = 2
 
-[node name="MenuTitle" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="MenuTitle" type="Label" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 text = "Menu"
 horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CurrentlyEnabledContainer" type="PanelContainer" parent="OpaqueBackground"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -318.0
+offset_right = 572.0
+offset_bottom = 458.0
+grow_vertical = 2
+theme_type_variation = &"LeftMenu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Currently Enabled"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="DissectionContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"HeaderMedium"
+text = "Dissection"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+fit_content = true
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="KeyBuildingContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_88680")
+
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/KeyBuildingContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"HeaderMedium"
+text = "Key Building (TBD)"
+
+[node name="GhostsContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_88680")
+
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/GhostsContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"HeaderMedium"
+text = "Ghosts (TBD)"
+
+[node name="MiscContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_88680")
+
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/MiscContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"HeaderMedium"
+text = "Misc (TBD)"

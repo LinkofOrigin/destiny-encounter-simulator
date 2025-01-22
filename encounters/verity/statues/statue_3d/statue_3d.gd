@@ -5,8 +5,8 @@ extends Statue
 @onready var interactable_component: InteractableComponent = %InteractableComponent
 @onready var held_shape_marker: Marker3D = %HeldShapeMarker
 @onready var shape_spawner: ShapeSpawner = %ShapeSpawner
-const STATUE_3D_REQUIREMENT = preload("res://systems/core/components/interaction/requirements/statue_3d_requirements/statue_3d_requirement.tres")
-const SHAPE_RESOLVER = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
+const STATUE_3D_REQUIREMENT: Statue3DRequirement = preload("res://systems/core/components/interaction/requirements/statue_3d_requirements/statue_3d_requirement.tres")
+const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
 
 var current_held_shape: Base3DShape
 

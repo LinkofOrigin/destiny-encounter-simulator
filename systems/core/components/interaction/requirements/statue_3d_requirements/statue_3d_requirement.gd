@@ -11,9 +11,12 @@ func meets_requirements(effect_manager: EffectManager) -> bool:
 	if primed:
 		return false
 	
-	var first_type := current_shape.get_first_type()
-	var second_type := current_shape.get_second_type()
-	return effect_manager.has_effect(first_type) or effect_manager.has_effect(second_type)
+	if current_shape != null:
+		var first_type := current_shape.get_first_type()
+		var second_type := current_shape.get_second_type()
+		return effect_manager.has_effect(first_type) or effect_manager.has_effect(second_type)
+	
+	return false
 
 
 func resolve_interaction(effect_manager: EffectManager) -> void:

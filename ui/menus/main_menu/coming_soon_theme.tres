@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ciao1yg8aebw5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x26os"]
+bg_color = Color(0.585, 0.585, 0.585, 0.074)
+
+[resource]
+Label/colors/font_color = Color(0.593, 0.593, 0.593, 0.704)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_x26os")

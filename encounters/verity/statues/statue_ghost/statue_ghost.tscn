@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctkb27qfadydf"]
+[gd_scene load_steps=12 format=3 uid="uid://ctkb27qfadydf"]
 
 [ext_resource type="Script" path="res://encounters/verity/statues/statue_ghost/statue_ghost.gd" id="1_yisse"]
 [ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="2_0fmcl"]
+[ext_resource type="Resource" uid="uid://ds1diya5ldwin" path="res://systems/core/components/interaction/requirements/statue_ghost_requirements/statue_ghost_requirement.tres" id="2_wjsia"]
 [ext_resource type="PackedScene" uid="uid://d1v60cmtwf5j1" path="res://systems/core/components/interaction/zone/interaction_zone.tscn" id="3_menow"]
 [ext_resource type="PackedScene" uid="uid://b80uy6h8xlt8s" path="res://systems/core/components/interaction/target/interaction_target.tscn" id="4_iy7rf"]
 
@@ -28,6 +29,7 @@ radius = 0.55
 
 [node name="StatueGhost" type="Node3D"]
 script = ExtResource("1_yisse")
+interaction_behavior = ExtResource("2_wjsia")
 
 [node name="BodyMarker" type="Marker3D" parent="."]
 unique_name_in_owner = true

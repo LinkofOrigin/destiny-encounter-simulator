@@ -29,15 +29,15 @@ emission_enabled = true
 emission = Color(0.194535, 0.209007, 0.241045, 1)
 emission_energy_multiplier = 1.83
 
-[sub_resource type="Resource" id="Resource_137ia"]
+[sub_resource type="Resource" id="Resource_7n4qv"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
-[sub_resource type="Resource" id="Resource_dequu"]
+[sub_resource type="Resource" id="Resource_2ufe0"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
-[sub_resource type="Resource" id="Resource_m1f07"]
+[sub_resource type="Resource" id="Resource_b43cr"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
@@ -171,17 +171,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)
 [node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
-interaction_behavior = SubResource("Resource_137ia")
+interaction_behavior = SubResource("Resource_7n4qv")
 
 [node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
-interaction_behavior = SubResource("Resource_dequu")
+interaction_behavior = SubResource("Resource_2ufe0")
 
 [node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
-interaction_behavior = SubResource("Resource_m1f07")
+interaction_behavior = SubResource("Resource_b43cr")
 
 [node name="BackArea" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)

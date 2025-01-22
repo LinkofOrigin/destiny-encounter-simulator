@@ -2,25 +2,30 @@ class_name TeamDissection
 extends Node3D
 
 # TODO: Refactor maybe? lol
+@onready var shape_spawner: ShapeSpawner = %ShapeSpawner
+
 @onready var player_one_spawn: Marker3D = %PlayerOneSpawn
 @onready var player_two_spawn: Marker3D = %PlayerTwoSpawn
 @onready var player_three_spawn: Marker3D = %PlayerThreeSpawn
 @onready var player_four_spawn: Marker3D = %PlayerFourSpawn
 @onready var player_five_spawn: Marker3D = %PlayerFiveSpawn
 @onready var player_six_spawn: Marker3D = %PlayerSixSpawn
+
 @onready var left_shape_spawn: Marker3D = %LeftShapeSpawn
 @onready var center_shape_spawn: Marker3D = %CenterShapeSpawn
 @onready var right_shape_spawn: Marker3D = %RightShapeSpawn
+
 @onready var left_statue: Statue3D = %LeftStatue
 @onready var center_statue: Statue3D = %CenterStatue
 @onready var right_statue: Statue3D = %RightStatue
+
 @onready var player_one_statue: StatueGhost = %PlayerOneStatue
 @onready var player_two_statue: StatueGhost = %PlayerTwoStatue
 @onready var player_three_statue: StatueGhost = %PlayerThreeStatue
 @onready var player_four_statue: StatueGhost = %PlayerFourStatue
 @onready var player_five_statue: StatueGhost = %PlayerFiveStatue
 @onready var player_six_statue: StatueGhost = %PlayerSixStatue
-@onready var shape_spawner: ShapeSpawner = %ShapeSpawner
+
 
 var _circle_used := false
 var _triangle_used := false
