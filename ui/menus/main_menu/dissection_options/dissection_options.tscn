@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://devhu5ca2k7ou"]
+
+[ext_resource type="Script" path="res://ui/menus/main_menu/dissection_options/dissection_options.gd" id="1_vowg1"]
+
+[node name="DissectionOptions" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -981.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vowg1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Timer:"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 300.0
+suffix = "sec"
+select_all_on_focus = true

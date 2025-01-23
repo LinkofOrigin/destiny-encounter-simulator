@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://w3uh624pkya7"]
+[gd_scene load_steps=5 format=3 uid="uid://w3uh624pkya7"]
 
 [ext_resource type="Script" path="res://ui/menus/main_menu/player_menu.gd" id="2_d6l5a"]
 [ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu_theme.tres" id="2_exytw"]
 [ext_resource type="Theme" uid="uid://ciao1yg8aebw5" path="res://ui/menus/main_menu/coming_soon_theme.tres" id="3_88680"]
+[ext_resource type="PackedScene" uid="uid://devhu5ca2k7ou" path="res://ui/menus/main_menu/dissection_options/dissection_options.tscn" id="3_rl7ff"]
 
 [node name="PlayerMenu" type="CanvasLayer"]
 layer = 2
@@ -46,6 +47,76 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
 [node name="HSeparator" type="HSeparator" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+current_tab = 1
+tabs_visible = false
+
+[node name="Home" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+metadata/_tab_index = 0
+
+[node name="DissectionButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"MenuSelectButton"
+keep_pressed_outside = true
+text = "Dissection >"
+alignment = 0
+
+[node name="KeyBuildingButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"MenuSelectButton"
+disabled = true
+text = "Key Building (TBD) >"
+alignment = 0
+
+[node name="GhostsButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"MenuSelectButton"
+disabled = true
+text = "Ghosts (TBD) >"
+alignment = 0
+
+[node name="MiscButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"MenuSelectButton"
+disabled = true
+text = "Misc (TBD) >"
+alignment = 0
+
+[node name="DissectionOptionsContainer" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="DissectionBackButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+text = "< Back"
+
+[node name="DissectionOptions" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer" instance=ExtResource("3_rl7ff")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="CurrentlyEnabledContainer" type="PanelContainer" parent="OpaqueBackground"]
@@ -102,9 +173,15 @@ size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Dissection"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
+[node name="DissectionDetails" type="RichTextLabel" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[ul]
+  Timer: 10101
+[/ul]"
 fit_content = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
