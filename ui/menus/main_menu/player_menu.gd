@@ -14,11 +14,12 @@ extends CanvasLayer
 
 func _ready() -> void:
 	_connect_signals()
+	_return_to_home()
 	hide()
 
 
 func _connect_signals() -> void:
-	dissection_button.pressed.connect(_set_current_tab.bind(1))
+	dissection_button.pressed.connect(_set_current_tab.bind(1, dissection_options))
 	key_building_button.pressed.connect(_set_current_tab.bind(2))
 	ghosts_button.pressed.connect(_set_current_tab.bind(2))
 	misc_button.pressed.connect(_set_current_tab.bind(2))
@@ -40,9 +41,12 @@ func _update_dissection_settings(settings: Dictionary) -> void:
 	dissection_details.text += "[/ul]"
 
 
-func _set_current_tab(tab_number: int) -> void:
+func _set_current_tab(tab_number: int, menu: Control = null) -> void:
 	main_menu_tab_container.current_tab = tab_number
+	if is_instance_valid(menu) and menu.has_method("focus_first_item"):
+		menu.focus_first_item()
 
 
 func _return_to_home() -> void:
 	_set_current_tab(0)
+	dissection_button.grab_focus.call_deferred()

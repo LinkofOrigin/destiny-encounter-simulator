@@ -10,6 +10,7 @@ func _ready() -> void:
 	GlobalSignals.player_interact_progress_made.connect(_on_player_interact_progress_made)
 	GlobalSignals.player_interaction_complete.connect(_on_player_interaction_complete)
 	GlobalSignals.effect_acquired.connect(_on_effect_acquired)
+	GlobalSignals.encounter_start_progress.connect(_on_encounter_start_progress)
 
 
 func _on_player_can_interact(interactable: InteractableComponent) -> void:
@@ -32,3 +33,7 @@ func _on_player_interaction_complete(_interactable: InteractableComponent) -> vo
 
 func _on_effect_acquired(effect: Effect) -> void:
 	player_hud.add_effect(effect)
+
+
+func _on_encounter_start_progress(percent: float) -> void:
+	player_hud.set_encounter_start_progress(percent)

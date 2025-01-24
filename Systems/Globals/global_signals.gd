@@ -1,7 +1,7 @@
 # class_name GlobalSignals
 extends Node
 
-# Player signals
+## Player signals
 signal player_can_interact(interactable: InteractableComponent)
 signal player_can_not_interact()
 signal player_interact_progress_made(current_progress: float)
@@ -23,9 +23,22 @@ func emit_player_interaction_complete(interactable: InteractableComponent) -> vo
 	player_interaction_complete.emit(interactable)
 
 
-# Buff Effect signals
+## Buff Effect signals
 signal effect_acquired(effect: Effect)
 
 
 func emit_effect_acquired(effect: Effect) -> void:
 	effect_acquired.emit(effect)
+
+
+## Encounter signals
+signal encounter_start_progress(percent: float)
+signal encounter_starting
+
+
+func emit_encounter_start_progress(percent: float) -> void:
+	encounter_start_progress.emit(percent)
+
+
+func emit_encounter_staring() -> void:
+	encounter_starting.emit()

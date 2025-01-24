@@ -8,6 +8,7 @@ func _enter_behavior() -> void:
 	# TODO: Randomly select solo players
 	# TODO: Randomly assign starting statue states (2d and 3d)
 	# TODO: teleport players
+	print("entering key building phase")
 	teleport_players_to_solo_rooms()
 
 

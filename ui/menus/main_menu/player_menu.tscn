@@ -59,11 +59,10 @@ theme_override_constants/margin_bottom = 5
 [node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="Home" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 0
@@ -72,7 +71,9 @@ metadata/_tab_index = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../KeyBuildingButton")
 theme_type_variation = &"MenuSelectButton"
+action_mode = 0
 keep_pressed_outside = true
 text = "Dissection >"
 alignment = 0
@@ -81,8 +82,11 @@ alignment = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+focus_neighbor_top = NodePath("../DissectionButton")
+focus_neighbor_bottom = NodePath("../GhostsButton")
 theme_type_variation = &"MenuSelectButton"
 disabled = true
+action_mode = 0
 text = "Key Building (TBD) >"
 alignment = 0
 
@@ -90,8 +94,11 @@ alignment = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+focus_neighbor_top = NodePath("../KeyBuildingButton")
+focus_neighbor_bottom = NodePath("../MiscButton")
 theme_type_variation = &"MenuSelectButton"
 disabled = true
+action_mode = 0
 text = "Ghosts (TBD) >"
 alignment = 0
 
@@ -99,12 +106,15 @@ alignment = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+focus_neighbor_top = NodePath("../GhostsButton")
 theme_type_variation = &"MenuSelectButton"
 disabled = true
+action_mode = 0
 text = "Misc (TBD) >"
 alignment = 0
 
 [node name="DissectionOptionsContainer" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

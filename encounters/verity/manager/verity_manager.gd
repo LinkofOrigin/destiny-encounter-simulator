@@ -22,10 +22,17 @@ func _ready() -> void:
 	wipe_phase.swap_to_phase.connect(_handle_phase_swap)
 	
 	_current_phase = freeroam_phase
+	_current_phase.enter()
 
 
 func _process(delta: float) -> void:
 	_current_phase.process(delta)
+
+
+func _handle_phase_swap(phase: EncounterPhase) -> void:
+	_current_phase.exit()
+	_current_phase = phase
+	_current_phase.enter()
 
 
 # FIXME: THIS MAY GET REMOVED / MOVED TO PHASES ----------------------------
@@ -48,8 +55,3 @@ func start() -> void:
 	pass
 
 # FIXME: THIS MAY GET REMOVED / MOVED TO PHASES ----------------------------
-
-func _handle_phase_swap(phase: EncounterPhase) -> void:
-	_current_phase.exit()
-	_current_phase = phase
-	_current_phase.enter()

@@ -9,9 +9,10 @@
 [node name="VerityManager" type="Node"]
 script = ExtResource("1_w60ek")
 
-[node name="FreeroamPhase" type="Node" parent="."]
+[node name="FreeroamPhase" type="Node" parent="." node_paths=PackedStringArray("key_building_phase")]
 unique_name_in_owner = true
 script = ExtResource("2_ruuql")
+key_building_phase = NodePath("../KeyBuildingPhase")
 
 [node name="KeyBuildingPhase" type="Node" parent="."]
 unique_name_in_owner = true

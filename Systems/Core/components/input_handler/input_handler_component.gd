@@ -80,6 +80,9 @@ func release_interact_lock() -> void:
 
 
 func jump_button_just_pressed() -> bool:
+	if MenuManager.is_paused():
+		return false
+	
 	return Input.is_action_just_pressed(InputActions.Player.JUMP)
 
 

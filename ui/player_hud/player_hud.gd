@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @onready var interact_prompt: InteractPrompt = $InteractPrompt
 @onready var effect_display: EffectDisplay = $EffectDisplay
+@onready var start_encounter_display: StartEncounterDisplay = %StartEncounterDisplay
 
 
 func _ready() -> void:
@@ -24,3 +25,7 @@ func set_interact_progress(progress: float) -> void:
 
 func add_effect(effect: Effect) -> void:
 	effect_display.add_effect(effect)
+
+
+func set_encounter_start_progress(percent: float) -> void:
+	start_encounter_display.set_progress_percent(percent)
