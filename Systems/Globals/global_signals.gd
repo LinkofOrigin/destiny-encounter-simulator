@@ -34,11 +34,21 @@ func emit_effect_acquired(effect: Effect) -> void:
 ## Encounter signals
 signal encounter_start_progress(percent: float)
 signal encounter_starting
+signal encounter_resetting
+signal encounter_complete
 
 
 func emit_encounter_start_progress(percent: float) -> void:
 	encounter_start_progress.emit(percent)
 
 
-func emit_encounter_staring() -> void:
+func emit_encounter_starting() -> void:
 	encounter_starting.emit()
+
+
+func emit_encounter_resetting() -> void:
+	encounter_resetting.emit()
+
+
+func emit_encounter_complete() -> void:
+	encounter_complete.emit()

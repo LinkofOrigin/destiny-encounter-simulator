@@ -29,3 +29,7 @@ func add_effect(effect: Effect) -> void:
 
 func set_encounter_start_progress(percent: float) -> void:
 	start_encounter_display.set_progress_percent(percent)
+
+
+func hide_encounter_start_display() -> void:
+	start_encounter_display.hide()

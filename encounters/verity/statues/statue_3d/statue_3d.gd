@@ -20,15 +20,19 @@ func _ready() -> void:
 func create_and_hold_3d_shape(shape: EffectLibrary.SHAPE_3D_TYPES) -> void:
 	var new_3d_shape := shape_spawner.create_new_3d_shape(shape)
 	interaction_behavior = STATUE_3D_REQUIREMENT.duplicate()
-	(interaction_behavior as Statue3DRequirement).current_shape = new_3d_shape.effect
+	get_interaction_behavior().current_shape = new_3d_shape.effect
 	_hold_new_shape(new_3d_shape)
 
 
 func alter_3d_shape(existing_shape: Shape2DEffectData, new_shape: Shape2DEffectData) -> void:
-	var curr_shape := (interaction_behavior as Statue3DRequirement).current_shape
+	var curr_shape := get_interaction_behavior().current_shape
 	var new_3d_shape := SHAPE_RESOLVER.alter_shape(curr_shape, existing_shape, new_shape)
 	create_and_hold_3d_shape(new_3d_shape.shape)
-	
+
+
+func get_primed_shape() -> Shape2DEffectData:
+	return get_interaction_behavior().primed_with
+
 
 func _hold_new_shape(shape_scene: Base3DShape) -> void:
 	if is_instance_valid(current_held_shape):
@@ -36,7 +40,14 @@ func _hold_new_shape(shape_scene: Base3DShape) -> void:
 	
 	current_held_shape = shape_scene
 	held_shape_marker.add_child(shape_scene)
-	
+
+
+func current_shape_has(shape_2d: EffectLibrary.SHAPE_2D_TYPES) -> bool:
+	return get_interaction_behavior().current_shape.contains(shape_2d)
+
+
+func get_interaction_behavior() -> Statue3DRequirement:
+	return interaction_behavior as Statue3DRequirement
 
 
 func _set_interaction_behavior(new_behavior: InteractionRequirement) -> void:

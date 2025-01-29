@@ -28,4 +28,19 @@ func alter_shape(shape_3d: Shape3DEffectData, remove_shape: Shape2DEffectData, a
 		return null
 	
 	# TODO: This doesn't work because the values can be swapped?? Getting errors
-	return shape_map[shape_array] as Shape3DEffectData
+	var shape_map_key := [(shape_array[0] as Shape2DEffectData).shape, (shape_array[1] as Shape2DEffectData).shape]
+	if shape_map.get(shape_map_key) == null:
+		shape_map_key.reverse()
+	return (shape_map[shape_map_key] as Shape3DEffectData).duplicate()
+
+
+func determine_3d_shape(first_2d_shape: EffectLibrary.SHAPE_2D_TYPES, second_2d_shape: EffectLibrary.SHAPE_2D_TYPES) -> EffectLibrary.SHAPE_3D_TYPES:
+	var shapes_array := [first_2d_shape, second_2d_shape]
+	if shape_map.get(shapes_array) == null:
+		# If the order is "backwards" from our mapping above, just swap and try again
+		shapes_array.reverse()
+	
+	var shape: Shape3DEffectData = shape_map.get(shapes_array)
+	if shape != null:
+		return shape.shape
+	return -1

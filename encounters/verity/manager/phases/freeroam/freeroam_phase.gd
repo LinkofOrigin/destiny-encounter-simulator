@@ -1,7 +1,7 @@
 class_name FreeroamPhase
 extends EncounterPhase
 
-const TIME_TO_START_ENCOUNTER := 3.2
+const TIME_TO_START_ENCOUNTER := 0.0 # FIXME: 3.2
 
 @export var key_building_phase: KeyBuildingPhase
 
@@ -10,8 +10,9 @@ var curr_time_pass: float
 
 func _enter_behavior() -> void:
 	# TODO: Enable teleporting between rooms?
-	curr_time_pass = 0
 	print("entering freeroam")
+	curr_time_pass = 0
+	GlobalSignals.emit_encounter_resetting()
 
 
 func _exit_behavior() -> void:
@@ -23,7 +24,6 @@ func _exit_behavior() -> void:
 func process(delta: float) -> void:
 	if Input.is_action_pressed("AltMenu"):
 		curr_time_pass += delta
-		print("curr time: ", curr_time_pass)
 	else:
 		curr_time_pass = 0
 	GlobalSignals.emit_encounter_start_progress(curr_time_pass / TIME_TO_START_ENCOUNTER)

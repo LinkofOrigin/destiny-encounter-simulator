@@ -1,6 +1,8 @@
 class_name TeamDissection
 extends Node3D
 
+const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
+
 # TODO: Refactor maybe? lol
 @onready var shape_spawner: ShapeSpawner = %ShapeSpawner
 
@@ -16,7 +18,7 @@ extends Node3D
 @onready var right_shape_spawn: Marker3D = %RightShapeSpawn
 
 @onready var left_statue: Statue3D = %LeftStatue
-@onready var center_statue: Statue3D = %CenterStatue
+@onready var middle_statue: Statue3D = %CenterStatue
 @onready var right_statue: Statue3D = %RightStatue
 
 @onready var player_one_statue: StatueGhost = %PlayerOneStatue
@@ -26,17 +28,74 @@ extends Node3D
 @onready var player_five_statue: StatueGhost = %PlayerFiveStatue
 @onready var player_six_statue: StatueGhost = %PlayerSixStatue
 
-
 var _circle_used := false
 var _triangle_used := false
 var _square_used := false
+var _first_primed_statue: Statue3D
+var _second_primed_statue: Statue3D
+var _left_key_shape: EffectLibrary.SHAPE_2D_TYPES
+var _middle_key_shape: EffectLibrary.SHAPE_2D_TYPES
+var _right_key_shape: EffectLibrary.SHAPE_2D_TYPES
+
 
 func _ready() -> void:
-	spawn_shape_set()
-	
 	left_statue.received_effects.connect(_on_left_statue_received_effects)
-	center_statue.received_effects.connect(_on_center_statue_received_effects)
+	middle_statue.received_effects.connect(_on_center_statue_received_effects)
 	right_statue.received_effects.connect(_on_right_statue_received_effects)
+
+
+func initalize_fresh() -> void:
+	spawn_shape_set()
+	set_solo_room_shapes()
+	set_statues_with_random_shapes()
+
+
+func set_solo_room_shapes() -> void:
+	var shapes_list := [
+		EffectLibrary.SHAPE_2D_TYPES.CIRCLE,
+		EffectLibrary.SHAPE_2D_TYPES.SQUARE,
+		EffectLibrary.SHAPE_2D_TYPES.TRIANGLE,
+	]
+	shapes_list.shuffle()
+	_left_key_shape = shapes_list[0]
+	_middle_key_shape = shapes_list[1]
+	_right_key_shape = shapes_list[2]
+	print("Keys to match are: %s | %s | %s" % [_left_key_shape, _middle_key_shape, _right_key_shape])
+
+
+func set_statues_with_random_shapes() -> void:
+	var shapes_list := [
+		EffectLibrary.SHAPE_2D_TYPES.CIRCLE,
+		EffectLibrary.SHAPE_2D_TYPES.CIRCLE,
+		EffectLibrary.SHAPE_2D_TYPES.SQUARE,
+		EffectLibrary.SHAPE_2D_TYPES.SQUARE,
+		EffectLibrary.SHAPE_2D_TYPES.TRIANGLE,
+		EffectLibrary.SHAPE_2D_TYPES.TRIANGLE,
+	]
+	
+	shapes_list.shuffle()
+	var first_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[0], shapes_list[1])
+	var second_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[2], shapes_list[3])
+	var third_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[4], shapes_list[5])
+	print("Shapes for Dissection: %s | %s | %s" % [first_3d_shape, second_3d_shape, third_3d_shape])
+	
+	if first_3d_shape >= 0 and second_3d_shape >= 0 and third_3d_shape >= 0:
+		left_statue.create_and_hold_3d_shape(first_3d_shape)
+		middle_statue.create_and_hold_3d_shape(second_3d_shape)
+		right_statue.create_and_hold_3d_shape(third_3d_shape)
+	else:
+		printerr("shapes got fucked")
+
+
+func check_statues_against_keys() -> void:
+	if not left_statue.current_shape_has(_left_key_shape):
+		print("Left statue matches key!")
+	
+	if not right_statue.current_shape_has(_right_key_shape):
+		print("Right statue matches key!")
+	
+	if not middle_statue.current_shape_has(_middle_key_shape):
+		print("Middle statue matches key!")
 
 
 func spawn_shape_set() -> void:
@@ -80,6 +139,22 @@ func spawn_square() -> void:
 	_square_used = false
 
 
+func handle_primed_statue(statue: Statue3D) -> void:
+	if not is_instance_valid(_first_primed_statue):
+		_first_primed_statue = statue
+	else:
+		# Swap statue shapes
+		_second_primed_statue = statue
+		var first_primed_effect := _first_primed_statue.get_primed_shape()
+		var second_primed_effect := _second_primed_statue.get_primed_shape()
+		_first_primed_statue.alter_3d_shape(first_primed_effect, second_primed_effect)
+		_second_primed_statue.alter_3d_shape(second_primed_effect, first_primed_effect)
+		_first_primed_statue = null
+		_second_primed_statue = null
+		# TODO: Resolve if 3d shapes match key(s)
+		check_statues_against_keys()
+
+
 func _register_circle_consumed() -> void:
 	_circle_used = true
 	resolve_shape_state()
@@ -95,13 +170,16 @@ func _register_square_consumed() -> void:
 	resolve_shape_state()
 
 
-func _on_left_statue_received_effects(effects: Array[EffectData]) -> void:
+func _on_left_statue_received_effects(_effects: Array[EffectData]) -> void:
 	print("dissection room received effects in left statue!")
+	handle_primed_statue(left_statue)
 
 
-func _on_center_statue_received_effects(effects: Array[EffectData]) -> void:
+func _on_center_statue_received_effects(_effects: Array[EffectData]) -> void:
 	print("dissection room received effects in center statue!")
+	handle_primed_statue(middle_statue)
 
 
-func _on_right_statue_received_effects(effects: Array[EffectData]) -> void:
+func _on_right_statue_received_effects(_effects: Array[EffectData]) -> void:
 	print("dissection room received effects in right statue!")
+	handle_primed_statue(right_statue)

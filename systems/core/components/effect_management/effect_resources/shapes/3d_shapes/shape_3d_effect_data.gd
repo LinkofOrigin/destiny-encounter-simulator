@@ -24,6 +24,10 @@ func get_second_type() -> Shape2DEffectData:
 	return _map_type_to_resource(comprised_type_two)
 
 
+func contains(shape_2d: EffectLibrary.SHAPE_2D_TYPES) -> bool:
+	return comprised_type_one == shape_2d or comprised_type_two == shape_2d
+
+
 func _map_type_to_resource(value: EffectLibrary.SHAPE_2D_TYPES) -> Shape2DEffectData:
 	if _shape_resource_mapping[value] != null:
 		var shape_data = _shape_resource_mapping[value]

@@ -18,56 +18,62 @@ grow_vertical = 2
 theme = ExtResource("2_exytw")
 color = Color(0, 0, 0, 0.364)
 
-[node name="RightMenuContainer" type="PanelContainer" parent="OpaqueBackground"]
+[node name="SetupMenus" type="Control" parent="OpaqueBackground"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RightMenuContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -628.0
-offset_top = -506.0
-offset_bottom = 517.0
+offset_left = 1252.0
+offset_top = 14.0
+offset_right = 1880.0
+offset_bottom = 1037.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_type_variation = &"RightMenu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer"]
 layout_mode = 2
 
-[node name="MenuTitle" type="Label" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
+[node name="MenuTitle" type="Label" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Menu"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer"]
+[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2"]
+[node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
 tabs_visible = false
 
-[node name="Home" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
+[node name="Home" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 0
 
-[node name="DissectionButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="DissectionButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -78,7 +84,7 @@ keep_pressed_outside = true
 text = "Dissection >"
 alignment = 0
 
-[node name="KeyBuildingButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="KeyBuildingButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -90,7 +96,7 @@ action_mode = 0
 text = "Key Building (TBD) >"
 alignment = 0
 
-[node name="GhostsButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="GhostsButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -102,7 +108,7 @@ action_mode = 0
 text = "Ghosts (TBD) >"
 alignment = 0
 
-[node name="MiscButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="MiscButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -113,51 +119,51 @@ action_mode = 0
 text = "Misc (TBD) >"
 alignment = 0
 
-[node name="DissectionOptionsContainer" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
+[node name="DissectionOptionsContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="DissectionBackButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer"]
+[node name="DissectionBackButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 22
 text = "< Back"
 
-[node name="DissectionOptions" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer" instance=ExtResource("3_rl7ff")]
+[node name="DissectionOptions" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer" instance=ExtResource("3_rl7ff")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CurrentlyEnabledContainer" type="PanelContainer" parent="OpaqueBackground"]
+[node name="CurrentlyEnabledContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -318.0
+offset_top = 202.0
 offset_right = 572.0
-offset_bottom = 458.0
+offset_bottom = 978.0
 grow_vertical = 2
 theme_type_variation = &"LeftMenu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Currently Enabled"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer2"]
+[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -165,25 +171,25 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 6
 
-[node name="DissectionContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="DissectionContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Dissection"
 
-[node name="DissectionDetails" type="RichTextLabel" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
+[node name="DissectionDetails" type="RichTextLabel" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/DissectionContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -196,34 +202,34 @@ fit_content = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="KeyBuildingContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="KeyBuildingContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_88680")
 
-[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/KeyBuildingContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/KeyBuildingContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Key Building (TBD)"
 
-[node name="GhostsContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="GhostsContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_88680")
 
-[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/GhostsContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/GhostsContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Ghosts (TBD)"
 
-[node name="MiscContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MiscContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_88680")
 
-[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/MiscContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/VBoxContainer/MiscContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"

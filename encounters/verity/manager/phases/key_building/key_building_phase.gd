@@ -1,15 +1,21 @@
 class_name KeyBuildingPhase
 extends EncounterPhase
 
+var team_dissection: TeamDissection
+var left_solo_room: SoloKeyBuilding
+var middle_solo_room: SoloKeyBuilding
+var right_solo_room: SoloKeyBuilding
 
 ## Entered by a player interacting with a statue in the dissection room while in Freeroam
-
+## (TODO: manually for now... may change)
 func _enter_behavior() -> void:
 	# TODO: Randomly select solo players
 	# TODO: Randomly assign starting statue states (2d and 3d)
 	# TODO: teleport players
 	print("entering key building phase")
+	GlobalSignals.emit_encounter_starting()
 	teleport_players_to_solo_rooms()
+	team_dissection.initalize_fresh()
 
 
 func _exit_behavior() -> void:
