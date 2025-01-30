@@ -4,7 +4,6 @@ extends Node3D
 signal received_effects(effects: Array[EffectData])
 
 @export var interaction_behavior: InteractionRequirement:
-	get = get_interaction_behavior,
 	set = _set_interaction_behavior
 
 @onready var body_marker: Marker3D = %BodyMarker
@@ -51,10 +50,6 @@ signal received_effects(effects: Array[EffectData])
 func _on_interactable_component_interacted_with(effects: Array[EffectData]) -> void:
 	print("Statue was interacted with!")
 	received_effects.emit(effects)
-
-
-func get_interaction_behavior() -> InteractionRequirement:
-	return interaction_behavior
 
 
 func _set_interaction_behavior(new_behavior: InteractionRequirement) -> void:

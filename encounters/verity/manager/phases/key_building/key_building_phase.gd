@@ -15,6 +15,9 @@ func _enter_behavior() -> void:
 	print("entering key building phase")
 	GlobalSignals.emit_encounter_starting()
 	teleport_players_to_solo_rooms()
+	if not team_dissection.dissection_complete.is_connected(_on_dissection_complete):
+		team_dissection.dissection_complete.connect(_on_dissection_complete)
+	# Will spawn 2D shapes on floor, set the solo key shapes, and set 3d shapes on the statues
 	team_dissection.initalize_fresh()
 
 
@@ -51,4 +54,8 @@ func swap_to_ghost_phase() -> void:
 
 # TODO: Trigger when no solo rooms have players or too few revives, etc.
 func swap_to_wipe_phase() -> void:
+	pass
+
+
+func _on_dissection_complete() -> void:
 	pass

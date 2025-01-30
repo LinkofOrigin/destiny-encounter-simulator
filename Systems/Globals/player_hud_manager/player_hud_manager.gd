@@ -11,6 +11,7 @@ func _ready() -> void:
 	GlobalSignals.player_interaction_complete.connect(_on_player_interaction_complete)
 	GlobalSignals.effect_acquired.connect(_on_effect_acquired)
 	GlobalSignals.encounter_start_progress.connect(_on_encounter_start_progress)
+	GlobalSignals.encounter_starting.connect(_on_encounter_starting)
 
 
 func _on_player_can_interact(interactable: InteractableComponent) -> void:
@@ -37,3 +38,7 @@ func _on_effect_acquired(effect: Effect) -> void:
 
 func _on_encounter_start_progress(percent: float) -> void:
 	player_hud.set_encounter_start_progress(percent)
+
+
+func _on_encounter_starting() -> void:
+	player_hud.hide_encounter_start_display()

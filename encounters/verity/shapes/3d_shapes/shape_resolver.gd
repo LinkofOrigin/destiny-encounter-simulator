@@ -30,6 +30,7 @@ func alter_shape(shape_3d: Shape3DEffectData, remove_shape: Shape2DEffectData, a
 	# TODO: This doesn't work because the values can be swapped?? Getting errors
 	var shape_map_key := [(shape_array[0] as Shape2DEffectData).shape, (shape_array[1] as Shape2DEffectData).shape]
 	if shape_map.get(shape_map_key) == null:
+		# If the order is "backwards" from our mapping above, just swap and try again
 		shape_map_key.reverse()
 	return (shape_map[shape_map_key] as Shape3DEffectData).duplicate()
 

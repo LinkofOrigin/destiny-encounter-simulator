@@ -1,6 +1,8 @@
 class_name TeamDissection
 extends Node3D
 
+signal dissection_complete
+
 const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
 
 # TODO: Refactor maybe? lol
@@ -72,7 +74,7 @@ func set_statues_with_random_shapes() -> void:
 		EffectLibrary.SHAPE_2D_TYPES.TRIANGLE,
 		EffectLibrary.SHAPE_2D_TYPES.TRIANGLE,
 	]
-	
+	# TODO: Need to ensure that 3d shapes can't spawn already matching key
 	shapes_list.shuffle()
 	var first_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[0], shapes_list[1])
 	var second_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[2], shapes_list[3])
@@ -88,14 +90,24 @@ func set_statues_with_random_shapes() -> void:
 
 
 func check_statues_against_keys() -> void:
+	var left_match := false
+	var middle_match := false
+	var right_match := false
 	if not left_statue.current_shape_has(_left_key_shape):
-		print("Left statue matches key!")
+		#print("Left statue matches key!")
+		left_match = true
 	
 	if not right_statue.current_shape_has(_right_key_shape):
-		print("Right statue matches key!")
+		#print("Right statue matches key!")
+		middle_match = true
 	
 	if not middle_statue.current_shape_has(_middle_key_shape):
-		print("Middle statue matches key!")
+		#print("Middle statue matches key!")
+		right_match = true
+	
+	if left_match and middle_match and right_match:
+		print("All statues match! Dissection complete!")
+		dissection_complete.emit()
 
 
 func spawn_shape_set() -> void:

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func focus_first_item() -> void:
-	print("grabbing spin")
+	#print("grabbing spin")
 	spin_box.grab_focus.call_deferred()
 
 
