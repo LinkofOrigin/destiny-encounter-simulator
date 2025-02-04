@@ -23,4 +23,6 @@ func inject_location_state(state: LocationState) -> void:
 	if is_instance_valid(current_state):
 		current_state.queue_free()
 	
+	current_state = state
 	state_container.add_child(state)
+	show_state()

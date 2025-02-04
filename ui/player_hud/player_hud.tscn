@@ -12,18 +12,22 @@ follow_viewport_enabled = true
 script = ExtResource("1_s2n7p")
 
 [node name="TimerDisplay" parent="." instance=ExtResource("4_k7w0q")]
+unique_name_in_owner = true
 offset_top = 30.0
 offset_bottom = 70.0
 
 [node name="LocationDisplay" parent="." instance=ExtResource("3_c0xbs")]
+unique_name_in_owner = true
 offset_left = 22.0
 offset_top = 15.0
 offset_right = 22.0
 offset_bottom = 15.0
 
 [node name="EffectDisplay" parent="." instance=ExtResource("3_3bcma")]
+unique_name_in_owner = true
 
 [node name="InteractPrompt" parent="." instance=ExtResource("1_qyr75")]
+unique_name_in_owner = true
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

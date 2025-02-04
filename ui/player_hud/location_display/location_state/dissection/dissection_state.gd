@@ -30,6 +30,27 @@ extends LocationState
 @onready var right_key_match_indicator: TextureRect = %RightKeyMatchIndicator
 
 
+func update_state(new_state: Variant) -> void:
+	print("dissection update state called!")
+	var state_dict: Dictionary = new_state
+	if state_dict.has("keys"):
+		var shape_keys: Array[EffectLibrary.SHAPE_2D_TYPES]
+		shape_keys.assign(state_dict.get("keys"))
+		set_2d_shapes(shape_keys[0], shape_keys[1], shape_keys[2])
+	
+	if state_dict.has("statue_shapes"):
+		var statue_shapes: Array[EffectLibrary.SHAPE_3D_TYPES]
+		statue_shapes.assign(state_dict.get("statue_shapes"))
+		set_3d_shapes(statue_shapes[0], statue_shapes[1], statue_shapes[2])
+	
+	if state_dict.has("key_matches"):
+		var key_matches: Array[bool]
+		key_matches.assign(state_dict.get("key_matches"))
+		set_left_key_matching(key_matches[0])
+		set_middle_key_matching(key_matches[1])
+		set_right_key_matching(key_matches[2])
+
+
 func set_2d_shapes(left_shape: EffectLibrary.SHAPE_2D_TYPES, middle_shape: EffectLibrary.SHAPE_2D_TYPES, right_shape: EffectLibrary.SHAPE_2D_TYPES) -> void:
 	var left_details := _get_2d_display_details(left_shape)
 	var middle_details := _get_2d_display_details(middle_shape)
@@ -51,20 +72,20 @@ func set_3d_shapes(left_shape: EffectLibrary.SHAPE_3D_TYPES, middle_shape: Effec
 
 func set_left_3d_shape(new_shape: EffectLibrary.SHAPE_3D_TYPES) -> void:
 	var details := _get_3d_display_details(new_shape)
-	statue_one_icon.text = details[0]
-	statue_one_shape_text.texture = details[1]
+	statue_one_shape_text.text = details[0]
+	statue_one_icon.texture = details[1]
 
 
 func set_middle_3d_shape(new_shape: EffectLibrary.SHAPE_3D_TYPES) -> void:
 	var details := _get_3d_display_details(new_shape)
-	statue_two_icon.text = details[0]
-	statue_two_shape_text.texture = details[1]
+	statue_two_shape_text.text = details[0]
+	statue_two_icon.texture = details[1]
 
 
 func set_right_3d_shape(new_shape: EffectLibrary.SHAPE_3D_TYPES) -> void:
 	var details := _get_3d_display_details(new_shape)
-	statue_three_icon.text = details[0]
-	statue_three_shape_text.texture = details[1]
+	statue_three_shape_text.text = details[0]
+	statue_three_icon.texture = details[1]
 
 
 func _get_2d_display_details(shape_2d: EffectLibrary.SHAPE_2D_TYPES) -> Array:

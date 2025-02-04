@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci115hcg3twey"]
+[gd_scene load_steps=5 format=3 uid="uid://ci115hcg3twey"]
 
 [ext_resource type="Theme" uid="uid://ci0oechekfhsk" path="res://ui/player_hud/location_display/location_display.tres" id="1_aywbv"]
 [ext_resource type="Script" path="res://ui/player_hud/location_display/location_display.gd" id="1_gt04n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ls1ul"]
+font_size = 28
+outline_size = 13
+outline_color = Color(0.151, 0.151, 0.151, 0.892)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqnxe"]
+bg_color = Color(0.184, 0.184, 0.184, 0.603)
 
 [node name="LocationDisplay" type="Control"]
 layout_mode = 3
@@ -11,12 +19,9 @@ script = ExtResource("1_gt04n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 162.0
-offset_bottom = 90.0
-grow_vertical = 2
-theme_override_constants/separation = 30
+offset_right = 607.0
+offset_bottom = 323.0
+theme_override_constants/separation = 12
 
 [node name="TextContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -31,10 +36,23 @@ text = "LOCATION"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_constants/margin_left = 15
 
-[node name="StateContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Current State"
+label_settings = SubResource("LabelSettings_ls1ul")
+horizontal_alignment = 1
+
+[node name="StateContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 theme = ExtResource("1_aywbv")
 theme_type_variation = &"Holder"
+theme_override_styles/panel = SubResource("StyleBoxFlat_eqnxe")

@@ -12,6 +12,11 @@ func _ready() -> void:
 	GlobalSignals.effect_acquired.connect(_on_effect_acquired)
 	GlobalSignals.encounter_start_progress.connect(_on_encounter_start_progress)
 	GlobalSignals.encounter_starting.connect(_on_encounter_starting)
+	GlobalSignals.encounter_state_updated.connect(_on_encounter_state_updated)
+
+
+func load_location_state_display(state_display: LocationState) -> void:
+	player_hud.inject_location_state(state_display)
 
 
 func _on_player_can_interact(interactable: InteractableComponent) -> void:
@@ -27,7 +32,6 @@ func _on_player_interact_progress_made(current_progress: float) -> void:
 
 
 func _on_player_interaction_complete(_interactable: InteractableComponent) -> void:
-	# TODO: Evaluate if anything else should be done here...?
 	player_hud.set_interact_progress(0) # why no work...
 	player_hud.hide_interact_prompt()
 
@@ -42,3 +46,7 @@ func _on_encounter_start_progress(percent: float) -> void:
 
 func _on_encounter_starting() -> void:
 	player_hud.hide_encounter_start_display()
+
+
+func _on_encounter_state_updated(new_state: Variant) -> void:
+	player_hud.update_location_state(new_state)

@@ -7,6 +7,7 @@ signal player_can_not_interact()
 signal player_interact_progress_made(current_progress: float)
 signal player_interaction_complete(interactable: InteractableComponent)
 
+
 func emit_player_can_interact(interactable: InteractableComponent) -> void:
 	player_can_interact.emit(interactable)
 
@@ -34,6 +35,7 @@ func emit_effect_acquired(effect: Effect) -> void:
 ## Encounter signals
 signal encounter_start_progress(percent: float)
 signal encounter_starting
+signal encounter_state_updated(new_state: Variant)
 signal encounter_resetting
 signal encounter_complete
 
@@ -52,3 +54,7 @@ func emit_encounter_resetting() -> void:
 
 func emit_encounter_complete() -> void:
 	encounter_complete.emit()
+
+
+func emit_encounter_state_updated(new_state: Variant) -> void:
+	encounter_state_updated.emit(new_state)

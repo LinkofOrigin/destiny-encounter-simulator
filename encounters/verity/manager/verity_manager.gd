@@ -11,14 +11,15 @@ extends EncounterManager
 @onready var ghost_phase: GhostPhase = %GhostPhase
 @onready var wipe_phase: WipePhase = %WipePhase
 
-
 var _current_phase: EncounterPhase
 # Register modifiers
 # Maintain list of modifiers
-# - Each modifier may be a standalone Node that can enforce its own rules
+# - Each modifier may be a standalone Node/Resource that can enforce its own rules
+# - Would likely be both a storage for mechanics details, state, and what options are currently set
 
 # Needs mechanics, the core functions that the encounter is built upon
 # - Mechanics need to be enabled or disabled, as well as started, stopped, or reset
+
 
 func _ready() -> void:
 	_initial_setup()
@@ -47,17 +48,20 @@ func _initial_setup() -> void:
 	
 	# Freefroam
 	freeroam_phase.swap_to_phase.connect(_handle_phase_swap)
+	
 	# Key Building
 	key_building_phase.swap_to_phase.connect(_handle_phase_swap)
 	key_building_phase.team_dissection = team_dissection
 	key_building_phase.left_solo_room = left_solo_room
 	key_building_phase.middle_solo_room = middle_solo_room
 	key_building_phase.right_solo_room = right_solo_room
+	
 	# Ghosts
 	ghost_phase.swap_to_phase.connect(_handle_phase_swap)
+	
 	# Wipe
 	wipe_phase.swap_to_phase.connect(_handle_phase_swap)
-	
+
 
 # FIXME: THIS MAY GET REMOVED / MOVED TO PHASES ----------------------------
 

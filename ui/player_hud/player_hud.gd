@@ -1,8 +1,10 @@
 class_name PlayerHUD
 extends CanvasLayer
 
-@onready var interact_prompt: InteractPrompt = $InteractPrompt
-@onready var effect_display: EffectDisplay = $EffectDisplay
+@onready var timer_display: TimerDisplay = %TimerDisplay
+@onready var location_display: LocationDisplay = %LocationDisplay
+@onready var effect_display: EffectDisplay = %EffectDisplay
+@onready var interact_prompt: InteractPrompt = %InteractPrompt
 @onready var start_encounter_display: StartEncounterDisplay = %StartEncounterDisplay
 
 
@@ -37,3 +39,12 @@ func show_encounter_start_display() -> void:
 
 func hide_encounter_start_display() -> void:
 	start_encounter_display.hide()
+
+
+func inject_location_state(display: LocationState) -> void:
+	location_display.inject_location_state(display)
+
+
+func update_location_state(new_state: Variant) -> void:
+	if is_instance_valid(location_display.current_state):
+		location_display.current_state.update_state(new_state)

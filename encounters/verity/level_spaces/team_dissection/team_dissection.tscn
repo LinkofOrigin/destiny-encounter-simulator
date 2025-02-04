@@ -8,15 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://ctkb27qfadydf" path="res://encounters/verity/statues/statue_ghost/statue_ghost.tscn" id="6_6alg0"]
 [ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_ghost_requirements/statue_ghost_requirement.gd" id="7_2r0am"]
 
-[sub_resource type="Resource" id="Resource_bmxpa"]
+[sub_resource type="Resource" id="Resource_d1rma"]
 resource_local_to_scene = true
 script = ExtResource("5_talw2")
 
-[sub_resource type="Resource" id="Resource_l7dmm"]
+[sub_resource type="Resource" id="Resource_7cgvr"]
 resource_local_to_scene = true
 script = ExtResource("5_talw2")
 
-[sub_resource type="Resource" id="Resource_4xno4"]
+[sub_resource type="Resource" id="Resource_ttwxv"]
 resource_local_to_scene = true
 script = ExtResource("5_talw2")
 
@@ -43,27 +43,27 @@ emission_enabled = true
 emission = Color(0.194535, 0.209007, 0.241045, 1)
 emission_energy_multiplier = 1.83
 
-[sub_resource type="Resource" id="Resource_0s2sl"]
+[sub_resource type="Resource" id="Resource_a06xu"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_j274f"]
+[sub_resource type="Resource" id="Resource_425ft"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_lt37g"]
+[sub_resource type="Resource" id="Resource_oqisc"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_a8bmq"]
+[sub_resource type="Resource" id="Resource_ovn4w"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_34e04"]
+[sub_resource type="Resource" id="Resource_0hc8x"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_tpwei"]
+[sub_resource type="Resource" id="Resource_8m3ui"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
@@ -126,17 +126,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.636)
 [node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
-interaction_behavior = SubResource("Resource_bmxpa")
+interaction_behavior = SubResource("Resource_d1rma")
 
 [node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
-interaction_behavior = SubResource("Resource_l7dmm")
+interaction_behavior = SubResource("Resource_7cgvr")
 
 [node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
-interaction_behavior = SubResource("Resource_4xno4")
+interaction_behavior = SubResource("Resource_ttwxv")
 
 [node name="LevelBox" type="Node3D" parent="LevelGeometry"]
 
@@ -189,32 +189,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7897)
 [node name="PlayerOneStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.267995, 0, 0.96342, 0, 1, 0, -0.96342, 0, 0.267995, -16.6816, 0.243139, 18.0398)
-interaction_behavior = SubResource("Resource_0s2sl")
+interaction_behavior = SubResource("Resource_a06xu")
 
 [node name="PlayerTwoStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.267995, 0, 0.96342, 0, 1, 0, -0.96342, 0, 0.267995, -13.3167, 0.243139, 11.1036)
-interaction_behavior = SubResource("Resource_j274f")
+interaction_behavior = SubResource("Resource_425ft")
 
 [node name="PlayerThreeStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.989, 0, 0.147913, 0, 1, 0, -0.147913, 0, 0.989, -5.38512, 0.243139, 7.1881)
-interaction_behavior = SubResource("Resource_lt37g")
+interaction_behavior = SubResource("Resource_oqisc")
 
 [node name="PlayerFourStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.987175, 0, -0.15964, 0, 1, 0, 0.15964, 0, 0.987175, 5.61655, 0.243139, 7.85655)
-interaction_behavior = SubResource("Resource_a8bmq")
+interaction_behavior = SubResource("Resource_ovn4w")
 
 [node name="PlayerFiveStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.548921, 0, -0.835874, 0, 1, 0, 0.835874, 0, 0.548921, 13.2401, 0.243139, 11.3057)
-interaction_behavior = SubResource("Resource_34e04")
+interaction_behavior = SubResource("Resource_0hc8x")
 
 [node name="PlayerSixStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.142543, 0, -0.989789, 0, 1, 0, 0.989789, 0, 0.142543, 16.7248, 0.243139, 18.1872)
-interaction_behavior = SubResource("Resource_tpwei")
+interaction_behavior = SubResource("Resource_8m3ui")
 
 [node name="CenterStructure" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.54346)

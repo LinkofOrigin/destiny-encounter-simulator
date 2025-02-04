@@ -17,6 +17,15 @@ var shape_map := {
 	[CONE_EFFECT.get_first_type().shape, CONE_EFFECT.get_second_type().shape]: CONE_EFFECT,
 }
 
+var composition_map := {
+	EffectLibrary.SHAPE_3D_TYPES.SPHERE: SPHERE_EFFECT,
+	EffectLibrary.SHAPE_3D_TYPES.CUBE: CUBE_EFFECT,
+	EffectLibrary.SHAPE_3D_TYPES.PYRAMID: PYRAMID_EFFECT,
+	EffectLibrary.SHAPE_3D_TYPES.CYLINDER: CYLINDER_EFFECT,
+	EffectLibrary.SHAPE_3D_TYPES.PRISM: PRISM_EFFECT,
+	EffectLibrary.SHAPE_3D_TYPES.CONE: CONE_EFFECT,
+}
+
 func alter_shape(shape_3d: Shape3DEffectData, remove_shape: Shape2DEffectData, add_shape: Shape2DEffectData) -> Shape3DEffectData:
 	var shape_array := [shape_3d.get_first_type(), shape_3d.get_second_type()]
 	if shape_array[0] == remove_shape:
@@ -45,3 +54,8 @@ func determine_3d_shape(first_2d_shape: EffectLibrary.SHAPE_2D_TYPES, second_2d_
 	if shape != null:
 		return shape.shape
 	return -1
+
+
+func determine_2d_shapes(shape_3d: EffectLibrary.SHAPE_3D_TYPES) -> Array[EffectLibrary.SHAPE_2D_TYPES]:
+	var shape_3d_effect: Shape3DEffectData = composition_map[shape_3d]
+	return [shape_3d_effect.get_first_type().shape, shape_3d_effect.get_second_type().shape]

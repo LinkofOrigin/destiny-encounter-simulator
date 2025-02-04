@@ -1,7 +1,7 @@
 class_name TeamDissection
 extends Node3D
 
-signal dissection_complete
+signal statue_shapes_updated(left: EffectLibrary.SHAPE_3D_TYPES, middle: EffectLibrary.SHAPE_3D_TYPES, right: EffectLibrary.SHAPE_3D_TYPES)
 
 const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
 
@@ -46,13 +46,26 @@ func _ready() -> void:
 	right_statue.received_effects.connect(_on_right_statue_received_effects)
 
 
-func initalize_fresh() -> void:
+func initalize_fresh(use_random := false) -> void:
 	spawn_shape_set()
-	set_solo_room_shapes()
-	set_statues_with_random_shapes()
+	if use_random:
+		set_random_solo_room_shapes()
+		set_statues_with_random_shapes()
 
 
-func set_solo_room_shapes() -> void:
+func set_key_2d_shapes(left: EffectLibrary.SHAPE_2D_TYPES, middle: EffectLibrary.SHAPE_2D_TYPES, right: EffectLibrary.SHAPE_2D_TYPES) -> void:
+	_left_key_shape = left
+	_middle_key_shape = middle
+	_right_key_shape = right
+
+
+func set_statue_3d_shapes(left: EffectLibrary.SHAPE_3D_TYPES, middle: EffectLibrary.SHAPE_3D_TYPES, right: EffectLibrary.SHAPE_3D_TYPES) -> void:
+	left_statue.create_and_hold_3d_shape(left)
+	middle_statue.create_and_hold_3d_shape(middle)
+	right_statue.create_and_hold_3d_shape(right)
+
+
+func set_random_solo_room_shapes() -> void:
 	var shapes_list := [
 		EffectLibrary.SHAPE_2D_TYPES.CIRCLE,
 		EffectLibrary.SHAPE_2D_TYPES.SQUARE,
@@ -107,7 +120,7 @@ func check_statues_against_keys() -> void:
 	
 	if left_match and middle_match and right_match:
 		print("All statues match! Dissection complete!")
-		dissection_complete.emit()
+		#dissection_complete.emit()
 
 
 func spawn_shape_set() -> void:
@@ -164,7 +177,8 @@ func handle_primed_statue(statue: Statue3D) -> void:
 		_first_primed_statue = null
 		_second_primed_statue = null
 		# TODO: Resolve if 3d shapes match key(s)
-		check_statues_against_keys()
+		statue_shapes_updated.emit(left_statue.current_held_shape.effect.shape, middle_statue.current_held_shape.effect.shape, right_statue.current_held_shape.effect.shape)
+		#check_statues_against_keys()
 
 
 func _register_circle_consumed() -> void:
