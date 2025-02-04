@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var ghosts_button: Button = %GhostsButton
 @onready var misc_button: Button = %MiscButton
 @onready var dissection_back_button: Button = %DissectionBackButton
+@onready var restart_encounter_button: Button = %RestartEncounterButton
 
 @onready var dissection_options: DissectionOptions = %DissectionOptions
 @onready var dissection_details: RichTextLabel = %DissectionDetails
@@ -28,6 +29,7 @@ func _connect_signals() -> void:
 	key_building_button.pressed.connect(_set_current_tab.bind(2))
 	ghosts_button.pressed.connect(_set_current_tab.bind(2))
 	misc_button.pressed.connect(_set_current_tab.bind(2))
+	restart_encounter_button.pressed.connect(_on_restart_encounter_pressed)
 	
 	dissection_options.settings_updated.connect(_update_dissection_settings)
 	dissection_back_button.pressed.connect(return_to_home)
@@ -50,3 +52,7 @@ func _set_current_tab(tab_number: int, menu: Control = null) -> void:
 	main_menu_tab_container.current_tab = tab_number
 	if is_instance_valid(menu) and menu.has_method("focus_first_item"):
 		menu.focus_first_item()
+
+
+func _on_restart_encounter_pressed() -> void:
+	GlobalSignals.emit_encounter_resetting()

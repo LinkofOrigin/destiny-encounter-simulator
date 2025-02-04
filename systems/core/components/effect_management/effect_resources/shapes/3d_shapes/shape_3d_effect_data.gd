@@ -30,7 +30,7 @@ func contains(shape_2d: EffectLibrary.SHAPE_2D_TYPES) -> bool:
 
 func _map_type_to_resource(value: EffectLibrary.SHAPE_2D_TYPES) -> Shape2DEffectData:
 	if _shape_resource_mapping[value] != null:
-		var shape_data = _shape_resource_mapping[value]
+		var shape_data: Shape2DEffectData = _shape_resource_mapping[value]
 		return _shape_resource_mapping[value] as Shape2DEffectData
 	
 	printerr("Tried to get 2D effect type and received invalid type! Type: ", value)

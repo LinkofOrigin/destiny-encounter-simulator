@@ -28,12 +28,6 @@ environment = SubResource("Environment_hqi7a")
 transform = Transform3D(-0.747471, -0.613911, 0.253772, 0.455118, -0.194987, 0.86882, -0.483896, 0.764914, 0.425149, 0, 27.3434, 0)
 shadow_enabled = true
 
-[node name="VerityManager" parent="." node_paths=PackedStringArray("team_dissection", "left_solo_room", "middle_solo_room", "right_solo_room") instance=ExtResource("1_xkyh1")]
-team_dissection = NodePath("../TeamDissection")
-left_solo_room = NodePath("../LeftSoloKeyBuilding")
-middle_solo_room = NodePath("../CenterSoloKeyBuilding")
-right_solo_room = NodePath("../RightSoloKeyBuilding")
-
 [node name="PlayerSpawn" type="Marker3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50357, 35.8208)
@@ -51,3 +45,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -289.713)
 
 [node name="RightSoloKeyBuilding" parent="." instance=ExtResource("4_ccty0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.713, 0, 0)
+
+[node name="VerityManager" parent="." node_paths=PackedStringArray("team_dissection", "left_solo_room", "middle_solo_room", "right_solo_room") instance=ExtResource("1_xkyh1")]
+team_dissection = NodePath("../TeamDissection")
+left_solo_room = NodePath("../LeftSoloKeyBuilding")
+middle_solo_room = NodePath("../CenterSoloKeyBuilding")
+right_solo_room = NodePath("../RightSoloKeyBuilding")

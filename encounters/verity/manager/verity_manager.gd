@@ -42,9 +42,15 @@ func _on_encounter_starting() -> void:
 	_is_running = true
 
 
+func _on_encounter_resetting() -> void:
+	_is_running = true
+	_handle_phase_swap(key_building_phase)
+
+
 func _initial_setup() -> void:
 	# Signals
 	GlobalSignals.encounter_starting.connect(_on_encounter_starting)
+	GlobalSignals.encounter_resetting.connect(_on_encounter_resetting)
 	
 	# Freefroam
 	freeroam_phase.swap_to_phase.connect(_handle_phase_swap)

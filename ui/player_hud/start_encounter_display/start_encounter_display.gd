@@ -1,8 +1,6 @@
 class_name StartEncounterDisplay
 extends PanelContainer
 
-signal encounter_start
-
 @onready var progress_bar: ProgressBar = %ProgressBar
 
 
