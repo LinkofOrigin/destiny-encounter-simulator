@@ -85,7 +85,10 @@ func initialize_shapes() -> void:
 	else:
 		_right_key = random_key_shape
 		_left_key = keys_to_shuffle.pop_front()
-		_right_key = keys_to_shuffle.pop_front()
+		_middle_key = keys_to_shuffle.pop_front()
+	
+	if _left_key == _middle_key or _middle_key == _right_key or _left_key == _right_key:
+		assert(false, "matching keys!!!")
 	
 	team_dissection.set_key_2d_shapes(_left_key, _middle_key, _right_key)
 	GlobalSignals.emit_encounter_state_updated({
