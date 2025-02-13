@@ -1,6 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b3a1as76gh72g"]
-
-[ext_resource type="Script" path="res://encounters/verity/manager/phases/key_building/timer_requirement/timer_requirement.gd" id="1_6hykl"]
-
-[resource]
-script = ExtResource("1_6hykl")

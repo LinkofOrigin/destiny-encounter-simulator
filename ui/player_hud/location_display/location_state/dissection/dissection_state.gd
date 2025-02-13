@@ -29,26 +29,29 @@ extends LocationState
 @onready var middle_key_match_indicator: TextureRect = %MiddleKeyMatchIndicator
 @onready var right_key_match_indicator: TextureRect = %RightKeyMatchIndicator
 
+var dissecting_keys_mechanic: DissectingKeysMechanic:
+	set = set_dissecting_keys_mechanic
 
-func update_state(new_state: Variant) -> void:
-	print("dissection update state called!")
-	var state_dict: Dictionary = new_state
-	if state_dict.has("keys"):
-		var shape_keys: Array[EffectLibrary.SHAPE_2D_TYPES]
-		shape_keys.assign(state_dict.get("keys"))
-		set_2d_shapes(shape_keys[0], shape_keys[1], shape_keys[2])
-	
-	if state_dict.has("statue_shapes"):
-		var statue_shapes: Array[EffectLibrary.SHAPE_3D_TYPES]
-		statue_shapes.assign(state_dict.get("statue_shapes"))
-		set_3d_shapes(statue_shapes[0], statue_shapes[1], statue_shapes[2])
-	
-	if state_dict.has("key_matches"):
-		var key_matches: Array[bool]
-		key_matches.assign(state_dict.get("key_matches"))
-		set_left_key_matching(key_matches[0])
-		set_middle_key_matching(key_matches[1])
-		set_right_key_matching(key_matches[2])
+
+func set_dissecting_keys_mechanic(new_dissecting_keys_mechanic: DissectingKeysMechanic) -> void:
+	dissecting_keys_mechanic = new_dissecting_keys_mechanic
+	dissecting_keys_mechanic.key_shapes_set.connect(_on_key_shapes_set)
+	dissecting_keys_mechanic.shapes_matches_updated.connect(_on_shape_matches_updated)
+	dissecting_keys_mechanic.statue_shapes_updated.connect(_on_statue_shapes_updated)
+
+
+func _on_key_shapes_set(left: EffectLibrary.SHAPE_2D_TYPES, middle: EffectLibrary.SHAPE_2D_TYPES, right: EffectLibrary.SHAPE_2D_TYPES) -> void:
+	set_2d_shapes(left, middle, right)
+
+
+func _on_shape_matches_updated(left_match: bool, middle_match: bool, right_match: bool) -> void:
+	set_left_key_matching(left_match)
+	set_middle_key_matching(middle_match)
+	set_right_key_matching(right_match)
+
+
+func _on_statue_shapes_updated(left: EffectLibrary.SHAPE_3D_TYPES, middle: EffectLibrary.SHAPE_3D_TYPES, right: EffectLibrary.SHAPE_3D_TYPES) -> void:
+	set_3d_shapes(left, middle, right)
 
 
 func set_2d_shapes(left_shape: EffectLibrary.SHAPE_2D_TYPES, middle_shape: EffectLibrary.SHAPE_2D_TYPES, right_shape: EffectLibrary.SHAPE_2D_TYPES) -> void:

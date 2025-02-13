@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://skg175ottunh"]
+[gd_scene load_steps=7 format=3 uid="uid://skg175ottunh"]
 
 [ext_resource type="Script" path="res://encounters/verity/manager/verity_manager.gd" id="1_w60ek"]
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/freeroam/freeroam_phase.gd" id="2_ruuql"]
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/key_building/key_building_phase.gd" id="3_ic04f"]
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/ghost/ghost_phase.gd" id="4_00r25"]
+[ext_resource type="Script" path="res://encounters/verity/mechanics/dissecting_keys/dissecting_keys_mechanic.gd" id="4_j5nrr"]
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/wipe/wipe_phase.gd" id="5_1jkwi"]
 
 [node name="VerityManager" type="Node"]
@@ -14,9 +15,14 @@ unique_name_in_owner = true
 script = ExtResource("2_ruuql")
 key_building_phase = NodePath("../KeyBuildingPhase")
 
-[node name="KeyBuildingPhase" type="Node" parent="."]
+[node name="KeyBuildingPhase" type="Node" parent="." node_paths=PackedStringArray("ghost_phase", "wipe_phase")]
 unique_name_in_owner = true
 script = ExtResource("3_ic04f")
+ghost_phase = NodePath("../GhostPhase")
+wipe_phase = NodePath("../WipePhase")
+
+[node name="DissectingKeysMechanic" type="Node" parent="KeyBuildingPhase"]
+script = ExtResource("4_j5nrr")
 
 [node name="GhostPhase" type="Node" parent="."]
 unique_name_in_owner = true

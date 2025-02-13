@@ -17,7 +17,7 @@
 Label/constants/line_spacing = -4
 Label/font_sizes/font_size = 16
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="DissectionState" type="MarginContainer"]
 custom_minimum_size = Vector2(365, 365)
 offset_right = 310.0
 offset_bottom = 363.0

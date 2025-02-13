@@ -12,7 +12,6 @@ func _ready() -> void:
 	GlobalSignals.effect_acquired.connect(_on_effect_acquired)
 	GlobalSignals.encounter_start_progress.connect(_on_encounter_start_progress)
 	GlobalSignals.encounter_starting.connect(_on_encounter_starting)
-	GlobalSignals.encounter_state_updated.connect(_on_encounter_state_updated)
 
 
 func load_location_state_display(state_display: LocationState) -> void:
@@ -46,7 +45,3 @@ func _on_encounter_start_progress(percent: float) -> void:
 
 func _on_encounter_starting() -> void:
 	player_hud.hide_encounter_start_display()
-
-
-func _on_encounter_state_updated(new_state: Variant) -> void:
-	player_hud.update_location_state(new_state)
