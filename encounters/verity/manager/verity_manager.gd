@@ -12,13 +12,6 @@ extends EncounterManager
 @onready var wipe_phase: WipePhase = %WipePhase
 
 var _current_phase: EncounterPhase
-# Register modifiers
-# Maintain list of modifiers
-# - Each modifier may be a standalone Node/Resource that can enforce its own rules
-# - Would likely be both a storage for mechanics details, state, and what options are currently set
-
-# Needs mechanics, the core functions that the encounter is built upon
-# - Mechanics need to be enabled or disabled, as well as started, stopped, or reset
 
 
 func _ready() -> void:
@@ -44,7 +37,7 @@ func _on_encounter_starting() -> void:
 
 func _on_encounter_resetting() -> void:
 	_is_running = true
-	_handle_phase_swap(key_building_phase)
+	_handle_phase_swap(freeroam_phase)
 
 
 func _initial_setup() -> void:
@@ -67,25 +60,3 @@ func _initial_setup() -> void:
 	
 	# Wipe
 	wipe_phase.swap_to_phase.connect(_handle_phase_swap)
-
-
-# FIXME: THIS MAY GET REMOVED / MOVED TO PHASES ----------------------------
-
-## Loads up the physical play space and lets the player explore freely.
-## This is the state the player is in while setting up their modifiers and such.
-func load_freeroam() -> void:
-	pass
-
-
-## This will take any registered mechanics and modifiers, initialize settings,
-## and start the encounter. Should also reset all encounter states and "spawn" the player
-## at a given location if needed
-func initialize() -> void:
-	pass
-
-
-## This will actually start the encounter by starting timers, kicking off mechanics, etc.
-func start() -> void:
-	pass
-
-# FIXME: THIS MAY GET REMOVED / MOVED TO PHASES ----------------------------

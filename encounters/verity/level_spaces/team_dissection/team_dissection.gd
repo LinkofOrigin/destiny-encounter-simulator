@@ -92,7 +92,7 @@ func set_statues_with_random_shapes() -> void:
 	var first_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[0], shapes_list[1])
 	var second_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[2], shapes_list[3])
 	var third_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[4], shapes_list[5])
-	print("Shapes for Dissection: %s | %s | %s" % [first_3d_shape, second_3d_shape, third_3d_shape])
+	#print("Shapes for Dissection: %s | %s | %s" % [first_3d_shape, second_3d_shape, third_3d_shape])
 	
 	if first_3d_shape >= 0 and second_3d_shape >= 0 and third_3d_shape >= 0:
 		left_statue.create_and_hold_3d_shape(first_3d_shape)

@@ -48,3 +48,11 @@ func inject_location_state(display: LocationState) -> void:
 func update_location_state(new_state: Variant) -> void:
 	if is_instance_valid(location_display.current_state):
 		location_display.current_state.update_state(new_state)
+
+
+func show_location_state() -> void:
+	location_display.show()
+
+
+func hide_location_state() -> void:
+	location_display.hide()

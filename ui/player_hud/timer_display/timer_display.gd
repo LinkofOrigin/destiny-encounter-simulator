@@ -5,7 +5,8 @@ signal time_expired
 
 const LOW_TIME_THRESHOLD = 10
 
-@onready var timer: Timer = %Timer
+@onready var timer: Timer = %Timer:
+	set = set_timer
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var text_container: HBoxContainer = %TextContainer
 @onready var time_label: Label = %TimeLabel
@@ -16,7 +17,8 @@ var _text_is_flashing := false
 
 func _ready() -> void:
 	hide()
-	timer.timeout.connect(_on_timer_timeout)
+	if not timer.timeout.is_connected(_on_timer_timeout):
+		timer.timeout.connect(_on_timer_timeout)
 
 
 func _process(delta: float) -> void:
@@ -51,6 +53,15 @@ func stop_and_hide() -> void:
 	hide()
 
 
+func set_timer(new_timer: Timer) -> void:
+	timer = new_timer
+	timer.timeout.connect(_on_timer_timeout)
+
+
+func _on_timer_timeout() -> void:
+	# TODO: Add visual effect to the time text?
+	pass
+
 func _enable_low_time_indicator() -> void:
 	animation_player.play("flash_text")
 
@@ -59,10 +70,6 @@ func _disable_low_time_indicator() -> void:
 	animation_player.pause()
 	animation_player.seek(0)
 	text_container.modulate = Color(1,1,1,1)
-
-
-func _on_timer_timeout() -> void:
-	time_expired.emit()
 
 
 func _create_text_from_time(time: float) -> String:

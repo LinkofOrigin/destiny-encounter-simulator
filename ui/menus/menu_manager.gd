@@ -23,6 +23,11 @@ func unpause_and_hide_menu() -> void:
 	paused = false
 
 
+func register_menu_option(menu: MechanicOptions) -> void:
+	# TODO: See player menu to drive this part
+	player_menu.add_menu_option(menu)
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Menu"):
 		if paused:

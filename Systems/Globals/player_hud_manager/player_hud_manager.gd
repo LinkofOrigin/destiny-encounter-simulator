@@ -18,6 +18,27 @@ func load_location_state_display(state_display: LocationState) -> void:
 	player_hud.inject_location_state(state_display)
 
 
+func show_timer() -> void:
+	player_hud.timer_display.visible = true
+
+
+func hide_timer() -> void:
+	player_hud.timer_display.visible = false
+
+
+func set_timer_for_display(display_timer: Timer) -> void:
+	print("setting timer display")
+	player_hud.timer_display.set_timer(display_timer)
+
+
+func show_hint_display() -> void:
+	player_hud.show_location_state()
+
+
+func hide_hint_display() -> void:
+	player_hud.hide_location_state()
+
+
 func _on_player_can_interact(interactable: InteractableComponent) -> void:
 	player_hud.display_interact_prompt_for_interactable(interactable)
 

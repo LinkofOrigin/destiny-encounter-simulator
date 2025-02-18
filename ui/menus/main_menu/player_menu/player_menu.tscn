@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://w3uh624pkya7"]
+[gd_scene load_steps=4 format=3 uid="uid://w3uh624pkya7"]
 
-[ext_resource type="Script" path="res://ui/menus/main_menu/player_menu.gd" id="2_d6l5a"]
-[ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu_theme.tres" id="2_exytw"]
+[ext_resource type="Script" path="res://ui/menus/main_menu/player_menu/player_menu.gd" id="2_d6l5a"]
+[ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu/player_menu_theme.tres" id="2_exytw"]
 [ext_resource type="Theme" uid="uid://ciao1yg8aebw5" path="res://ui/menus/main_menu/coming_soon_theme.tres" id="3_88680"]
-[ext_resource type="PackedScene" uid="uid://devhu5ca2k7ou" path="res://ui/menus/main_menu/dissection_options/dissection_options.tscn" id="3_rl7ff"]
 
 [node name="PlayerMenu" type="CanvasLayer"]
 layer = 2
@@ -19,18 +18,21 @@ theme = ExtResource("2_exytw")
 color = Color(0, 0, 0, 0.364)
 
 [node name="SetupMenus" type="Control" parent="OpaqueBackground"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CurrentlyEnabledContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = 202.0
+offset_top = -265.0
 offset_right = 572.0
-offset_bottom = 978.0
+offset_bottom = 511.0
 grow_vertical = 2
 theme_type_variation = &"LeftMenu"
 
@@ -131,27 +133,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 762.0
-offset_top = 864.0
-offset_right = 1119.0
-offset_bottom = 927.0
+offset_left = -178.0
+offset_top = -115.0
+offset_right = 179.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
-focus_neighbor_right = NodePath("../RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home/DissectionButton")
 theme_override_font_sizes/font_size = 40
 text = "Restart Encounter"
 
 [node name="RightMenuContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 48.0
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 48.0
+anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -628.0
-offset_top = 14.0
-offset_right = -0.00012207
-offset_bottom = 1037.0
+offset_top = -511.5
+offset_bottom = 511.5
 grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_left = NodePath("../RestartEncounterButton")
@@ -166,50 +166,42 @@ theme_type_variation = &"HeaderLarge"
 text = "Menu"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
+[node name="DividerContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer"]
+[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/DividerContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
+[node name="OptionsContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2"]
+[node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
 tabs_visible = false
 
-[node name="Home" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
+[node name="HomeMenu" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 0
 
-[node name="DissectionButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="Placeholders" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../../../RestartEncounterButton")
-focus_neighbor_bottom = NodePath("../KeyBuildingButton")
-theme_type_variation = &"MenuSelectButton"
-action_mode = 0
-keep_pressed_outside = true
-text = "Dissection >"
-alignment = 0
 
-[node name="KeyBuildingButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="KeyBuildingButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/Placeholders"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../../../RestartEncounterButton")
-focus_neighbor_top = NodePath("../DissectionButton")
+focus_neighbor_left = NodePath("../../../../../../../RestartEncounterButton")
 focus_neighbor_bottom = NodePath("../GhostsButton")
 theme_type_variation = &"MenuSelectButton"
 disabled = true
@@ -217,11 +209,11 @@ action_mode = 0
 text = "Key Building (TBD) >"
 alignment = 0
 
-[node name="GhostsButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="GhostsButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/Placeholders"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../../../RestartEncounterButton")
+focus_neighbor_left = NodePath("../../../../../../../RestartEncounterButton")
 focus_neighbor_top = NodePath("../KeyBuildingButton")
 focus_neighbor_bottom = NodePath("../MiscButton")
 theme_type_variation = &"MenuSelectButton"
@@ -230,30 +222,14 @@ action_mode = 0
 text = "Ghosts (TBD) >"
 alignment = 0
 
-[node name="MiscButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/Home"]
+[node name="MiscButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/Placeholders"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../../../../RestartEncounterButton")
+focus_neighbor_left = NodePath("../../../../../../../RestartEncounterButton")
 focus_neighbor_top = NodePath("../GhostsButton")
 theme_type_variation = &"MenuSelectButton"
 disabled = true
 action_mode = 0
 text = "Misc (TBD) >"
 alignment = 0
-
-[node name="DissectionOptionsContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="DissectionBackButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 22
-text = "< Back"
-
-[node name="DissectionOptions" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/MarginContainer2/MainMenuTabContainer/DissectionOptionsContainer" instance=ExtResource("3_rl7ff")]
-unique_name_in_owner = true
-layout_mode = 2

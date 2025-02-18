@@ -6,8 +6,6 @@ signal incomplete	## The mechanic is not in a "done" state, but could still be c
 signal successful	## The mechanic is fully done and has nothing more to evaluate
 signal failed		## The mechanic is fully failed and a fail state should be triggered (eg. a "wipe")
 
-var modifiers: Array
-
 var enabled: bool = true
 var _complete: bool = false:
 	get = is_complete
@@ -41,6 +39,10 @@ func is_complete() -> bool:
 
 func is_done() -> bool:
 	return _done
+
+
+func get_options_menu() -> Control:
+	return null
 
 
 func _emit_complete() -> void:

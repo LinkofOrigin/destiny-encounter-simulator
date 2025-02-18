@@ -27,11 +27,6 @@ var _right_key: EffectLibrary.SHAPE_2D_TYPES
 var _dissection_matches_keys: bool = false
 
 
-func _ready() -> void:
-	dissecting_keys_mechanic.complete.connect(_on_dissecting_complete)
-	dissecting_keys_mechanic.incomplete.connect(_on_dissecting_incomplete)
-
-
 ## Entered by a player interacting with a statue in the dissection room while in Freeroam
 ## (TODO: manually via menu for now... will eventually change to match actual encounter, menu shortcut is nice tho)
 func _enter_behavior() -> void:
@@ -58,7 +53,7 @@ func _on_dissecting_incomplete() -> void:
 
 # TODO: Trigger when all solo players successfully escape
 func swap_to_ghost_phase() -> void:
-	pass
+	_emit_swap_to_phase(wipe_phase)
 
 
 # TODO: Trigger when no solo rooms have players or too few revives, etc.
@@ -69,3 +64,9 @@ func swap_to_wipe_phase() -> void:
 func set_team_dissection(dissection: TeamDissection) -> void:
 	team_dissection = dissection
 	dissecting_keys_mechanic.set_team_dissection(team_dissection)
+
+
+func _connect_signals() -> void:
+	dissecting_keys_mechanic.complete.connect(_on_dissecting_complete)
+	dissecting_keys_mechanic.incomplete.connect(_on_dissecting_incomplete)
+	dissecting_keys_mechanic.failed.connect(swap_to_wipe_phase)

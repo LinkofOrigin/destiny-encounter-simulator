@@ -3,9 +3,12 @@ extends Node
 
 signal swap_to_phase(phase: EncounterPhase)
 
+var mechanics: Array[EncounterMechanic]
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
+	_connect_signals()
 
 
 func enter() -> void:
@@ -18,8 +21,9 @@ func exit() -> void:
 	_exit_behavior()
 
 
-func _emit_swap_to_phase(phase: EncounterPhase) -> void:
-	swap_to_phase.emit(phase)
+## To be overriden by child classes
+func process(_delta: float) -> void:
+	pass
 
 
 ## To be overriden by child classes
@@ -33,5 +37,9 @@ func _exit_behavior() -> void:
 
 
 ## To be overriden by child classes
-func process(_delta: float) -> void:
+func _connect_signals() -> void:
 	pass
+
+
+func _emit_swap_to_phase(phase: EncounterPhase) -> void:
+	swap_to_phase.emit(phase)

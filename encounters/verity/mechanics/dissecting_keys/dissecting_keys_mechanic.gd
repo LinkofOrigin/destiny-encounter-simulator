@@ -5,6 +5,7 @@ signal key_shapes_set(left: EffectLibrary.SHAPE_2D_TYPES, middle: EffectLibrary.
 signal shapes_matches_updated(left_match: bool, middle_match: bool, right_match: bool)
 signal statue_shapes_updated(left: EffectLibrary.SHAPE_3D_TYPES, middle: EffectLibrary.SHAPE_3D_TYPES, right: EffectLibrary.SHAPE_3D_TYPES)
 
+const DISSECTION_OPTIONS = preload("res://ui/menus/main_menu/dissection_options/dissection_options.tscn")
 const DISSECTION_STATE = preload("res://ui/player_hud/location_display/location_state/dissection/dissection_state.tscn")
 const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
 
@@ -17,6 +18,11 @@ var team_dissection: TeamDissection:
 	set = set_team_dissection
 
 
+func _ready() -> void:
+	timer.timeout.connect(_on_timer_timeout)
+	register_menu_option()
+
+
 func initialize_and_start() -> void:
 	assert(is_instance_valid(team_dissection), "Dissecting keys mechanic didn't get a valid dissection instance!")
 
@@ -27,6 +33,24 @@ func initialize_and_start() -> void:
 	PlayerHudManager.load_location_state_display(fresh_dissection_display)
 	
 	initialize_shapes()
+	
+	if timer_enabled():
+		PlayerHudManager.set_timer_for_display(timer)
+		PlayerHudManager.show_timer()
+		timer.start()
+	else:
+		PlayerHudManager.hide_timer()
+
+
+func register_menu_option() -> void:
+	# TODO: Instantiate and connect signals? Change return signature
+	var dissection_options: DissectionOptions = DISSECTION_OPTIONS.instantiate()
+	dissection_options.timer_value_changed.connect(_on_timer_value_changed)
+	MenuManager.register_menu_option(dissection_options)
+
+
+func set_timer_duration(duration: float) -> void:
+	timer.wait_time = duration
 
 
 func initialize_shapes() -> void:
@@ -116,8 +140,12 @@ func handle_dissection_statue_change(left: EffectLibrary.SHAPE_3D_TYPES, middle:
 		_emit_incomplete()
 
 
+func timer_enabled() -> bool:
+	return timer.wait_time > 0
+
 # TODO: Trigger when the phase timer expires, should trigger wipe phase
 func _on_timer_timeout() -> void:
+	print("Dissection timer expired!")
 	_emit_failed()
 
 
@@ -139,5 +167,9 @@ func _create_random_statue_shapes() -> Array[EffectLibrary.SHAPE_3D_TYPES]:
 	var first_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[0], shapes_list[1])
 	var second_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[2], shapes_list[3])
 	var third_3d_shape := SHAPE_RESOLVER.determine_3d_shape(shapes_list[4], shapes_list[5])
-	print("Shapes for Dissection: %s | %s | %s" % [first_3d_shape, second_3d_shape, third_3d_shape])
+	#print("Shapes for Dissection: %s | %s | %s" % [first_3d_shape, second_3d_shape, third_3d_shape])
 	return [first_3d_shape, second_3d_shape, third_3d_shape]
+
+
+func _on_timer_value_changed(new_time: float) -> void:
+	set_timer_duration(new_time)

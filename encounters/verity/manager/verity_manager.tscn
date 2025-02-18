@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/freeroam/freeroam_phase.gd" id="2_ruuql"]
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/key_building/key_building_phase.gd" id="3_ic04f"]
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/ghost/ghost_phase.gd" id="4_00r25"]
-[ext_resource type="Script" path="res://encounters/verity/mechanics/dissecting_keys/dissecting_keys_mechanic.gd" id="4_j5nrr"]
+[ext_resource type="PackedScene" uid="uid://cwkgrrxfyg5q6" path="res://encounters/verity/mechanics/dissecting_keys/dissecting_keys_mechanic.tscn" id="4_jrgv8"]
 [ext_resource type="Script" path="res://encounters/verity/manager/phases/wipe/wipe_phase.gd" id="5_1jkwi"]
 
 [node name="VerityManager" type="Node"]
@@ -21,8 +21,7 @@ script = ExtResource("3_ic04f")
 ghost_phase = NodePath("../GhostPhase")
 wipe_phase = NodePath("../WipePhase")
 
-[node name="DissectingKeysMechanic" type="Node" parent="KeyBuildingPhase"]
-script = ExtResource("4_j5nrr")
+[node name="DissectingKeysMechanic" parent="KeyBuildingPhase" instance=ExtResource("4_jrgv8")]
 
 [node name="GhostPhase" type="Node" parent="."]
 unique_name_in_owner = true
