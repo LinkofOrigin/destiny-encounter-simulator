@@ -17,11 +17,13 @@ const MIN_CAMERA_DOWN: float = PI / -2.0
 var _interaction_allowed: bool = true
 var _current_interaction_time: float = 0.0
 var _input_lock: bool = false
+var _show_hints_on_input: bool = false
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GlobalSignals.player_allowed_interaction.connect(_on_player_allowed_interaction_changed)
+	GlobalSignals.player_hint_display_on_input.connect(_on_player_hint_display_on_input)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func get_movement_vector() -> Vector2:
@@ -99,11 +101,26 @@ func _get_raw_movement_vector() -> Vector2:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if MenuManager.is_paused():
+		return
+	
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		# TODO: Should this be here? Probly not? Hack? (commented for now...)
+		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		pass
 	elif event is InputEventMouseButton and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if _show_hints_on_input:
+		if event.is_action_pressed("SecondaryFire"):
+			PlayerHudManager.show_hint_display()
+		elif event.is_action_released("SecondaryFire"):
+			PlayerHudManager.hide_hint_display()
 
 
 func _on_player_allowed_interaction_changed(allowed: bool) -> void:
 	_interaction_allowed = allowed
+
+
+func _on_player_hint_display_on_input(display: bool) -> void:
+	_show_hints_on_input = display

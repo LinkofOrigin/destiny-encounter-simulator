@@ -62,7 +62,6 @@ func _on_input_handler_interact_complete() -> void:
 
 func _on_can_interact_with(interactable: InteractableComponent) -> void:
 	#print("player can interact!")
-	#var passes_condition := interactable.passes_interact_condition(interaction_state_manager)
 	if interactable.check_interact_condition(effect_manager):
 		_can_interact = true
 		_active_interactable = interactable

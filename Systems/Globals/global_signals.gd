@@ -7,6 +7,7 @@ signal player_can_interact(interactable: InteractableComponent)
 signal player_can_not_interact()
 signal player_interact_progress_made(current_progress: float)
 signal player_interaction_complete(interactable: InteractableComponent)
+signal player_hint_display_on_input(display: bool)
 
 
 func emit_player_interaction_allowed(interact_allowed: bool) -> void:
@@ -27,6 +28,10 @@ func emit_player_interact_progress_made(current_progress: float) -> void:
 
 func emit_player_interaction_complete(interactable: InteractableComponent) -> void:
 	player_interaction_complete.emit(interactable)
+
+
+func emit_player_hint_display_on_input(display: bool) -> void:
+	player_hint_display_on_input.emit(display)
 
 
 ## Buff Effect signals
