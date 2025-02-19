@@ -11,6 +11,7 @@ signal dissection_complete
 const DISSECTION_STATE = preload("res://ui/player_hud/location_display/location_state/dissection/dissection_state.tscn")
 const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
 
+@export var freeroam_phase: FreeroamPhase
 @export var ghost_phase: GhostPhase
 @export var wipe_phase: WipePhase
 
@@ -40,7 +41,9 @@ func _enter_behavior() -> void:
 
 func _exit_behavior() -> void:
 	# TODO: Remove timer? At least stop and hide
-	pass
+	PlayerHudManager.hide_hint_display()
+	dissecting_keys_mechanic.timer.stop()
+	PlayerHudManager.hide_timer()
 
 
 func _on_dissecting_complete() -> void:
@@ -58,7 +61,11 @@ func swap_to_ghost_phase() -> void:
 
 # TODO: Trigger when no solo rooms have players or too few revives, etc.
 func swap_to_wipe_phase() -> void:
-	pass
+	_emit_swap_to_phase(wipe_phase)
+
+
+func swap_to_freeroam_phase() -> void:
+	_emit_swap_to_phase(freeroam_phase)
 
 
 func set_team_dissection(dissection: TeamDissection) -> void:
@@ -67,6 +74,7 @@ func set_team_dissection(dissection: TeamDissection) -> void:
 
 
 func _connect_signals() -> void:
+	GlobalSignals.encounter_resetting.connect(swap_to_freeroam_phase)
 	dissecting_keys_mechanic.complete.connect(_on_dissecting_complete)
 	dissecting_keys_mechanic.incomplete.connect(_on_dissecting_incomplete)
 	dissecting_keys_mechanic.failed.connect(swap_to_wipe_phase)

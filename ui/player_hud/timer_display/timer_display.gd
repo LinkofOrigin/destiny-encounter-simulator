@@ -54,8 +54,9 @@ func stop_and_hide() -> void:
 
 
 func set_timer(new_timer: Timer) -> void:
-	timer = new_timer
-	timer.timeout.connect(_on_timer_timeout)
+	if timer != new_timer:
+		timer = new_timer
+		timer.timeout.connect(_on_timer_timeout)
 
 
 func _on_timer_timeout() -> void:

@@ -12,6 +12,7 @@ func _ready() -> void:
 	GlobalSignals.effect_acquired.connect(_on_effect_acquired)
 	GlobalSignals.encounter_start_progress.connect(_on_encounter_start_progress)
 	GlobalSignals.encounter_starting.connect(_on_encounter_starting)
+	GlobalSignals.encounter_resetting.connect(_on_encounter_resetting)
 
 
 func load_location_state_display(state_display: LocationState) -> void:
@@ -19,15 +20,14 @@ func load_location_state_display(state_display: LocationState) -> void:
 
 
 func show_timer() -> void:
-	player_hud.timer_display.visible = true
+	player_hud.timer_display.show()
 
 
 func hide_timer() -> void:
-	player_hud.timer_display.visible = false
+	player_hud.timer_display.hide()
 
 
 func set_timer_for_display(display_timer: Timer) -> void:
-	print("setting timer display")
 	player_hud.timer_display.set_timer(display_timer)
 
 
@@ -35,8 +35,19 @@ func show_hint_display() -> void:
 	player_hud.show_location_state()
 
 
+func set_hint_display_for_input_only(show_on_input_only: bool) -> void:
+	player_hud.set_location_state_for_input_display(show_on_input_only)
+
 func hide_hint_display() -> void:
 	player_hud.hide_location_state()
+
+
+func fade_screen_out(callback: Callable = Callable()) -> void:
+	player_hud.fade_screen_to_black(callback)
+
+
+func fade_screen_in(callback: Callable = Callable()) -> void:
+	player_hud.fade_screen_to_normal(callback)
 
 
 func _on_player_can_interact(interactable: InteractableComponent) -> void:
@@ -66,3 +77,9 @@ func _on_encounter_start_progress(percent: float) -> void:
 
 func _on_encounter_starting() -> void:
 	player_hud.hide_encounter_start_display()
+
+
+func _on_encounter_resetting() -> void:
+	player_hud.show_encounter_start_display()
+	player_hud.timer_display.hide()
+	player_hud.hide_location_state()

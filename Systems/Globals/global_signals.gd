@@ -2,10 +2,15 @@
 extends Node
 
 ## Player signals
+signal player_allowed_interaction(interact_allowed: bool)
 signal player_can_interact(interactable: InteractableComponent)
 signal player_can_not_interact()
 signal player_interact_progress_made(current_progress: float)
 signal player_interaction_complete(interactable: InteractableComponent)
+
+
+func emit_player_interaction_allowed(interact_allowed: bool) -> void:
+	player_allowed_interaction.emit(interact_allowed)
 
 
 func emit_player_can_interact(interactable: InteractableComponent) -> void:

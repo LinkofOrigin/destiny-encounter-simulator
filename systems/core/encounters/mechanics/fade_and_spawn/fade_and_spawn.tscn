@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbmbcwpi4k8bk"]
+
+[ext_resource type="Script" path="res://systems/core/encounters/mechanics/fade_and_spawn/fade_and_spawn.gd" id="1_yflhv"]
+
+[node name="FadeAndSpawn" type="Node"]
+script = ExtResource("1_yflhv")

@@ -10,6 +10,7 @@ const DISSECTION_STATE = preload("res://ui/player_hud/location_display/location_
 const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
 
 @onready var timer: Timer = %Timer
+@onready var timer_duration: float = timer.wait_time
 var left_key: EffectLibrary.SHAPE_2D_TYPES
 var middle_key: EffectLibrary.SHAPE_2D_TYPES
 var right_key: EffectLibrary.SHAPE_2D_TYPES
@@ -17,8 +18,8 @@ var right_key: EffectLibrary.SHAPE_2D_TYPES
 var team_dissection: TeamDissection:
 	set = set_team_dissection
 
-
 func _ready() -> void:
+	GlobalSignals.encounter_resetting.connect(_on_encounter_resetting)
 	timer.timeout.connect(_on_timer_timeout)
 	register_menu_option()
 
@@ -37,7 +38,7 @@ func initialize_and_start() -> void:
 	if timer_enabled():
 		PlayerHudManager.set_timer_for_display(timer)
 		PlayerHudManager.show_timer()
-		timer.start()
+		timer.start(timer_duration)
 	else:
 		PlayerHudManager.hide_timer()
 
@@ -50,7 +51,7 @@ func register_menu_option() -> void:
 
 
 func set_timer_duration(duration: float) -> void:
-	timer.wait_time = duration
+	timer_duration = duration
 
 
 func initialize_shapes() -> void:
@@ -98,7 +99,8 @@ func initialize_shapes() -> void:
 	key_shapes_set.emit(left_key, middle_key, right_key)
 
 
-# TODO: Trigger at start. Pick random players and send to solo room
+# TODO: Trigger at start. Pick random players and send to solo room?
+# - May leave to another mechanic node, eg. FadeAndSpawn or another type
 func teleport_players_to_solo_rooms() -> void:
 	pass
 
@@ -143,6 +145,7 @@ func handle_dissection_statue_change(left: EffectLibrary.SHAPE_3D_TYPES, middle:
 func timer_enabled() -> bool:
 	return timer.wait_time > 0
 
+
 # TODO: Trigger when the phase timer expires, should trigger wipe phase
 func _on_timer_timeout() -> void:
 	print("Dissection timer expired!")
@@ -173,3 +176,7 @@ func _create_random_statue_shapes() -> Array[EffectLibrary.SHAPE_3D_TYPES]:
 
 func _on_timer_value_changed(new_time: float) -> void:
 	set_timer_duration(new_time)
+
+
+func _on_encounter_resetting() -> void:
+	timer.stop()

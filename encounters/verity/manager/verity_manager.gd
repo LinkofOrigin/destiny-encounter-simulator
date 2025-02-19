@@ -36,8 +36,8 @@ func _on_encounter_starting() -> void:
 
 
 func _on_encounter_resetting() -> void:
-	_is_running = true
-	_handle_phase_swap(freeroam_phase)
+	_is_running = true # TODO: ??
+	#_handle_phase_swap(freeroam_phase)
 
 
 func _initial_setup() -> void:
@@ -60,3 +60,7 @@ func _initial_setup() -> void:
 	
 	# Wipe
 	wipe_phase.swap_to_phase.connect(_handle_phase_swap)
+	var players: Array[PlayerCharacter]
+	players.assign(self.get_tree().get_nodes_in_group("Player"))
+	wipe_phase.set_players(players)
+	wipe_phase.set_player_spawns(team_dissection.get_player_spawns())

@@ -14,12 +14,14 @@ const MIN_CAMERA_DOWN: float = PI / -2.0
 @export_range(1, 100, 1) var camera_speed: float = 30
 @export var inverted_camera_y: bool = true
 
+var _interaction_allowed: bool = true
 var _current_interaction_time: float = 0.0
 var _input_lock: bool = false
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	GlobalSignals.player_allowed_interaction.connect(_on_player_allowed_interaction_changed)
 
 
 func get_movement_vector() -> Vector2:
@@ -51,7 +53,7 @@ func get_camera_vector() -> Vector2:
 
 
 func handle_interaction(delta: float, time_to_complete: float) -> void:
-	if MenuManager.is_paused():
+	if MenuManager.is_paused() or not _interaction_allowed:
 		_current_interaction_time = 0
 		interaction_progress.emit(0)
 		release_interact_lock()
@@ -101,3 +103,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventMouseButton and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _on_player_allowed_interaction_changed(allowed: bool) -> void:
+	_interaction_allowed = allowed

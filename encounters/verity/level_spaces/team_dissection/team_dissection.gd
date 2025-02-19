@@ -53,6 +53,17 @@ func initalize_fresh(use_random := false) -> void:
 		set_statues_with_random_shapes()
 
 
+func get_player_spawns() -> Array[Marker3D]:
+	return [
+		player_one_spawn,
+		player_two_spawn,
+		player_three_spawn,
+		player_four_spawn,
+		player_five_spawn,
+		player_six_spawn,
+	]
+
+
 func set_key_2d_shapes(left: EffectLibrary.SHAPE_2D_TYPES, middle: EffectLibrary.SHAPE_2D_TYPES, right: EffectLibrary.SHAPE_2D_TYPES) -> void:
 	_left_key_shape = left
 	_middle_key_shape = middle

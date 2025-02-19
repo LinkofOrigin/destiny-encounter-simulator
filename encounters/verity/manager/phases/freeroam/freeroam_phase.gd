@@ -12,7 +12,6 @@ func _enter_behavior() -> void:
 	# TODO: Enable teleporting between rooms?
 	print("entering freeroam")
 	curr_time_pass = 0
-	#GlobalSignals.emit_encounter_resetting()
 
 
 func _exit_behavior() -> void:
@@ -22,10 +21,15 @@ func _exit_behavior() -> void:
 
 
 func process(delta: float) -> void:
+	if MenuManager.is_paused():
+		GlobalSignals.emit_encounter_start_progress(0)
+		return
+	
 	if Input.is_action_pressed("AltMenu"):
 		curr_time_pass += delta
 	else:
 		curr_time_pass = 0
+	# TODO: Make this a mechanic node?
 	GlobalSignals.emit_encounter_start_progress(curr_time_pass / TIME_TO_START_ENCOUNTER)
 	
 	if curr_time_pass >= TIME_TO_START_ENCOUNTER:
