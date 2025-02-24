@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://brfepp3wqacrx"]
+
+[ext_resource type="Script" path="res://ui/menus/main_menu/mechanic_options/mechanic_inputs/mechanic_spin_box/timer_spin_box/timer_spin_box.gd" id="1_5ch53"]
+
+[node name="TimerSpinBox" type="SpinBox"]
+focus_mode = 2
+max_value = 300.0
+value = 180.0
+rounded = true
+update_on_text_changed = true
+suffix = "sec"
+custom_arrow_step = 5.0
+select_all_on_focus = true
+script = ExtResource("1_5ch53")

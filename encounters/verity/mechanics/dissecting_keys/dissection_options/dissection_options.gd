@@ -11,7 +11,7 @@ const MENU_BUTTON_TEXT := "Dissection"
 @onready var hint_display_options: OptionButton = %HintDisplayOptions
 
 
-func _ready() -> void:
+func _ready_behavior() -> void:
 	timer_spin_box.value_changed.connect(_on_timer_value_changed)
 	hint_display_options.item_selected.connect(_on_hint_display_option_selected)
 
@@ -20,18 +20,7 @@ func get_menu_button_text() -> String:
 	return MENU_BUTTON_TEXT
 
 
-func focus_first_item() -> void:
-	timer_spin_box.grab_focus.call_deferred()
-
-
-func get_values() -> Dictionary:
-	return {
-		"Timer": timer_spin_box.value,
-	}
-
-
 func _on_timer_value_changed(value: float) -> void:
-	settings_updated.emit(get_values())
 	timer_value_changed.emit(value)
 
 
@@ -55,4 +44,3 @@ func _on_hint_display_option_selected(item_index: int) -> void:
 	elif item_index == 4:
 		GlobalSignals.emit_player_hint_display_on_input(false)
 		PlayerHudManager.show_hints_at_start(false)
-		

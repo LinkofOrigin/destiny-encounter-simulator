@@ -12,10 +12,19 @@ extends CanvasLayer
 
 @onready var restart_encounter_button: Button = %RestartEncounterButton
 
+var _enabled: bool = false
 
 func _ready() -> void:
 	_connect_signals()
 	return_to_home()
+	hide_menu()
+
+
+func show_menu() -> void:
+	show()
+
+
+func hide_menu() -> void:
 	hide()
 
 
@@ -34,6 +43,7 @@ func add_menu_option(menu: MechanicOptions) -> void:
 	menu_button.custom_minimum_size = Vector2(0, 100)
 	var tab_index := main_menu_tab_container.get_child_count()
 	menu_button.pressed.connect(_set_current_tab.bind(tab_index, menu))
+	menu.navigated_back.connect(return_to_home)
 	home_menu.add_child(menu_button)
 	home_menu.move_child(%Placeholders, tab_index) # FIXME: Hack for placeholders
 	
@@ -55,6 +65,7 @@ func _connect_signals() -> void:
 	restart_encounter_button.pressed.connect(_on_restart_encounter_pressed)
 
 
+# TODO: Need to convert this to something later
 func _update_dissection_settings(settings: Dictionary) -> void:
 	print("updating settings")
 	var dissection_setting_text := ""

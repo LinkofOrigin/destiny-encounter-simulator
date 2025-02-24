@@ -5,7 +5,7 @@ signal key_shapes_set(left: EffectLibrary.SHAPE_2D_TYPES, middle: EffectLibrary.
 signal shapes_matches_updated(left_match: bool, middle_match: bool, right_match: bool)
 signal statue_shapes_updated(left: EffectLibrary.SHAPE_3D_TYPES, middle: EffectLibrary.SHAPE_3D_TYPES, right: EffectLibrary.SHAPE_3D_TYPES)
 
-const DISSECTION_OPTIONS = preload("res://ui/menus/main_menu/dissection_options/dissection_options.tscn")
+const DISSECTION_OPTIONS = preload("res://encounters/verity/mechanics/dissecting_keys/dissection_options/dissection_options.tscn")
 const DISSECTION_STATE = preload("res://ui/player_hud/location_display/location_state/dissection/dissection_state.tscn")
 const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d_shapes/shape_resolver.tres")
 
@@ -17,6 +17,7 @@ var right_key: EffectLibrary.SHAPE_2D_TYPES
 
 var team_dissection: TeamDissection:
 	set = set_team_dissection
+
 
 func _ready() -> void:
 	GlobalSignals.encounter_resetting.connect(_on_encounter_resetting)
