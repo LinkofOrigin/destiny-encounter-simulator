@@ -3,9 +3,8 @@ extends MechanicOptions
 
 signal timer_value_changed(new_time: float)
 signal hint_display_changed(display: bool)
-signal settings_updated(settings: Dictionary)
 
-const MENU_BUTTON_TEXT := "Dissection"
+const MENU_TITLE := "Dissection"
 
 @onready var timer_spin_box: SpinBox = %TimerSpinBox
 @onready var hint_display_options: OptionButton = %HintDisplayOptions
@@ -16,12 +15,19 @@ func _ready_behavior() -> void:
 	hint_display_options.item_selected.connect(_on_hint_display_option_selected)
 
 
-func get_menu_button_text() -> String:
-	return MENU_BUTTON_TEXT
+func get_menu_title() -> String:
+	return MENU_TITLE
+
+
+func get_mechanics_state_description() -> Dictionary:
+	return {
+		"Timer": timer_spin_box.value,
+	}
 
 
 func _on_timer_value_changed(value: float) -> void:
 	timer_value_changed.emit(value)
+	_emit_settings_updated(get_mechanics_state_description())
 
 
 func _on_hint_display_checkbox_toggled(toggled_on: bool) -> void:

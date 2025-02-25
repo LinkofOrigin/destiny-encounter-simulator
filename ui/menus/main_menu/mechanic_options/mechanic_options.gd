@@ -2,6 +2,9 @@ class_name MechanicOptions
 extends Control
 
 signal navigated_back
+signal settings_updated(settings: Dictionary)
+
+@export var mechanic_state_container: Control
 
 
 func _ready() -> void:
@@ -17,8 +20,13 @@ func _ready_behavior() -> void:
 
 
 ## To be overridden
-func get_menu_button_text() -> String:
+func get_menu_title() -> String:
 	return ""
+
+
+## To be overridden
+func get_mechanics_state_description() -> Dictionary:
+	return {}
 
 
 func focus_first_item() -> void:
@@ -27,3 +35,7 @@ func focus_first_item() -> void:
 
 func _emit_navigated_back() -> void:
 	navigated_back.emit()
+
+
+func _emit_settings_updated(settings: Dictionary) -> void:
+	settings_updated.emit(settings)
