@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d03qfhoxiua3o"
-path.s3tc="res://.godot/imported/triforce.png-7604d4052c3fb51e5265d6ea85cbe9f8.s3tc.ctex"
+path.s3tc="res://.godot/imported/plain-triangle.png-ce0c1185f623992690de8cbb6ff4f70c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/2d_shapes/test/triforce.png"
-dest_files=["res://.godot/imported/triforce.png-7604d4052c3fb51e5265d6ea85cbe9f8.s3tc.ctex"]
+source_file="res://assets/2d_shapes/test/plain-triangle.png"
+dest_files=["res://.godot/imported/plain-triangle.png-ce0c1185f623992690de8cbb6ff4f70c.s3tc.ctex"]
 
 [params]
 

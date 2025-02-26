@@ -1,8 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://w3uh624pkya7"]
+[gd_scene load_steps=9 format=3 uid="uid://w3uh624pkya7"]
 
 [ext_resource type="Script" path="res://ui/menus/main_menu/player_menu/player_menu.gd" id="2_d6l5a"]
 [ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu/player_menu_theme.tres" id="2_exytw"]
 [ext_resource type="Theme" uid="uid://ciao1yg8aebw5" path="res://ui/menus/main_menu/coming_soon_theme.tres" id="3_88680"]
+[ext_resource type="PackedScene" uid="uid://clup1bnb8nhfp" path="res://encounters/verity/hint_helpers/full_shape_reference.tscn" id="4_8pfho"]
+[ext_resource type="Script" path="res://ui/menus/main_menu/player_menu/full_shape_ref_container.gd" id="4_qnf42"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_6ng77"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cegb4"]
+font_size = 50
+
+[sub_resource type="Texture2D" id="Texture2D_h6m5b"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_6ng77")
+path = "ui_accept"
+show_mode = 0
+force_type = 0
 
 [node name="PlayerMenu" type="CanvasLayer"]
 layer = 2
@@ -17,15 +31,7 @@ grow_vertical = 2
 theme = ExtResource("2_exytw")
 color = Color(0, 0, 0, 0.364)
 
-[node name="SetupMenus" type="Control" parent="OpaqueBackground"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CurrentlyEnabledContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus"]
+[node name="CurrentlyEnabledContainer" type="PanelContainer" parent="OpaqueBackground"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -36,24 +42,24 @@ offset_bottom = 511.0
 grow_vertical = 2
 theme_type_variation = &"LeftMenu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Currently Enabled"
 horizontal_alignment = 1
 
-[node name="SeparatorMargin" type="MarginContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer"]
+[node name="SeparatorMargin" type="MarginContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/SeparatorMargin"]
+[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/SeparatorMargin"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -61,51 +67,68 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="DescriptionsContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer"]
+[node name="DescriptionsContainer" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 6
 
-[node name="DescriptionPlaceholders" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer"]
+[node name="DescriptionPlaceholders" type="VBoxContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="KeyBuildingContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders"]
+[node name="KeyBuildingContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_88680")
 
-[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders/KeyBuildingContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders/KeyBuildingContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Key Building (TBD)"
 
-[node name="GhostsContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders"]
+[node name="GhostsContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_88680")
 
-[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders/GhostsContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders/GhostsContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Ghosts (TBD)"
 
-[node name="MiscContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders"]
+[node name="MiscContainer" type="PanelContainer" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_88680")
 
-[node name="Label" type="Label" parent="OpaqueBackground/SetupMenus/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders/MiscContainer"]
+[node name="Label" type="Label" parent="OpaqueBackground/CurrentlyEnabledContainer/VBoxContainer/MarginContainer/DescriptionsContainer/DescriptionPlaceholders/MiscContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Misc (TBD)"
 
-[node name="RestartEncounterButton" type="Button" parent="OpaqueBackground/SetupMenus"]
+[node name="ShowFullRefButton" type="Button" parent="OpaqueBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MenuActionButton"
+text = "Full Shape Reference"
+
+[node name="RestartEncounterButton" type="Button" parent="OpaqueBackground"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -119,10 +142,10 @@ offset_right = 179.0
 offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 40
+theme_type_variation = &"MenuActionButton"
 text = "Restart Encounter"
 
-[node name="RightMenuContainer" type="PanelContainer" parent="OpaqueBackground/SetupMenus"]
+[node name="RightMenuContainer" type="PanelContainer" parent="OpaqueBackground"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -137,47 +160,47 @@ grow_vertical = 2
 focus_neighbor_left = NodePath("../RestartEncounterButton")
 theme_type_variation = &"RightMenu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer"]
 layout_mode = 2
 
-[node name="MenuTitle" type="Label" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
+[node name="MenuTitle" type="Label" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Menu"
+text = "Settings"
 horizontal_alignment = 1
 
-[node name="DividerContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
+[node name="DividerContainer" type="MarginContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/DividerContainer"]
+[node name="HSeparator" type="HSeparator" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/DividerContainer"]
 layout_mode = 2
 
-[node name="OptionsContainer" type="MarginContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer"]
+[node name="OptionsContainer" type="MarginContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer"]
+[node name="MainMenuTabContainer" type="TabContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/OptionsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
 tabs_visible = false
 
-[node name="HomeMenu" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer"]
+[node name="HomeMenu" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 0
 
-[node name="SubMenuPlaceholders" type="VBoxContainer" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu"]
+[node name="SubMenuPlaceholders" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="KeyBuildingButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/SubMenuPlaceholders"]
+[node name="KeyBuildingButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/SubMenuPlaceholders"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -189,7 +212,7 @@ action_mode = 0
 text = "Key Building (TBD) >"
 alignment = 0
 
-[node name="GhostsButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/SubMenuPlaceholders"]
+[node name="GhostsButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/SubMenuPlaceholders"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -202,7 +225,7 @@ action_mode = 0
 text = "Ghosts (TBD) >"
 alignment = 0
 
-[node name="MiscButton" type="Button" parent="OpaqueBackground/SetupMenus/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/SubMenuPlaceholders"]
+[node name="MiscButton" type="Button" parent="OpaqueBackground/RightMenuContainer/VBoxContainer/OptionsContainer/MainMenuTabContainer/HomeMenu/SubMenuPlaceholders"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -213,3 +236,50 @@ disabled = true
 action_mode = 0
 text = "Misc (TBD) >"
 alignment = 0
+
+[node name="FullShapeRefContainer" type="PanelContainer" parent="OpaqueBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -555.0
+offset_top = -445.0
+offset_right = 555.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("4_qnf42")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/FullShapeRefContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="ShapeLogicLabel" type="Label" parent="OpaqueBackground/FullShapeRefContainer/VBoxContainer"]
+layout_mode = 2
+text = "2D to 3D Shape Logic"
+label_settings = SubResource("LabelSettings_cegb4")
+horizontal_alignment = 1
+
+[node name="FullShapeReference" parent="OpaqueBackground/FullShapeRefContainer/VBoxContainer" instance=ExtResource("4_8pfho")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HideShapeRefButton" type="Button" parent="OpaqueBackground/FullShapeRefContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_constants/icon_max_width = 70
+theme_override_font_sizes/font_size = 35
+text = "Return"
+icon = SubResource("Texture2D_h6m5b")

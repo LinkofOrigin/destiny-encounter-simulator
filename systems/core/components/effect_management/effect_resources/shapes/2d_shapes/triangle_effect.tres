@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Shape2DEffectData" load_steps=3 format=3 uid="uid://c7s5hrsfdv44"]
 
-[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/triforce.png" id="1_1776u"]
+[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/plain-triangle.png" id="1_1776u"]
 [ext_resource type="Script" path="res://systems/core/components/effect_management/effect_resources/shapes/2d_shapes/shape_2d_effect_data.gd" id="2_6g658"]
 
 [resource]

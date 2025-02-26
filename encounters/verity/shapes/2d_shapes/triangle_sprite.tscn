@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqca688bm8id1"]
 
-[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/triforce.png" id="1_jnbbj"]
+[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/plain-triangle.png" id="1_jnbbj"]
 
 [node name="TriangleSprite" type="Sprite3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

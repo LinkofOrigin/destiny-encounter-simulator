@@ -6,12 +6,15 @@ const MENU_META := "mech_menu_meta"
 @onready var main_menu_tab_container: TabContainer = %MainMenuTabContainer
 @onready var home_menu: VBoxContainer = %HomeMenu
 @onready var descriptions_container: VBoxContainer = %DescriptionsContainer
+@onready var full_shape_ref_container: FullShapeRefContainer = %FullShapeRefContainer
 
+@onready var show_full_ref_button: Button = %ShowFullRefButton
+@onready var restart_encounter_button: Button = %RestartEncounterButton
+
+# TODO: Placeholders
 @onready var key_building_button: Button = %KeyBuildingButton
 @onready var ghosts_button: Button = %GhostsButton
 @onready var misc_button: Button = %MiscButton
-
-@onready var restart_encounter_button: Button = %RestartEncounterButton
 
 var _enabled: bool = false
 var _menu_settings_map: Dictionary
@@ -21,6 +24,7 @@ func _ready() -> void:
 	_connect_signals()
 	return_to_home()
 	hide_menu()
+	full_shape_ref_container.hide()
 
 
 func show_menu() -> void:
@@ -33,8 +37,11 @@ func hide_menu() -> void:
 
 func return_to_home() -> void:
 	_set_current_tab(0)
-	home_menu.get_child(0).grab_focus.call_deferred()
+	focus_first_menu_option()
 
+
+func focus_first_menu_option() -> void:
+	home_menu.get_child(0).grab_focus.call_deferred()
 
 # TODO: Have menu priority for listing order?
 func add_menu_option(menu: MechanicOptions) -> void:
@@ -92,7 +99,10 @@ func _connect_signals() -> void:
 	#key_building_button.pressed.connect(_set_current_tab.bind(2))
 	#ghosts_button.pressed.connect(_set_current_tab.bind(2))
 	#misc_button.pressed.connect(_set_current_tab.bind(2))
+	show_full_ref_button.pressed.connect(_on_show_full_ref_button_pressed)
 	restart_encounter_button.pressed.connect(_on_restart_encounter_pressed)
+	# TODO: Giving focus to button releases focus from this
+	full_shape_ref_container.hidden.connect(focus_first_menu_option)
 
 
 func _get_menu_settings_on_ready(menu: MechanicOptions, menu_index: int) -> void:
@@ -115,6 +125,10 @@ func _set_current_tab(tab_number: int, menu: Control = null) -> void:
 	main_menu_tab_container.current_tab = tab_number
 	if is_instance_valid(menu) and menu.has_method("focus_first_item"):
 		menu.focus_first_item()
+
+
+func _on_show_full_ref_button_pressed() -> void:
+	full_shape_ref_container.show_reference_menu()
 
 
 func _on_restart_encounter_pressed() -> void:

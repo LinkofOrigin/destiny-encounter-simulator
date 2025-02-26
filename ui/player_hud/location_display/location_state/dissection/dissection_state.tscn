@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state.gd" id="2_6xulf"]
 [ext_resource type="Texture2D" uid="uid://dp3bl7yq5514g" path="res://assets/2d_shapes/test/plain-circle.png" id="3_tfogt"]
 [ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="4_ft8bw"]
-[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/triforce.png" id="5_ub7yc"]
+[ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/plain-triangle.png" id="5_ub7yc"]
 [ext_resource type="Texture2D" uid="uid://c3l6rvch41rqd" path="res://assets/3d_shapes_as_2d/test/sphere.png" id="6_7rt0o"]
 [ext_resource type="Texture2D" uid="uid://cqbqcne84v4wn" path="res://assets/3d_shapes_as_2d/test/pyramid.png" id="7_bpkt3"]
 [ext_resource type="Texture2D" uid="uid://d2cfyae3naxjl" path="res://assets/3d_shapes_as_2d/test/cube.png" id="8_d7xtp"]

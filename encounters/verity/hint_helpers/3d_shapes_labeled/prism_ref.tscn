@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0o7dlqm14ugl"]
+
+[ext_resource type="Texture2D" uid="uid://bm0u0vefjafpk" path="res://assets/3d_shapes_as_2d/test/prism.png" id="1_5c7yh"]
+
+[node name="PrismRef" type="VBoxContainer"]
+offset_right = 91.0
+offset_bottom = 91.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Prism"
+horizontal_alignment = 1
+
+[node name="FullShape" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("1_5c7yh")
+expand_mode = 1
+stretch_mode = 5

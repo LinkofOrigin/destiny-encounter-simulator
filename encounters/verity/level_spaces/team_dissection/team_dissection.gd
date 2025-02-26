@@ -44,6 +44,7 @@ func _ready() -> void:
 	left_statue.received_effects.connect(_on_left_statue_received_effects)
 	middle_statue.received_effects.connect(_on_center_statue_received_effects)
 	right_statue.received_effects.connect(_on_right_statue_received_effects)
+	GlobalSignals.encounter_resetting.connect(_on_encounter_restarted)
 
 
 func initalize_fresh(use_random := false) -> void:
@@ -220,3 +221,15 @@ func _on_center_statue_received_effects(_effects: Array[EffectData]) -> void:
 func _on_right_statue_received_effects(_effects: Array[EffectData]) -> void:
 	print("dissection room received effects in right statue!")
 	handle_primed_statue(right_statue)
+
+
+func _on_encounter_restarted() -> void:
+	var left_shapes := left_shape_spawn.get_children()
+	var center_shapes := center_shape_spawn.get_children()
+	var right_shapes := right_shape_spawn.get_children()
+	for left_shape: Node in left_shapes:
+		left_shape.queue_free()
+	for center_shape: Node in center_shapes:
+		center_shape.queue_free()
+	for right_shape: Node in right_shapes:
+		right_shape.queue_free()
