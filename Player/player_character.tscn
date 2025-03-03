@@ -24,7 +24,7 @@ floor_snap_length = 0.2
 script = ExtResource("1_25k8w")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.989272, 0.146083, 0, -0.146083, 0.989272, 0, 0.767386, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.767386, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_6klvk")
@@ -32,7 +32,8 @@ mesh = SubResource("CapsuleMesh_6klvk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_fv4kc")
 
-[node name="InteractableDetector" parent="." instance=ExtResource("8_wnl0e")]
+[node name="InteractableDetector" parent="." node_paths=PackedStringArray("camera_parent_for_target") instance=ExtResource("8_wnl0e")]
+camera_parent_for_target = NodePath("../Camera3D")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_y60t5")]
 initial_state = NodePath("Grounded")

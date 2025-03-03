@@ -4,6 +4,8 @@ extends Node3D
 signal can_interact_with(interactable: InteractableComponent)
 signal can_not_interact()
 
+@export var camera_parent_for_target: Camera3D
+
 @onready var target_detector: RayCast3D = $TargetDetector
 @onready var zone_detector: RayCast3D = $ZoneDetector
 
@@ -11,6 +13,12 @@ var _target_colliding: bool = false
 var _zone_colliding: bool = false
 var _target_interactable: InteractableComponent
 var _zone_interactable: InteractableComponent
+
+
+func _ready() -> void:
+	if is_instance_valid(camera_parent_for_target):
+		remove_child(target_detector)
+		camera_parent_for_target.add_child(target_detector)
 
 
 func _physics_process(_delta: float) -> void:
