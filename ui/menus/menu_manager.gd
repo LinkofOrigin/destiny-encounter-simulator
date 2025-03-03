@@ -17,9 +17,10 @@ func pause_and_display_menu() -> void:
 	player_menu.show_menu()
 
 
-func unpause_and_hide_menu() -> void:
+func unpause_and_hide_menu(is_controller: bool = false) -> void:
 	player_menu.hide_menu()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # TODO: Control via input manager?
+	if not is_controller:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # TODO: Control via input manager?
 	paused = false
 
 
@@ -30,6 +31,7 @@ func register_menu_option(menu: MechanicOptions) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Menu"):
 		if paused:
-			unpause_and_hide_menu()
+			var is_controller_input := event is InputEventJoypadButton
+			unpause_and_hide_menu(is_controller_input)
 		else:
 			pause_and_display_menu()
