@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci115hcg3twey"]
+[gd_scene load_steps=7 format=3 uid="uid://ci115hcg3twey"]
 
 [ext_resource type="Theme" uid="uid://ci0oechekfhsk" path="res://ui/player_hud/location_display/location_display.tres" id="1_aywbv"]
 [ext_resource type="Script" path="res://ui/player_hud/location_display/location_display.gd" id="1_gt04n"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_2gp1i"]
+
+[sub_resource type="Texture2D" id="Texture2D_83pmq"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_2gp1i")
+path = "SecondaryFire"
+show_mode = 0
+force_type = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ls1ul"]
 font_size = 28
@@ -33,6 +42,23 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "LOCATION"
+
+[node name="HintDisplayIndicatorContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HintDisplayIndicatorContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_83pmq")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DisplayHintsIndicator" type="Label" parent="VBoxContainer/HintDisplayIndicatorContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Show Hints"
+vertical_alignment = 1
 
 [node name="FullStateHolder" type="MarginContainer" parent="VBoxContainer"]
 unique_name_in_owner = true

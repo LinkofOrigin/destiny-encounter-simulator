@@ -38,6 +38,10 @@ func show_hints_at_start(show_at_start: bool) -> void:
 	player_hud.display_hint_on_start(show_at_start)
 
 
+func set_display_hints_on_input(display_on_input: bool) -> void:
+	player_hud.set_display_hint_on_input(display_on_input)
+
+
 func show_hint_display() -> void:
 	player_hud.show_location_state()
 
@@ -74,7 +78,7 @@ func _on_player_interaction_complete(_interactable: InteractableComponent) -> vo
 
 
 func _on_player_hint_display_on_input(display: bool) -> void:
-	player_hud.display_hint_on_start(not display)
+	set_display_hints_on_input(display)
 
 
 ## Effect Signals
@@ -94,4 +98,3 @@ func _on_encounter_starting() -> void:
 func _on_encounter_resetting() -> void:
 	player_hud.show_encounter_start_display()
 	player_hud.timer_display.hide()
-	player_hud.hide_location_state()

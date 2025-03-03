@@ -15,7 +15,6 @@ var _show_hints_at_start: bool = true
 
 
 func _ready() -> void:
-	GlobalSignals.encounter_starting.connect(_on_encounter_starting)
 	interact_prompt.hide()
 
 
@@ -36,6 +35,7 @@ func set_interact_progress(progress: float) -> void:
 ## Effect Display
 func add_effect(effect: Effect) -> void:
 	effect_display.add_effect(effect)
+
 
 ## Encounter Start Display
 func set_encounter_start_progress(percent: float) -> void:
@@ -60,8 +60,12 @@ func update_location_state(new_state: Variant) -> void:
 		location_display.current_state.update_state(new_state)
 
 
+func set_display_hint_on_input(display_on_input: bool) -> void:
+	location_display.input_enabled_display = display_on_input
+
+
 func display_hint_on_start(show_on_start: bool) -> void:
-	_show_hints_at_start = show_on_start
+	location_display.show_on_encounter_start = show_on_start
 
 
 func show_location_state() -> void:
@@ -99,11 +103,3 @@ func fade_screen_to_normal(callback: Callable = Callable()) -> void:
 	tween.tween_property(fade_screen, "color", faded_color, TIME_TO_FADE_IN)
 	if not callback.is_null():
 		tween.tween_callback(callback)
-
-
-## Encounter Signals
-func _on_encounter_starting() -> void:
-	if _show_hints_at_start:
-		show_location_state()
-	else:
-		hide_location_state()
