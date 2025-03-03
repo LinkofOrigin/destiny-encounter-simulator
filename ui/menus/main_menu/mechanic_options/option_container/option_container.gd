@@ -14,6 +14,12 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	if not is_instance_valid(target_control):
+		var children := find_children("*", "Control", true)
+		for child: Control in children:
+			if child.focus_mode != Control.FOCUS_NONE:
+				target_control = child
+				break
 	if is_instance_valid(target_control):
 		target_control.focus_exited.connect(grab_focus)
 

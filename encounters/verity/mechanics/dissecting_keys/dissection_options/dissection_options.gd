@@ -3,16 +3,19 @@ extends MechanicOptions
 
 signal timer_value_changed(new_time: float)
 signal hint_display_changed(display: bool)
+signal hint_display_settings_changed(statue_shapes: bool, shape_logic: bool, key_matches: bool)
 
 const MENU_TITLE := "Dissection"
 
 @onready var timer_spin_box: SpinBox = %TimerSpinBox
 @onready var hint_display_options: OptionButton = %HintDisplayOptions
+@onready var hint_display_settings: HintDisplaySettings = %HintDisplaySettings
 
 
 func _ready_behavior() -> void:
 	timer_spin_box.value_changed.connect(_on_timer_value_changed)
 	hint_display_options.item_selected.connect(_on_hint_display_option_selected)
+	hint_display_settings.updated.connect(_on_hint_settings_updated)
 
 
 func get_menu_title() -> String:
@@ -50,3 +53,7 @@ func _on_hint_display_option_selected(item_index: int) -> void:
 	elif item_index == 4:
 		GlobalSignals.emit_player_hint_display_on_input(false)
 		PlayerHudManager.show_hints_at_start(false)
+
+
+func _on_hint_settings_updated(show_statue_shapes: bool, show_shape_logic: bool, show_key_matches: bool) -> void:
+	hint_display_settings_changed.emit(show_statue_shapes, show_shape_logic, show_key_matches)

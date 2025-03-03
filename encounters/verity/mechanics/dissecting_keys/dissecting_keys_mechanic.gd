@@ -14,6 +14,8 @@ const SHAPE_RESOLVER: ShapeResolver = preload("res://encounters/verity/shapes/3d
 var left_key: EffectLibrary.SHAPE_2D_TYPES
 var middle_key: EffectLibrary.SHAPE_2D_TYPES
 var right_key: EffectLibrary.SHAPE_2D_TYPES
+var _state_display: DissectionState
+var _options_menu: DissectionOptions
 
 var team_dissection: TeamDissection:
 	set = set_team_dissection
@@ -29,10 +31,11 @@ func initialize_and_start() -> void:
 	assert(is_instance_valid(team_dissection), "Dissecting keys mechanic didn't get a valid dissection instance!")
 
 	# TODO: Determine starting players
-	# TODO: Register hud state for dissection players only
-	var fresh_dissection_display: DissectionState = DISSECTION_STATE.instantiate()
-	fresh_dissection_display.set_dissecting_keys_mechanic(self)
-	PlayerHudManager.load_location_state_display(fresh_dissection_display)
+	# TODO: Register hud state for dissection players only (option: load them all and show/hide them conditionally through the menu code)
+	_state_display = DISSECTION_STATE.instantiate()
+	_state_display.set_dissecting_keys_mechanic(self)
+	_state_display.set_dissection_options_menu(_options_menu)
+	PlayerHudManager.load_location_state_display(_state_display)
 	
 	initialize_shapes()
 	
@@ -46,9 +49,9 @@ func initialize_and_start() -> void:
 
 func register_menu_option() -> void:
 	# TODO: Instantiate and connect signals? Change return signature
-	var dissection_options: DissectionOptions = DISSECTION_OPTIONS.instantiate()
-	dissection_options.timer_value_changed.connect(_on_timer_value_changed)
-	MenuManager.register_menu_option(dissection_options)
+	_options_menu = DISSECTION_OPTIONS.instantiate()
+	_options_menu.timer_value_changed.connect(_on_timer_value_changed)
+	MenuManager.register_menu_option(_options_menu)
 
 
 func set_timer_duration(duration: float) -> void:

@@ -1,5 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://d255jgecwwpd0"]
 
+[ext_resource type="Theme" uid="uid://btm7x5nbpt5cm" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state_theme.tres" id="1_itmgd"]
 [ext_resource type="Script" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state.gd" id="2_6xulf"]
 [ext_resource type="Texture2D" uid="uid://dp3bl7yq5514g" path="res://assets/2d_shapes/test/plain-circle.png" id="3_tfogt"]
 [ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="4_ft8bw"]
@@ -13,17 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://c4yurcx5ipdqs" path="res://assets/check-mark.png" id="12_k15u6"]
 [ext_resource type="Texture2D" uid="uid://12xlv8u8ggyy" path="res://assets/cancel.png" id="13_t6dj4"]
 
-[sub_resource type="Theme" id="Theme_nn412"]
-Label/constants/line_spacing = -4
-Label/font_sizes/font_size = 16
-
 [node name="DissectionState" type="MarginContainer"]
 custom_minimum_size = Vector2(365, 365)
-offset_right = 310.0
-offset_bottom = 363.0
-theme = SubResource("Theme_nn412")
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_bottom = 6
+offset_right = 468.0
+offset_bottom = 409.0
+theme = ExtResource("1_itmgd")
 script = ExtResource("2_6xulf")
 circle_texture = ExtResource("3_tfogt")
 triangle_texture = ExtResource("5_ub7yc")
@@ -37,51 +32,75 @@ prism_texture = ExtResource("11_j34cw")
 correct_texture = ExtResource("12_k15u6")
 wrong_texture = ExtResource("13_t6dj4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
 
-[node name="2dStatueKeys" type="HBoxContainer" parent="VBoxContainer"]
+[node name="KeysTitle" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+theme_type_variation = &"GridItemContainer"
+
+[node name="KeysTitleLabel" type="Label" parent="GridContainer/KeysTitle"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"HintTitleLabel"
+text = "2D
+Keys"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Left2DKey" type="VBoxContainer" parent="VBoxContainer/2dStatueKeys"]
+[node name="Left2DKey" type="PanelContainer" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="Left2DKey" type="VBoxContainer" parent="GridContainer/Left2DKey"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/2dStatueKeys/Left2DKey"]
+[node name="Label" type="Label" parent="GridContainer/Left2DKey/Left2DKey"]
 layout_mode = 2
 text = "2D Left"
 horizontal_alignment = 1
 
-[node name="Left2DKeyIcon" type="TextureRect" parent="VBoxContainer/2dStatueKeys/Left2DKey"]
+[node name="Left2DKeyIcon" type="TextureRect" parent="GridContainer/Left2DKey/Left2DKey"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 7
+size_flags_vertical = 5
 texture = ExtResource("3_tfogt")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Left2DKeyLabel" type="Label" parent="VBoxContainer/2dStatueKeys/Left2DKey"]
+[node name="Left2DKeyLabel" type="Label" parent="GridContainer/Left2DKey/Left2DKey"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"HintNameLabel"
 text = "Sphere"
 horizontal_alignment = 1
 
-[node name="Middle2DKey" type="VBoxContainer" parent="VBoxContainer/2dStatueKeys"]
+[node name="Middle2DKey" type="PanelContainer" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="Middle2DKey" type="VBoxContainer" parent="GridContainer/Middle2DKey"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/2dStatueKeys/Middle2DKey"]
+[node name="Label" type="Label" parent="GridContainer/Middle2DKey/Middle2DKey"]
 layout_mode = 2
 text = "2D Middle"
 horizontal_alignment = 1
 
-[node name="Middle2DKeyIcon" type="TextureRect" parent="VBoxContainer/2dStatueKeys/Middle2DKey"]
+[node name="Middle2DKeyIcon" type="TextureRect" parent="GridContainer/Middle2DKey/Middle2DKey"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -91,23 +110,31 @@ texture = ExtResource("4_ft8bw")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Middle2DKeyLabel" type="Label" parent="VBoxContainer/2dStatueKeys/Middle2DKey"]
+[node name="Middle2DKeyLabel" type="Label" parent="GridContainer/Middle2DKey/Middle2DKey"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"HintNameLabel"
 text = "Cube"
 horizontal_alignment = 1
 
-[node name="StatueThree" type="VBoxContainer" parent="VBoxContainer/2dStatueKeys"]
+[node name="Right2DKey" type="PanelContainer" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="Right2DKey" type="VBoxContainer" parent="GridContainer/Right2DKey"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HintBoxContainer"
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/2dStatueKeys/StatueThree"]
+[node name="Label" type="Label" parent="GridContainer/Right2DKey/Right2DKey"]
 layout_mode = 2
 text = "2D Right"
 horizontal_alignment = 1
 
-[node name="Right2DKeyIcon" type="TextureRect" parent="VBoxContainer/2dStatueKeys/StatueThree"]
+[node name="Right2DKeyIcon" type="TextureRect" parent="GridContainer/Right2DKey/Right2DKey"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -117,30 +144,46 @@ texture = ExtResource("5_ub7yc")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Right2DKeyLabel" type="Label" parent="VBoxContainer/2dStatueKeys/StatueThree"]
+[node name="Right2DKeyLabel" type="Label" parent="GridContainer/Right2DKey/Right2DKey"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"HintNameLabel"
 text = "Pyramid"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="Statues3DTitle" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"GridItemContainer"
 
-[node name="3dStatueShapes" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Statues3DTitleLabel" type="Label" parent="GridContainer/Statues3DTitle"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"HintTitleLabel"
+text = "3D
+Shapes"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="StatueOne" type="VBoxContainer" parent="VBoxContainer/3dStatueShapes"]
+[node name="StatueOne" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="StatueOneContainer" type="VBoxContainer" parent="GridContainer/StatueOne"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HintBoxContainer"
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/3dStatueShapes/StatueOne"]
+[node name="Label" type="Label" parent="GridContainer/StatueOne/StatueOneContainer"]
 layout_mode = 2
 text = "3D Left"
 horizontal_alignment = 1
 
-[node name="StatueOneIcon" type="TextureRect" parent="VBoxContainer/3dStatueShapes/StatueOne"]
+[node name="StatueOneIcon" type="TextureRect" parent="GridContainer/StatueOne/StatueOneContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -150,23 +193,32 @@ texture = ExtResource("6_7rt0o")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="StatueOneShapeText" type="Label" parent="VBoxContainer/3dStatueShapes/StatueOne"]
+[node name="StatueOneShapeText" type="Label" parent="GridContainer/StatueOne/StatueOneContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"HintNameLabel"
 text = "Sphere"
 horizontal_alignment = 1
 
-[node name="StatueTwo" type="VBoxContainer" parent="VBoxContainer/3dStatueShapes"]
+[node name="StatueTwo" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="StatueTwoContainer" type="VBoxContainer" parent="GridContainer/StatueTwo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HintBoxContainer"
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/3dStatueShapes/StatueTwo"]
+[node name="Label" type="Label" parent="GridContainer/StatueTwo/StatueTwoContainer"]
 layout_mode = 2
 text = "3D Middle"
 horizontal_alignment = 1
 
-[node name="StatueTwoIcon" type="TextureRect" parent="VBoxContainer/3dStatueShapes/StatueTwo"]
+[node name="StatueTwoIcon" type="TextureRect" parent="GridContainer/StatueTwo/StatueTwoContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -176,23 +228,32 @@ texture = ExtResource("8_d7xtp")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="StatueTwoShapeText" type="Label" parent="VBoxContainer/3dStatueShapes/StatueTwo"]
+[node name="StatueTwoShapeText" type="Label" parent="GridContainer/StatueTwo/StatueTwoContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"HintNameLabel"
 text = "Cube"
 horizontal_alignment = 1
 
-[node name="StatueThree" type="VBoxContainer" parent="VBoxContainer/3dStatueShapes"]
+[node name="StatueThree" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="StatueThreeContainer" type="VBoxContainer" parent="GridContainer/StatueThree"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HintBoxContainer"
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/3dStatueShapes/StatueThree"]
+[node name="Label" type="Label" parent="GridContainer/StatueThree/StatueThreeContainer"]
 layout_mode = 2
 text = "3D Right"
 horizontal_alignment = 1
 
-[node name="StatueThreeIcon" type="TextureRect" parent="VBoxContainer/3dStatueShapes/StatueThree"]
+[node name="StatueThreeIcon" type="TextureRect" parent="GridContainer/StatueThree/StatueThreeContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -202,25 +263,244 @@ texture = ExtResource("7_bpkt3")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="StatueThreeShapeText" type="Label" parent="VBoxContainer/3dStatueShapes/StatueThree"]
+[node name="StatueThreeShapeText" type="Label" parent="GridContainer/StatueThree/StatueThreeContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"HintNameLabel"
 text = "Pyramid"
 horizontal_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+[node name="ShapeCompTitle" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"GridItemContainer"
 
-[node name="3dShapesMatch" type="VBoxContainer" parent="VBoxContainer"]
+[node name="ShapeCompTitleLabel" type="Label" parent="GridContainer/ShapeCompTitle"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HintTitleLabel"
+text = "Shape
+Logic"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComposingShapesLeft" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="ComposingShapesLeftContainer" type="VBoxContainer" parent="GridContainer/ComposingShapesLeft"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer"]
+layout_mode = 2
+text = "Left"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/3dShapesMatch"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/3dShapesMatch/HBoxContainer"]
+[node name="LeftComposingShapeOneIcon" type="TextureRect" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("6_7rt0o")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="LeftComposingShapeOneLabel" type="Label" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Sphere"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LeftComposingShapeTwoIcon" type="TextureRect" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("6_7rt0o")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="LeftComposingShapeTwoLabel" type="Label" parent="GridContainer/ComposingShapesLeft/ComposingShapesLeftContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Sphere"
+horizontal_alignment = 1
+
+[node name="ComposingShapesMiddle" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="ComposingShapesMiddleContainer" type="VBoxContainer" parent="GridContainer/ComposingShapesMiddle"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer"]
+layout_mode = 2
+text = "Middle"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MiddleComposingShapeOneIcon" type="TextureRect" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("6_7rt0o")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MiddleComposingShapeOneLabel" type="Label" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Sphere"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MiddleComposingShapeTwoIcon" type="TextureRect" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("6_7rt0o")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MiddleComposingShapeTwoLabel" type="Label" parent="GridContainer/ComposingShapesMiddle/ComposingShapesMiddleContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Sphere"
+horizontal_alignment = 1
+
+[node name="ComposingShapesRight" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="ComposingShapesRightContainer" type="VBoxContainer" parent="GridContainer/ComposingShapesRight"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer"]
+layout_mode = 2
+text = "Right"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RightComposingShapeOneIcon" type="TextureRect" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("6_7rt0o")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="RightComposingShapeOneLabel" type="Label" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Sphere"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RightComposingShapeTwoIcon" type="TextureRect" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("6_7rt0o")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="RightComposingShapeTwoLabel" type="Label" parent="GridContainer/ComposingShapesRight/ComposingShapesRightContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Sphere"
+horizontal_alignment = 1
+
+[node name="MatchesTitle" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"GridItemContainer"
+
+[node name="MatchesTitleLabel" type="Label" parent="GridContainer/MatchesTitle"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HintTitleLabel"
+text = "Key
+Matches"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftKeyMatch" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="LeftKeyMatchContainer" type="VBoxContainer" parent="GridContainer/LeftKeyMatch"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HintBoxContainer"
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="GridContainer/LeftKeyMatch/LeftKeyMatchContainer"]
 custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -230,7 +510,32 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="Label2" type="Label" parent="VBoxContainer/3dShapesMatch/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/LeftKeyMatch/LeftKeyMatchContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftKeyMatchIndicator" type="TextureRect" parent="GridContainer/LeftKeyMatch/LeftKeyMatchContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("13_t6dj4")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MiddleKeyMatch" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="MiddleKeyMatchContainer" type="VBoxContainer" parent="GridContainer/MiddleKeyMatch"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
+
+[node name="Label2" type="Label" parent="GridContainer/MiddleKeyMatch/MiddleKeyMatchContainer"]
 custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -240,7 +545,32 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="Label3" type="Label" parent="VBoxContainer/3dShapesMatch/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="GridContainer/MiddleKeyMatch/MiddleKeyMatchContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MiddleKeyMatchIndicator" type="TextureRect" parent="GridContainer/MiddleKeyMatch/MiddleKeyMatchContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("13_t6dj4")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="RightKeyMatch" type="PanelContainer" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="RightKeyMatchContainer" type="VBoxContainer" parent="GridContainer/RightKeyMatch"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
+
+[node name="Label3" type="Label" parent="GridContainer/RightKeyMatch/RightKeyMatchContainer"]
 custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -250,42 +580,11 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/3dShapesMatch"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/3dShapesMatch/HBoxContainer2"]
+[node name="MarginContainer3" type="MarginContainer" parent="GridContainer/RightKeyMatch/RightKeyMatchContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LeftKeyMatchIndicator" type="TextureRect" parent="VBoxContainer/3dShapesMatch/HBoxContainer2/MarginContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-texture = ExtResource("13_t6dj4")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/3dShapesMatch/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MiddleKeyMatchIndicator" type="TextureRect" parent="VBoxContainer/3dShapesMatch/HBoxContainer2/MarginContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-texture = ExtResource("13_t6dj4")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/3dShapesMatch/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RightKeyMatchIndicator" type="TextureRect" parent="VBoxContainer/3dShapesMatch/HBoxContainer2/MarginContainer3"]
+[node name="RightKeyMatchIndicator" type="TextureRect" parent="GridContainer/RightKeyMatch/RightKeyMatchContainer/MarginContainer3"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2

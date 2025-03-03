@@ -24,7 +24,6 @@ func unpause_and_hide_menu() -> void:
 
 
 func register_menu_option(menu: MechanicOptions) -> void:
-	# TODO: See player menu to drive this part
 	player_menu.add_menu_option(menu)
 
 

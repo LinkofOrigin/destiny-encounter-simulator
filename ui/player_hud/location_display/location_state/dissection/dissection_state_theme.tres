@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://btm7x5nbpt5cm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlkhg"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.485703, 0.485704, 0.485703, 0.727)
+
+[sub_resource type="FontVariation" id="FontVariation_upvei"]
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_7tenx"]
+variation_embolden = 0.4
+
+[resource]
+GridItemContainer/base_type = &"PanelContainer"
+GridItemContainer/styles/panel = SubResource("StyleBoxFlat_vlkhg")
+HintNameLabel/base_type = &"Label"
+HintNameLabel/font_sizes/font_size = 15
+HintNameLabel/fonts/font = SubResource("FontVariation_upvei")
+HintTitleLabel/base_type = &"Label"
+HintTitleLabel/fonts/font = SubResource("FontVariation_7tenx")
+Label/constants/line_spacing = -4
+Label/font_sizes/font_size = 16

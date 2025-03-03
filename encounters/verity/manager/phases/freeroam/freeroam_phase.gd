@@ -15,7 +15,7 @@ func _enter_behavior() -> void:
 
 
 func _exit_behavior() -> void:
-	# TODO: Display black screen, let key building resolve and remove screen
+	# TODO: Display black screen, let key building resolve and remove screen?
 	# TODO: Remove teleporters?
 	pass
 
