@@ -51,6 +51,7 @@ func register_menu_option() -> void:
 	# TODO: Instantiate and connect signals? Change return signature
 	_options_menu = DISSECTION_OPTIONS.instantiate()
 	_options_menu.timer_value_changed.connect(_on_timer_value_changed)
+	_options_menu.statue_3d_hint_setting_changed.connect(_on_3d_statue_hint_setting_changed)
 	MenuManager.register_menu_option(_options_menu)
 
 
@@ -184,3 +185,9 @@ func _on_timer_value_changed(new_time: float) -> void:
 
 func _on_encounter_resetting() -> void:
 	timer.stop()
+
+
+func _on_3d_statue_hint_setting_changed(should_show_hints: bool) -> void:
+	team_dissection.left_statue.set_display_for_composing_shape_hints(should_show_hints)
+	team_dissection.middle_statue.set_display_for_composing_shape_hints(should_show_hints)
+	team_dissection.right_statue.set_display_for_composing_shape_hints(should_show_hints)

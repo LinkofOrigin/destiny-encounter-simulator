@@ -55,5 +55,5 @@ func _set_requirement(new_requirement: InteractionRequirement) -> void:
 	
 	requirement = new_requirement
 	
-	if is_inside_tree():
+	if is_inside_tree() and requirement != null:
 		requirement.resolved_interaction.connect(_on_requirement_resolved)

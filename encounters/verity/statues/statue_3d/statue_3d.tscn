@@ -53,6 +53,14 @@ shape = SubResource("BoxShape3D_fjlli")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73456, 1.14332)
 
+[node name="LeftComposingShapeMarker" type="Marker3D" parent="HeldShapeMarker"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, -0.625, -0.365)
+
+[node name="RightComposingShapeMarker" type="Marker3D" parent="HeldShapeMarker"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.625, -0.365)
+
 [node name="Podium" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
 

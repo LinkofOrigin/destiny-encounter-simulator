@@ -4,18 +4,21 @@ extends MechanicOptions
 signal timer_value_changed(new_time: float)
 signal hint_display_changed(display: bool)
 signal hint_display_settings_changed(statue_shapes: bool, shape_logic: bool, key_matches: bool)
+signal statue_3d_hint_setting_changed(show_3d_statue_hints: bool)
 
 const MENU_TITLE := "Dissection"
 
 @onready var timer_spin_box: SpinBox = %TimerSpinBox
 @onready var hint_display_options: OptionButton = %HintDisplayOptions
 @onready var hint_display_settings: HintDisplaySettings = %HintDisplaySettings
+@onready var statue_hint_setting_options: MechanicOptionButton = %StatueHintSettingOptions
 
 
 func _ready_behavior() -> void:
 	timer_spin_box.value_changed.connect(_on_timer_value_changed)
 	hint_display_options.item_selected.connect(_on_hint_display_option_selected)
 	hint_display_settings.updated.connect(_on_hint_settings_updated)
+	statue_hint_setting_options.item_selected.connect(_on_statue_3d_hint_option_selected)
 
 
 func get_menu_title() -> String:
@@ -57,3 +60,12 @@ func _on_hint_display_option_selected(item_index: int) -> void:
 
 func _on_hint_settings_updated(show_statue_shapes: bool, show_shape_logic: bool, show_key_matches: bool) -> void:
 	hint_display_settings_changed.emit(show_statue_shapes, show_shape_logic, show_key_matches)
+
+
+func _on_statue_3d_hint_option_selected(item_index: int) -> void:
+	if item_index == 0:
+		# enabled, statues should show their composing shapes
+		statue_3d_hint_setting_changed.emit(true)
+	elif item_index == 2:
+		# disabled, statues should hide their composing shapes
+		statue_3d_hint_setting_changed.emit(false)
