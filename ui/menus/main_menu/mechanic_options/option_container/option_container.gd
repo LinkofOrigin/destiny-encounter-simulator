@@ -4,6 +4,7 @@ extends PanelContainer
 signal cancel_pressed
 
 @export var target_control: Control
+@export var shortcut_indicator_container: Container
 
 var _normal_stylebox := get_theme_stylebox("panel")
 var _focused_stylebox := get_theme_stylebox("focused", "PanelContainer")
@@ -22,6 +23,11 @@ func _ready() -> void:
 				break
 	if is_instance_valid(target_control):
 		target_control.focus_exited.connect(grab_focus)
+		
+	focus_entered.connect(_on_focus_entered)
+	focus_exited.connect(_on_focus_exited)
+	if is_instance_valid(shortcut_indicator_container):
+		shortcut_indicator_container.hide()
 
 
 func _draw() -> void:
@@ -59,3 +65,13 @@ func _gui_input(event: InputEvent) -> void:
 	# If "back" navigation, send signal(?) for parent
 	if event.is_action_pressed("MenuBack"):
 		cancel_pressed.emit()
+
+
+func _on_focus_entered() -> void:
+	if is_instance_valid(shortcut_indicator_container):
+		shortcut_indicator_container.show()
+
+
+func _on_focus_exited() -> void:
+	if is_instance_valid(shortcut_indicator_container):
+		shortcut_indicator_container.hide()

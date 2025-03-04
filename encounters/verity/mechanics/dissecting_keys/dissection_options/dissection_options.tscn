@@ -1,31 +1,58 @@
-[gd_scene load_steps=7 format=3 uid="uid://devhu5ca2k7ou"]
+[gd_scene load_steps=11 format=3 uid="uid://devhu5ca2k7ou"]
 
 [ext_resource type="Theme" uid="uid://d0adk5xocqg62" path="res://ui/menus/main_menu/mechanic_options/mechanic_options_theme.tres" id="1_ahpy0"]
 [ext_resource type="Script" path="res://encounters/verity/mechanics/dissecting_keys/dissection_options/dissection_options.gd" id="1_vowg1"]
 [ext_resource type="Script" path="res://ui/menus/main_menu/mechanic_options/option_container/option_container.gd" id="3_7amfq"]
 [ext_resource type="PackedScene" uid="uid://brfepp3wqacrx" path="res://ui/menus/main_menu/mechanic_options/mechanic_inputs/mechanic_spin_box/timer_spin_box/timer_spin_box.tscn" id="4_gbpok"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_4p0ap"]
 [ext_resource type="Script" path="res://ui/menus/main_menu/mechanic_options/mechanic_inputs/mechanic_option_button/mechanic_option_button.gd" id="5_h56oh"]
 [ext_resource type="Script" path="res://encounters/verity/mechanics/dissecting_keys/dissection_options/hint_display_settings.gd" id="6_emgxw"]
+
+[sub_resource type="Texture2D" id="Texture2D_mj4kv"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_4p0ap")
+path = "MenuOptionDecrease"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_mj6v3"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_4p0ap")
+path = "MenuOptionIncrease"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6nsd4"]
+color = Color(0.133196, 0.133196, 0.133196, 1)
+grow_begin = -5.0
+grow_end = -5.0
+thickness = 2
+vertical = true
 
 [node name="DissectionOptions" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -981.0
+offset_right = -1247.0
+offset_bottom = -665.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_ahpy0")
 theme_override_constants/separation = 1
 script = ExtResource("1_vowg1")
 
-[node name="TimerContainer" type="PanelContainer" parent="." node_paths=PackedStringArray("target_control")]
+[node name="TimerContainer" type="PanelContainer" parent="." node_paths=PackedStringArray("target_control", "shortcut_indicator_container")]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
+tooltip_text = "Time alotted to attempt the encounter and its mechanics. Set to 0 to disable."
 focus_neighbor_bottom = NodePath("../HintDisplayContainer")
 focus_mode = 2
 script = ExtResource("3_7amfq")
 target_control = NodePath("HBoxContainer/TimerSpinBox")
+shortcut_indicator_container = NodePath("HBoxContainer/HBoxContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TimerContainer"]
 layout_mode = 2
@@ -41,14 +68,53 @@ unique_name_in_owner = true
 layout_mode = 2
 shortcut_context = NodePath("../..")
 
-[node name="HintDisplayContainer" type="PanelContainer" parent="." node_paths=PackedStringArray("target_control")]
+[node name="Filler" type="Control" parent="TimerContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TimerContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="TimerContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_mj4kv")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="TimerContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="TimerContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_mj6v3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="TimerContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_6nsd4")
+
+[node name="Label" type="Label" parent="TimerContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ShortcutIndicatorLabel"
+text = "Decrease / Increase"
+
+[node name="HintDisplayContainer" type="PanelContainer" parent="." node_paths=PackedStringArray("target_control", "shortcut_indicator_container")]
+layout_mode = 2
+tooltip_text = "Determine how the hint display appears on the HUD while the encounter is actively running. Changing this mid-encounter will cause it to update accordingly.
+- Enabled: Always show the hint display.
+- Show on button held: Display the hint display only when holding the indicated button (shown while encounter is running). Otherwise it will be hidden.
+- Disabled: Hide the hint display."
 focus_neighbor_top = NodePath("../TimerContainer")
 focus_neighbor_bottom = NodePath("../HintSettingsContainer")
 focus_mode = 2
 script = ExtResource("3_7amfq")
 target_control = NodePath("HBoxContainer2/HintDisplayOptions")
+shortcut_indicator_container = NodePath("HBoxContainer2/HBoxContainer")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HintDisplayContainer"]
 layout_mode = 2
@@ -78,9 +144,47 @@ popup/item_4/text = "Disabled"
 popup/item_4/id = 4
 script = ExtResource("5_h56oh")
 
+[node name="Filler" type="Control" parent="HintDisplayContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HintDisplayContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HintDisplayContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_mj4kv")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="HintDisplayContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="HintDisplayContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_mj6v3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="HintDisplayContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_6nsd4")
+
+[node name="Label" type="Label" parent="HintDisplayContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ShortcutIndicatorLabel"
+text = "Change Option"
+
 [node name="HintSettingsContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 0
+tooltip_text = "Enable parts of the hint display to determine what hints are available.
+- Show Statue Shapes: Display what 3D shapes are currently held by the 3D Dissection statues.
+- Show Shape Logic: Display the 2D shapes that comprise the 3D shapes currently held by the 3D Dissection statues.
+- Show Key Matches: Display an icon for each 3D shape indicating if it matches with the current 2D Key shape."
 focus_neighbor_top = NodePath("../HintDisplayContainer")
 focus_neighbor_bottom = NodePath("../StatueHintSettingContainer")
 focus_mode = 2
@@ -116,13 +220,18 @@ popup/item_2/checked = true
 popup/item_2/id = 2
 script = ExtResource("6_emgxw")
 
-[node name="StatueHintSettingContainer" type="PanelContainer" parent="."]
+[node name="Filler" type="Control" parent="HintSettingsContainer/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="StatueHintSettingContainer" type="PanelContainer" parent="." node_paths=PackedStringArray("target_control", "shortcut_indicator_container")]
+layout_mode = 2
 tooltip_text = "When enabled, Statues holding a 3D shape will also show the comprising 2D shapes underneath."
 focus_neighbor_top = NodePath("../HintSettingsContainer")
 focus_mode = 2
 script = ExtResource("3_7amfq")
+target_control = NodePath("HBoxContainer2/StatueHintSettingOptions")
+shortcut_indicator_container = NodePath("HBoxContainer2/HBoxContainer2")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="StatueHintSettingContainer"]
 layout_mode = 2
@@ -146,3 +255,38 @@ popup/item_1/separator = true
 popup/item_2/text = "Disabled"
 popup/item_2/id = 2
 script = ExtResource("5_h56oh")
+
+[node name="Filler" type="Control" parent="StatueHintSettingContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="StatueHintSettingContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="StatueHintSettingContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+texture = SubResource("Texture2D_mj4kv")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="StatueHintSettingContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="StatueHintSettingContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+texture = SubResource("Texture2D_mj6v3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="StatueHintSettingContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_6nsd4")
+
+[node name="Label" type="Label" parent="StatueHintSettingContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"ShortcutIndicatorLabel"
+text = "Change Option"
