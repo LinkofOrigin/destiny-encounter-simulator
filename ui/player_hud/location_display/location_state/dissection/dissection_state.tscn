@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://12xlv8u8ggyy" path="res://assets/cancel.png" id="13_t6dj4"]
 
 [node name="DissectionState" type="MarginContainer"]
-custom_minimum_size = Vector2(365, 365)
 offset_right = 468.0
 offset_bottom = 409.0
 theme = ExtResource("1_itmgd")

@@ -101,7 +101,7 @@ func _get_raw_movement_vector() -> Vector2:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if MenuManager.is_paused() or not get_window().has_focus():
+	if MenuManager.is_paused():
 		return
 	
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://w3uh624pkya7"]
+[gd_scene load_steps=10 format=3 uid="uid://w3uh624pkya7"]
 
 [ext_resource type="Script" uid="uid://bxo6p38nb7cn5" path="res://ui/menus/main_menu/player_menu/player_menu.gd" id="2_d6l5a"]
 [ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu/player_menu_theme.tres" id="2_exytw"]
@@ -6,6 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://clup1bnb8nhfp" path="res://encounters/verity/hint_helpers/full_shape_reference.tscn" id="4_8pfho"]
 [ext_resource type="Script" uid="uid://cimpqrf1607sq" path="res://ui/menus/main_menu/player_menu/full_shape_ref_container.gd" id="4_qnf42"]
 [ext_resource type="Script" uid="uid://cp3roqqg4fhs8" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_6ng77"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mtlq"]
+bg_color = Color(0.096, 0.096, 0.096, 0.936)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.960351, 0.960351, 0.960351, 0.873)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_cegb4"]
 font_size = 50
@@ -252,6 +264,7 @@ offset_bottom = 445.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6mtlq")
 script = ExtResource("4_qnf42")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/FullShapeRefContainer"]

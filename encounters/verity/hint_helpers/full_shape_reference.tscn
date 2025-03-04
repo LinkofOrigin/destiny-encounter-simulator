@@ -164,8 +164,7 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/PrismRef"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Sphere
-"
+text = "Sphere"
 horizontal_alignment = 1
 
 [node name="FullShape" type="TextureRect" parent="PanelContainer2/VBoxContainer/PrismRef"]
@@ -305,8 +304,7 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="PanelContainer4/VBoxContainer/PrismRef"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Cone
-"
+text = "Cone"
 horizontal_alignment = 1
 
 [node name="FullShape" type="TextureRect" parent="PanelContainer4/VBoxContainer/PrismRef"]
