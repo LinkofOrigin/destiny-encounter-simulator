@@ -9,35 +9,35 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydc8j"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_rebhu"]
+[sub_resource type="QuadMesh" id="QuadMesh_wijjm"]
+flip_faces = true
 size = Vector2(65.94, 46.22)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mx86y"]
-albedo_color = Color(0.419813, 0.419813, 0.419813, 1)
+[sub_resource type="QuadMesh" id="QuadMesh_tta1d"]
+size = Vector2(65.94, 46.22)
 
-[sub_resource type="QuadMesh" id="QuadMesh_a477l"]
+[sub_resource type="QuadMesh" id="QuadMesh_3eose"]
 size = Vector2(62.08, 46.22)
 
-[sub_resource type="QuadMesh" id="QuadMesh_c5naj"]
+[sub_resource type="QuadMesh" id="QuadMesh_ntyab"]
+flip_faces = true
+size = Vector2(62.08, 46.22)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rl6iq"]
 lightmap_size_hint = Vector2i(327, 313)
+flip_faces = true
 add_uv2 = true
 size = Vector2(65.025, 62.265)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7hjo"]
-shading_mode = 2
-emission_enabled = true
-emission = Color(0.194535, 0.209007, 0.241045, 1)
-emission_energy_multiplier = 1.83
-
-[sub_resource type="Resource" id="Resource_7n4qv"]
+[sub_resource type="Resource" id="Resource_eujof"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
-[sub_resource type="Resource" id="Resource_2ufe0"]
+[sub_resource type="Resource" id="Resource_mgah0"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
-[sub_resource type="Resource" id="Resource_b43cr"]
+[sub_resource type="Resource" id="Resource_7ifx7"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
@@ -77,43 +77,30 @@ use_collision = true
 size = Vector3(63.4383, 0.512695, 59.5238)
 material = SubResource("StandardMaterial3D_ydc8j")
 
-[node name="BackWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="BackWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1755, 28.7186)
 visible = false
-use_collision = true
-flip_faces = true
-mesh = SubResource("QuadMesh_rebhu")
-material = SubResource("StandardMaterial3D_mx86y")
+mesh = SubResource("QuadMesh_wijjm")
 
-[node name="FrontWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="FrontWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1755, -30.6014)
 visible = false
-use_collision = true
-mesh = SubResource("QuadMesh_rebhu")
-material = SubResource("StandardMaterial3D_mx86y")
+mesh = SubResource("QuadMesh_tta1d")
 
-[node name="LeftWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="LeftWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.6463, 22.176, -0.895083)
 visible = false
-use_collision = true
-mesh = SubResource("QuadMesh_a477l")
-material = SubResource("StandardMaterial3D_mx86y")
+mesh = SubResource("QuadMesh_3eose")
 
-[node name="RightWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="RightWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.553, 22.176, -0.895128)
 visible = false
-use_collision = true
-flip_faces = true
-mesh = SubResource("QuadMesh_a477l")
-material = SubResource("StandardMaterial3D_mx86y")
+mesh = SubResource("QuadMesh_ntyab")
 
-[node name="Ceiling" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 44.679, -0.755309)
 visible = false
-use_collision = true
-flip_faces = true
-mesh = SubResource("QuadMesh_c5naj")
-material = SubResource("StandardMaterial3D_h7hjo")
+mesh = SubResource("QuadMesh_rl6iq")
 
 [node name="CenterStructure" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.54346)
@@ -171,17 +158,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)
 [node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
-interaction_behavior = SubResource("Resource_7n4qv")
+interaction_behavior = SubResource("Resource_eujof")
 
 [node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
-interaction_behavior = SubResource("Resource_2ufe0")
+interaction_behavior = SubResource("Resource_mgah0")
 
 [node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
-interaction_behavior = SubResource("Resource_b43cr")
+interaction_behavior = SubResource("Resource_7ifx7")
 
 [node name="BackArea" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)

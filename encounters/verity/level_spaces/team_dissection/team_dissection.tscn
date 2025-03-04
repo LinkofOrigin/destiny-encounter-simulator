@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhujlbkfoc4h5"]
+[gd_scene load_steps=24 format=3 uid="uid://bhujlbkfoc4h5"]
 
 [ext_resource type="Script" uid="uid://l1m53cpfl2d7" path="res://encounters/verity/level_spaces/team_dissection/team_dissection.gd" id="1_hqie8"]
 [ext_resource type="PackedScene" uid="uid://dgj8cvuy4impl" path="res://systems/core/components/shape_spawner/shape_spawner.tscn" id="2_3klrl"]
@@ -8,62 +8,65 @@
 [ext_resource type="PackedScene" uid="uid://ctkb27qfadydf" path="res://encounters/verity/statues/statue_ghost/statue_ghost.tscn" id="6_6alg0"]
 [ext_resource type="Script" uid="uid://dq0dtxox6u8ew" path="res://systems/core/components/interaction/requirements/statue_ghost_requirements/statue_ghost_requirement.gd" id="7_2r0am"]
 
-[sub_resource type="Resource" id="Resource_2lic5"]
+[sub_resource type="Resource" id="Resource_wdikw"]
 resource_local_to_scene = true
 script = ExtResource("5_talw2")
 
-[sub_resource type="Resource" id="Resource_xblgj"]
+[sub_resource type="Resource" id="Resource_86rec"]
 resource_local_to_scene = true
 script = ExtResource("5_talw2")
 
-[sub_resource type="Resource" id="Resource_v1au2"]
+[sub_resource type="Resource" id="Resource_eppfv"]
 resource_local_to_scene = true
 script = ExtResource("5_talw2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mss3n"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_g0666"]
+[sub_resource type="QuadMesh" id="QuadMesh_wdikw"]
+flip_faces = true
 size = Vector2(65.94, 46.22)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_po1q6"]
-albedo_color = Color(0.419813, 0.419813, 0.419813, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdikw"]
+albedo_color = Color(0.505344, 0.505344, 0.505344, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_t0slg"]
+[sub_resource type="QuadMesh" id="QuadMesh_86rec"]
+size = Vector2(65.94, 46.22)
+
+[sub_resource type="QuadMesh" id="QuadMesh_eppfv"]
 size = Vector2(85.125, 46.22)
 
-[sub_resource type="QuadMesh" id="QuadMesh_yiwpm"]
+[sub_resource type="QuadMesh" id="QuadMesh_m1wvn"]
+flip_faces = true
+size = Vector2(85.125, 46.22)
+
+[sub_resource type="QuadMesh" id="QuadMesh_hsjxo"]
 lightmap_size_hint = Vector2i(327, 420)
+flip_faces = true
 add_uv2 = true
 size = Vector2(65.025, 83.76)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bpgr"]
-shading_mode = 2
-emission_enabled = true
-emission = Color(0.194535, 0.209007, 0.241045, 1)
-emission_energy_multiplier = 1.83
-
-[sub_resource type="Resource" id="Resource_t0lpa"]
+[sub_resource type="Resource" id="Resource_m1wvn"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_i0t33"]
+[sub_resource type="Resource" id="Resource_hsjxo"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_40kjm"]
+[sub_resource type="Resource" id="Resource_170qi"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_pfpjc"]
+[sub_resource type="Resource" id="Resource_5bdpe"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_b0hfu"]
+[sub_resource type="Resource" id="Resource_gpmly"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
-[sub_resource type="Resource" id="Resource_5l6vi"]
+[sub_resource type="Resource" id="Resource_vjfhp"]
 resource_local_to_scene = true
 script = ExtResource("7_2r0am")
 
@@ -126,17 +129,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.636)
 [node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
-interaction_behavior = SubResource("Resource_2lic5")
+interaction_behavior = SubResource("Resource_wdikw")
 
 [node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
-interaction_behavior = SubResource("Resource_xblgj")
+interaction_behavior = SubResource("Resource_86rec")
 
 [node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_0he2e")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
-interaction_behavior = SubResource("Resource_v1au2")
+interaction_behavior = SubResource("Resource_eppfv")
 
 [node name="LevelBox" type="Node3D" parent="LevelGeometry"]
 
@@ -145,43 +148,30 @@ use_collision = true
 size = Vector3(63.4383, 0.512695, 83.4775)
 material = SubResource("StandardMaterial3D_mss3n")
 
-[node name="BackWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="BackWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1755, 41.6325)
-visible = false
-use_collision = true
-flip_faces = true
-mesh = SubResource("QuadMesh_g0666")
-material = SubResource("StandardMaterial3D_po1q6")
+mesh = SubResource("QuadMesh_wdikw")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
-[node name="FrontWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="FrontWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1755, -41.4533)
-visible = false
-use_collision = true
-mesh = SubResource("QuadMesh_g0666")
-material = SubResource("StandardMaterial3D_po1q6")
+mesh = SubResource("QuadMesh_86rec")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
-[node name="LeftWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="LeftWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.6463, 22.176, 0)
-visible = false
-use_collision = true
-mesh = SubResource("QuadMesh_t0slg")
-material = SubResource("StandardMaterial3D_po1q6")
+mesh = SubResource("QuadMesh_eppfv")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
-[node name="RightWall" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="RightWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.5534, 22.176, 0)
-visible = false
-use_collision = true
-flip_faces = true
-mesh = SubResource("QuadMesh_t0slg")
-material = SubResource("StandardMaterial3D_po1q6")
+mesh = SubResource("QuadMesh_m1wvn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
-[node name="Ceiling" type="CSGMesh3D" parent="LevelGeometry/LevelBox"]
+[node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 44.679, 0)
-visible = false
-use_collision = true
-flip_faces = true
-mesh = SubResource("QuadMesh_yiwpm")
-material = SubResource("StandardMaterial3D_8bpgr")
+mesh = SubResource("QuadMesh_hsjxo")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
 [node name="FrontStatues" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7897)
@@ -189,32 +179,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7897)
 [node name="PlayerOneStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.267995, 0, 0.96342, 0, 1, 0, -0.96342, 0, 0.267995, -16.6816, 0.243139, 18.0398)
-interaction_behavior = SubResource("Resource_t0lpa")
+interaction_behavior = SubResource("Resource_m1wvn")
 
 [node name="PlayerTwoStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.267995, 0, 0.96342, 0, 1, 0, -0.96342, 0, 0.267995, -13.3167, 0.243139, 11.1036)
-interaction_behavior = SubResource("Resource_i0t33")
+interaction_behavior = SubResource("Resource_hsjxo")
 
 [node name="PlayerThreeStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.989, 0, 0.147913, 0, 1, 0, -0.147913, 0, 0.989, -5.38512, 0.243139, 7.1881)
-interaction_behavior = SubResource("Resource_40kjm")
+interaction_behavior = SubResource("Resource_170qi")
 
 [node name="PlayerFourStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.987175, 0, -0.15964, 0, 1, 0, 0.15964, 0, 0.987175, 5.61655, 0.243139, 7.85655)
-interaction_behavior = SubResource("Resource_pfpjc")
+interaction_behavior = SubResource("Resource_5bdpe")
 
 [node name="PlayerFiveStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.548921, 0, -0.835874, 0, 1, 0, 0.835874, 0, 0.548921, 13.2401, 0.243139, 11.3057)
-interaction_behavior = SubResource("Resource_b0hfu")
+interaction_behavior = SubResource("Resource_gpmly")
 
 [node name="PlayerSixStatue" parent="LevelGeometry/FrontStatues" instance=ExtResource("6_6alg0")]
 unique_name_in_owner = true
 transform = Transform3D(0.142543, 0, -0.989789, 0, 1, 0, 0.989789, 0, 0.142543, 16.7248, 0.243139, 18.1872)
-interaction_behavior = SubResource("Resource_5l6vi")
+interaction_behavior = SubResource("Resource_vjfhp")
 
 [node name="CenterStructure" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.54346)
@@ -330,7 +320,7 @@ size = Vector3(3.57703, 4.5816, 0.867676)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7577, 0, 11.6483)
 
 [node name="Platform" type="CSGBox3D" parent="LevelGeometry/LeftRaisedAlcove"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6781, 4.46686, -8.61572)
+transform = Transform3D(0.997482, 0, 0, 0, 0.997482, 0, 0, 0, 0.997482, 3.6781, 4.46686, -8.61572)
 use_collision = true
 size = Vector3(7.13013, 9.93372, 35.0264)
 
