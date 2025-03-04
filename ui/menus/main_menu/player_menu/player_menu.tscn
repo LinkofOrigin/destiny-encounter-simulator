@@ -251,6 +251,7 @@ alignment = 0
 
 [node name="FullShapeRefContainer" type="PanelContainer" parent="OpaqueBackground"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

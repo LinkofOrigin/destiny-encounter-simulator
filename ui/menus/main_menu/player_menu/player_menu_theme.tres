@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c28euvt7baml8"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c28euvt7baml8"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_78qus"]
 thickness = 5
@@ -11,6 +11,30 @@ border_width_bottom = 3
 border_color = Color(0.916732, 0.936905, 0.811803, 1)
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3k5r"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.122, 0.122, 0.122, 0.954)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.942)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ao6ep"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.122, 0.122, 0.122, 0.954)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.942)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg061"]
 bg_color = Color(0.154876, 0.154876, 0.154876, 1)
@@ -27,6 +51,8 @@ LeftMenu/base_type = &"PanelContainer"
 LeftMenu/styles/panel = SubResource("StyleBoxFlat_6c3nx")
 MenuActionButton/base_type = &"Button"
 MenuActionButton/font_sizes/font_size = 40
+MenuActionButton/styles/normal = SubResource("StyleBoxFlat_j3k5r")
+MenuActionButton/styles/pressed = SubResource("StyleBoxFlat_ao6ep")
 MenuSelectButton/font_sizes/font_size = 35
 RightMenu/base_type = &"PanelContainer"
 RightMenu/styles/panel = SubResource("StyleBoxFlat_tg061")
