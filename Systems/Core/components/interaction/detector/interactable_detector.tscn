@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwsubyev1jlbq"]
 
-[ext_resource type="Script" path="res://systems/core/components/interaction/detector/interactable_detector.gd" id="1_567if"]
+[ext_resource type="Script" uid="uid://bbxugr55nixcd" path="res://systems/core/components/interaction/detector/interactable_detector.gd" id="1_567if"]
 
 [node name="InteractableDetector" type="Node3D"]
 script = ExtResource("1_567if")

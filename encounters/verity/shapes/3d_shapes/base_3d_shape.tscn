@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2fogossi5xm3"]
 
-[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_kafld"]
+[ext_resource type="Script" uid="uid://74lqqiuwjhh2" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_kafld"]
 
 [node name="Base3DShape" type="MeshInstance3D"]
 script = ExtResource("1_kafld")

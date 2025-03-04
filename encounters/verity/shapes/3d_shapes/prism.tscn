@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci84ug6or057n"]
 
-[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_id8id"]
+[ext_resource type="Script" uid="uid://74lqqiuwjhh2" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_id8id"]
 [ext_resource type="Resource" uid="uid://b2xxbu6l1mu82" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/prism_effect.tres" id="2_0pcvj"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_e81do"]

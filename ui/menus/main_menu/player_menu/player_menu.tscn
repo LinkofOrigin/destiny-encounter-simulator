@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://w3uh624pkya7"]
 
-[ext_resource type="Script" path="res://ui/menus/main_menu/player_menu/player_menu.gd" id="2_d6l5a"]
+[ext_resource type="Script" uid="uid://bxo6p38nb7cn5" path="res://ui/menus/main_menu/player_menu/player_menu.gd" id="2_d6l5a"]
 [ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu/player_menu_theme.tres" id="2_exytw"]
 [ext_resource type="Theme" uid="uid://ciao1yg8aebw5" path="res://ui/menus/main_menu/coming_soon_theme.tres" id="3_88680"]
 [ext_resource type="PackedScene" uid="uid://clup1bnb8nhfp" path="res://encounters/verity/hint_helpers/full_shape_reference.tscn" id="4_8pfho"]
-[ext_resource type="Script" path="res://ui/menus/main_menu/player_menu/full_shape_ref_container.gd" id="4_qnf42"]
-[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_6ng77"]
+[ext_resource type="Script" uid="uid://cimpqrf1607sq" path="res://ui/menus/main_menu/player_menu/full_shape_ref_container.gd" id="4_qnf42"]
+[ext_resource type="Script" uid="uid://cp3roqqg4fhs8" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_6ng77"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cegb4"]
 font_size = 50

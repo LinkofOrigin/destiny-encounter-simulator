@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://biheldwtxjrcj"]
 
-[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_amv68"]
+[ext_resource type="Script" uid="uid://74lqqiuwjhh2" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_amv68"]
 [ext_resource type="Resource" uid="uid://t5src38m8b7o" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cylinder_effect.tres" id="2_3xktg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_i4v4v"]

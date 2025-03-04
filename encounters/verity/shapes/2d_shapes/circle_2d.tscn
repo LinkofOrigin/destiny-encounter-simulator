@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://4jdtrhtqywn3"]
 
-[ext_resource type="Script" path="res://encounters/verity/shapes/2d_shapes/base_2d_shape.gd" id="1_yu4yk"]
+[ext_resource type="Script" uid="uid://b3t4giidb8jol" path="res://encounters/verity/shapes/2d_shapes/base_2d_shape.gd" id="1_yu4yk"]
 [ext_resource type="Resource" uid="uid://8ti37f57fvf7" path="res://systems/core/components/effect_management/effect_resources/shapes/2d_shapes/circle_effect.tres" id="2_4olxc"]
 [ext_resource type="PackedScene" uid="uid://dfesquuh8acrb" path="res://encounters/verity/shapes/2d_shapes/circle_sprite.tscn" id="3_qjhei"]
 [ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="4_2x7tq"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Shape3DEffectData" load_steps=2 format=3 uid="uid://b2xxbu6l1mu82"]
 
-[ext_resource type="Script" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/shape_3d_effect_data.gd" id="1_n8cpn"]
+[ext_resource type="Script" uid="uid://boilqqhaewjqn" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/shape_3d_effect_data.gd" id="1_n8cpn"]
 
 [resource]
 script = ExtResource("1_n8cpn")

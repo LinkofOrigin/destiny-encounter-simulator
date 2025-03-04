@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwkgrrxfyg5q6"]
 
-[ext_resource type="Script" path="res://encounters/verity/mechanics/dissecting_keys/dissecting_keys_mechanic.gd" id="1_gwipo"]
+[ext_resource type="Script" uid="uid://w8lbnr6j48u6" path="res://encounters/verity/mechanics/dissecting_keys/dissecting_keys_mechanic.gd" id="1_gwipo"]
 
 [node name="DissectingKeysMechanic" type="Node"]
 script = ExtResource("1_gwipo")

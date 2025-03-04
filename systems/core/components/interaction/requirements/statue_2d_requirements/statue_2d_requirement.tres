@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Statue2DRequirement" load_steps=2 format=3 uid="uid://bnna5v2ur1uxp"]
 
-[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="1_mamew"]
+[ext_resource type="Script" uid="uid://b6woc1wjoadjh" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="1_mamew"]
 
 [resource]
 script = ExtResource("1_mamew")

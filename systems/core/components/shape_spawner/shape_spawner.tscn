@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgj8cvuy4impl"]
 
-[ext_resource type="Script" path="res://systems/core/components/shape_spawner/shape_spawner.gd" id="1_7utnp"]
+[ext_resource type="Script" uid="uid://jpyesr3me30j" path="res://systems/core/components/shape_spawner/shape_spawner.gd" id="1_7utnp"]
 
 [node name="ShapeSpawner" type="Node"]
 script = ExtResource("1_7utnp")

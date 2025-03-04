@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn455xggnft70"]
 
-[ext_resource type="Script" path="res://systems/globals/player_hud_manager/player_hud_manager.gd" id="1_o0h1u"]
+[ext_resource type="Script" uid="uid://85lvjmqggm6m" path="res://systems/globals/player_hud_manager/player_hud_manager.gd" id="1_o0h1u"]
 [ext_resource type="PackedScene" uid="uid://b7d6o1x6lr2kv" path="res://ui/player_hud/player_hud.tscn" id="2_itafs"]
 
 [node name="PlayerHudManager" type="Node"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jwxdtt7y3gae"]
 
-[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_p7bb7"]
+[ext_resource type="Script" uid="uid://74lqqiuwjhh2" path="res://encounters/verity/shapes/3d_shapes/base_3d_shape.gd" id="1_p7bb7"]
 [ext_resource type="Resource" uid="uid://caui5h71ucnkq" path="res://systems/core/components/effect_management/effect_resources/shapes/3d_shapes/cube_effect.tres" id="2_c0dbx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vuf1c"]

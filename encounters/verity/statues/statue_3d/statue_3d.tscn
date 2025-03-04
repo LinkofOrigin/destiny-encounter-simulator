@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dd0ruri7sfqku"]
 
-[ext_resource type="Script" path="res://encounters/verity/statues/statue_3d/statue_3d.gd" id="1_gw53i"]
+[ext_resource type="Script" uid="uid://cvdq368kv1c0t" path="res://encounters/verity/statues/statue_3d/statue_3d.gd" id="1_gw53i"]
 [ext_resource type="Resource" uid="uid://vs631o5lpp8v" path="res://systems/core/components/interaction/requirements/statue_3d_requirements/statue_3d_requirement.tres" id="2_hglub"]
 [ext_resource type="PackedScene" uid="uid://dgj8cvuy4impl" path="res://systems/core/components/shape_spawner/shape_spawner.tscn" id="3_drlwt"]
 [ext_resource type="PackedScene" uid="uid://bmqrwud04yapi" path="res://systems/core/components/interaction/interactable/interactable_component.tscn" id="4_o2jpy"]

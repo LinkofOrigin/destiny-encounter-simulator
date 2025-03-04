@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://skg175ottunh"]
 
-[ext_resource type="Script" path="res://encounters/verity/manager/verity_manager.gd" id="1_w60ek"]
-[ext_resource type="Script" path="res://encounters/verity/manager/phases/freeroam/freeroam_phase.gd" id="2_ruuql"]
-[ext_resource type="Script" path="res://encounters/verity/manager/phases/key_building/key_building_phase.gd" id="3_ic04f"]
-[ext_resource type="Script" path="res://encounters/verity/manager/phases/ghost/ghost_phase.gd" id="4_00r25"]
+[ext_resource type="Script" uid="uid://bkxvtsshb1iqq" path="res://encounters/verity/manager/verity_manager.gd" id="1_w60ek"]
+[ext_resource type="Script" uid="uid://bbsmgb4a0xkoc" path="res://encounters/verity/manager/phases/freeroam/freeroam_phase.gd" id="2_ruuql"]
+[ext_resource type="Script" uid="uid://bnus3q3setret" path="res://encounters/verity/manager/phases/key_building/key_building_phase.gd" id="3_ic04f"]
+[ext_resource type="Script" uid="uid://ealalmsi4d1d" path="res://encounters/verity/manager/phases/ghost/ghost_phase.gd" id="4_00r25"]
 [ext_resource type="PackedScene" uid="uid://cwkgrrxfyg5q6" path="res://encounters/verity/mechanics/dissecting_keys/dissecting_keys_mechanic.tscn" id="4_jrgv8"]
-[ext_resource type="Script" path="res://encounters/verity/manager/phases/wipe/wipe_phase.gd" id="5_1jkwi"]
+[ext_resource type="Script" uid="uid://fls81vjsl76b" path="res://encounters/verity/manager/phases/wipe/wipe_phase.gd" id="5_1jkwi"]
 [ext_resource type="PackedScene" uid="uid://dbmbcwpi4k8bk" path="res://systems/core/encounters/mechanics/fade_and_spawn/fade_and_spawn.tscn" id="7_qpt8q"]
 
 [node name="VerityManager" type="Node"]

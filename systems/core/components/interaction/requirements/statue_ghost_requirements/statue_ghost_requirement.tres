@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatueGhostRequirement" load_steps=2 format=3 uid="uid://ds1diya5ldwin"]
 
-[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_ghost_requirements/statue_ghost_requirement.gd" id="1_ixbit"]
+[ext_resource type="Script" uid="uid://dq0dtxox6u8ew" path="res://systems/core/components/interaction/requirements/statue_ghost_requirements/statue_ghost_requirement.gd" id="1_ixbit"]
 
 [resource]
 script = ExtResource("1_ixbit")

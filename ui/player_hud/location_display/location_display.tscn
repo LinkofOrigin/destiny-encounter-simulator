@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ci115hcg3twey"]
 
 [ext_resource type="Theme" uid="uid://ci0oechekfhsk" path="res://ui/player_hud/location_display/location_display.tres" id="1_aywbv"]
-[ext_resource type="Script" path="res://ui/player_hud/location_display/location_display.gd" id="1_gt04n"]
-[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_2gp1i"]
+[ext_resource type="Script" uid="uid://d0ka1por1bwh3" path="res://ui/player_hud/location_display/location_display.gd" id="1_gt04n"]
+[ext_resource type="Script" uid="uid://cp3roqqg4fhs8" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_2gp1i"]
 
 [sub_resource type="Texture2D" id="Texture2D_83pmq"]
 resource_local_to_scene = false

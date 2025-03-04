@@ -1,10 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b3h1l7k8gu4rf"]
 
 [ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="1_i72fr"]
-[ext_resource type="PackedScene" uid="uid://bosfxvif8fmvs" path="res://encounters/verity/shapes/2d_shapes/triangle_2d_old.tscn" id="2_47mu5"]
-[ext_resource type="PackedScene" uid="uid://8dr7242bspga" path="res://encounters/verity/shapes/2d_shapes/square_2d_old.tscn" id="3_b1l7r"]
-[ext_resource type="PackedScene" uid="uid://dib4ygu3bj6t2" path="res://encounters/verity/shapes/2d_shapes/circle_2d_old.tscn" id="4_p8dgo"]
-[ext_resource type="PackedScene" uid="uid://cww11uvruk34m" path="res://encounters/verity/statues/statue.tscn" id="5_irqpm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wksdw"]
 sky_top_color = Color(0.313031, 0.450636, 0.665658, 1)
@@ -21,6 +17,18 @@ tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4appr"]
 albedo_color = Color(0.266575, 0.266575, 0.266575, 1)
+
+[sub_resource type="Resource" id="Resource_3v8h3"]
+metadata/__load_path__ = "res://encounters/verity/shapes/2d_shapes/triangle_2d_old.tscn"
+
+[sub_resource type="Resource" id="Resource_ix6xm"]
+metadata/__load_path__ = "res://encounters/verity/shapes/2d_shapes/square_2d_old.tscn"
+
+[sub_resource type="Resource" id="Resource_7iiy8"]
+metadata/__load_path__ = "res://encounters/verity/shapes/2d_shapes/circle_2d_old.tscn"
+
+[sub_resource type="Resource" id="Resource_1gw0h"]
+metadata/__load_path__ = "res://encounters/verity/statues/statue.tscn"
 
 [node name="Test2dShapes" type="Node3D"]
 process_mode = 3
@@ -40,14 +48,14 @@ size = Vector3(16.2147, 0.0906982, 16.6182)
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_i72fr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211298, 1.02181, 5.23055)
 
-[node name="Triangle2D" parent="." instance=ExtResource("2_47mu5")]
+[node name="Triangle2D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00344, 0.683819, -2.02648)
 
-[node name="Square2D" parent="." instance=ExtResource("3_b1l7r")]
+[node name="Square2D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35062, 0.683819, -2.49969)
 
-[node name="Circle2D" parent="." instance=ExtResource("4_p8dgo")]
+[node name="Circle2D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684, -3.223)
 
-[node name="Statue" parent="." instance=ExtResource("5_irqpm")]
+[node name="Statue" parent="."]
 transform = Transform3D(-0.12322, 0, 0.992379, 0, 1, 0, -0.992379, 0, -0.12322, -7.04246, 0, 3.2099)

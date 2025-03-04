@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://ck77xxrg4ox8c"]
 
-[ext_resource type="Script" path="res://encounters/verity/test_scenes/test_3d_statue_models.gd" id="1_fs72q"]
+[ext_resource type="Script" uid="uid://dr678wor0efho" path="res://encounters/verity/test_scenes/test_3d_statue_models.gd" id="1_fs72q"]
 [ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="2_xeqkb"]
 [ext_resource type="PackedScene" uid="uid://dd0ruri7sfqku" path="res://encounters/verity/statues/statue_3d/statue_3d.tscn" id="3_11hkw"]
-[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_3d_requirements/statue_3d_requirement.gd" id="4_edmec"]
+[ext_resource type="Script" uid="uid://r8oc5pi5ixs1" path="res://systems/core/components/interaction/requirements/statue_3d_requirements/statue_3d_requirement.gd" id="4_edmec"]
 [ext_resource type="PackedScene" uid="uid://2intyrv7cic" path="res://encounters/verity/shapes/2d_shapes/triangle_2d.tscn" id="4_ftupl"]
 [ext_resource type="PackedScene" uid="uid://4jdtrhtqywn3" path="res://encounters/verity/shapes/2d_shapes/circle_2d.tscn" id="5_4jj2h"]
 [ext_resource type="PackedScene" uid="uid://85q2ix0badu6" path="res://encounters/verity/statues/statue_2d/statue_2d.tscn" id="5_aavkl"]

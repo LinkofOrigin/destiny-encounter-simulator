@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://doh0b47v1pmic"]
 
-[ext_resource type="Script" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.gd" id="1_3jf8a"]
-[ext_resource type="Script" path="res://encounters/verity/level_spaces/level_geometry.gd" id="1_ngay2"]
+[ext_resource type="Script" uid="uid://bpdcwoukimpes" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.gd" id="1_3jf8a"]
+[ext_resource type="Script" uid="uid://bvo35yoewxri6" path="res://encounters/verity/level_spaces/level_geometry.gd" id="1_ngay2"]
 [ext_resource type="PackedScene" uid="uid://dgj8cvuy4impl" path="res://systems/core/components/shape_spawner/shape_spawner.tscn" id="2_sgmor"]
 [ext_resource type="PackedScene" uid="uid://85q2ix0badu6" path="res://encounters/verity/statues/statue_2d/statue_2d.tscn" id="4_as3xx"]
-[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="5_rtsvd"]
+[ext_resource type="Script" uid="uid://b6woc1wjoadjh" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="5_rtsvd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydc8j"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)

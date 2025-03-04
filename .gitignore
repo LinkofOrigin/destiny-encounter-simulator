@@ -15,5 +15,7 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
+# PERSONAL ADDITIONS
+
 # Ignore reference material (get from Google Drive)
 Reference/

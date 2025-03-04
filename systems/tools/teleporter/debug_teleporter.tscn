@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmm848yr108hd"]
 
-[ext_resource type="Script" path="res://systems/tools/teleporter/debug_teleporter.gd" id="1_qnhqc"]
+[ext_resource type="Script" uid="uid://y2ql2eqkfvmq" path="res://systems/tools/teleporter/debug_teleporter.gd" id="1_qnhqc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtkv5"]
 size = Vector3(5.39699, 6.00435, 0.371948)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShapeResolver" load_steps=2 format=3 uid="uid://b0ywhumh835ou"]
 
-[ext_resource type="Script" path="res://encounters/verity/shapes/3d_shapes/shape_resolver.gd" id="1_uymo2"]
+[ext_resource type="Script" uid="uid://de20w8odhkgkm" path="res://encounters/verity/shapes/3d_shapes/shape_resolver.gd" id="1_uymo2"]
 
 [resource]
 script = ExtResource("1_uymo2")

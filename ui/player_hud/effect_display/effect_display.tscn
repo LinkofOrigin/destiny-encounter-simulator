@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0llwbeo3isjv"]
 
-[ext_resource type="Script" path="res://ui/player_hud/effect_display/effect_display.gd" id="1_a4xr8"]
+[ext_resource type="Script" uid="uid://dqes1nen4kk21" path="res://ui/player_hud/effect_display/effect_display.gd" id="1_a4xr8"]
 
 [node name="EffectDisplay" type="MarginContainer"]
 anchors_preset = 4

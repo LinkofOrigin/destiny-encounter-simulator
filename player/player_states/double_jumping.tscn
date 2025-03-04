@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dykq1ucont5ww"]
 
-[ext_resource type="Script" path="res://player/player_states/double_jumping.gd" id="1_drrij"]
+[ext_resource type="Script" uid="uid://cpq7cr2hbqa66" path="res://player/player_states/double_jumping.gd" id="1_drrij"]
 
 [node name="DoubleJumping" type="Node"]
 script = ExtResource("1_drrij")

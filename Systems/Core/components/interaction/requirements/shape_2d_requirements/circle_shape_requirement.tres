@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Shape2DRequirement" load_steps=3 format=3 uid="uid://bnuc2nqx1vo1t"]
 
 [ext_resource type="Resource" uid="uid://8ti37f57fvf7" path="res://systems/core/components/effect_management/effect_resources/shapes/2d_shapes/circle_effect.tres" id="1_s8ha4"]
-[ext_resource type="Script" path="res://systems/core/components/interaction/requirements/shape_2d_requirements/shape_2d_requirement.gd" id="2_sx23k"]
+[ext_resource type="Script" uid="uid://c5323gr1m6pc" path="res://systems/core/components/interaction/requirements/shape_2d_requirements/shape_2d_requirement.gd" id="2_sx23k"]
 
 [resource]
 script = ExtResource("2_sx23k")

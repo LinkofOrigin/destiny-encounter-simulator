@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://d255jgecwwpd0"]
 
 [ext_resource type="Theme" uid="uid://btm7x5nbpt5cm" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state_theme.tres" id="1_itmgd"]
-[ext_resource type="Script" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state.gd" id="2_6xulf"]
+[ext_resource type="Script" uid="uid://i866t1csemcf" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state.gd" id="2_6xulf"]
 [ext_resource type="Texture2D" uid="uid://dp3bl7yq5514g" path="res://assets/2d_shapes/test/plain-circle.png" id="3_tfogt"]
 [ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="4_ft8bw"]
 [ext_resource type="Texture2D" uid="uid://d03qfhoxiua3o" path="res://assets/2d_shapes/test/plain-triangle.png" id="5_ub7yc"]

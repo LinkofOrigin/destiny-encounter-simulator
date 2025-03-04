@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bfxnnjltu0rl2"]
 
-[ext_resource type="Script" path="res://encounters/verity/test_scenes/test_solo_rooms/test_solo_rooms.gd" id="1_m1571"]
+[ext_resource type="Script" uid="uid://bfvq3b8ubvfnd" path="res://encounters/verity/test_scenes/test_solo_rooms/test_solo_rooms.gd" id="1_m1571"]
 [ext_resource type="PackedScene" uid="uid://doh0b47v1pmic" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.tscn" id="2_hvjt8"]
 [ext_resource type="PackedScene" uid="uid://cmm848yr108hd" path="res://systems/tools/teleporter/debug_teleporter.tscn" id="3_3t6bl"]
 [ext_resource type="PackedScene" uid="uid://truukch58tcx" path="res://player/player_character.tscn" id="4_eqo5y"]
