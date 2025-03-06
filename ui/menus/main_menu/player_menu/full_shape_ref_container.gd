@@ -15,6 +15,7 @@ func show_reference_menu() -> void:
 
 func hide_shape_ref() -> void:
 	hide()
+	release_focus()
 
 
 func _on_button_pressed() -> void:

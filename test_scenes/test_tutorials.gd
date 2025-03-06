@@ -15,7 +15,8 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		test_hud.hide()
 		test_menu.hide()
-	test_tutorial.start.call_deferred()
+	if is_instance_valid(test_tutorial):
+		test_tutorial.start.call_deferred()
 
 
 func toggle_hud_in_tutorial() -> void:

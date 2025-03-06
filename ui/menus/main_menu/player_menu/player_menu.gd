@@ -38,6 +38,7 @@ func hide_menu() -> void:
 func return_to_home() -> void:
 	_set_current_tab(0)
 	focus_first_menu_option()
+	full_shape_ref_container.hide()
 
 
 func focus_first_menu_option() -> void:
