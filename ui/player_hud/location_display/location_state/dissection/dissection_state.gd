@@ -177,6 +177,7 @@ func _set_composing_shape_details_for(shape_3d: EffectLibrary.SHAPE_3D_TYPES, ic
 	icon_two.texture = texture_two
 	label_two.text = name_two
 
+
 func _update_hint_display_settings(show_statue_shapes: bool, show_shape_logic: bool, show_key_matches: bool) -> void:
 	_set_3d_statue_hint_display(show_statue_shapes)
 	_set_composing_shape_hint_display(show_shape_logic)

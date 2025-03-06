@@ -10,6 +10,7 @@ func _ready() -> void:
 	GlobalSignals.player_interact_progress_made.connect(_on_player_interact_progress_made)
 	GlobalSignals.player_interaction_complete.connect(_on_player_interaction_complete)
 	GlobalSignals.player_hint_display_on_input.connect(_on_player_hint_display_on_input)
+	GlobalSignals.restricted_input_changed.connect(_on_restricted_input_changed)
 	GlobalSignals.effect_acquired.connect(_on_effect_acquired)
 	GlobalSignals.encounter_start_progress.connect(_on_encounter_start_progress)
 	GlobalSignals.encounter_starting.connect(_on_encounter_starting)
@@ -98,3 +99,11 @@ func _on_encounter_starting() -> void:
 func _on_encounter_resetting() -> void:
 	player_hud.show_encounter_start_display()
 	player_hud.timer_display.hide()
+
+
+# Restrict input signal
+func _on_restricted_input_changed(restricted: bool) -> void:
+	set_process(not restricted)
+	set_process_input(not restricted)
+	set_process_unhandled_input(not restricted)
+	set_physics_process(not restricted)

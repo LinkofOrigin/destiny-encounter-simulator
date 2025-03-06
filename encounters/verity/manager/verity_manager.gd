@@ -1,11 +1,13 @@
 class_name VerityManager
 extends EncounterManager
 
+# TODO: Move this higher up when more encounters exist
+const DES_TUTORIAL = preload("res://systems/core/tutorials/des_tutorial/des_tutorial.tscn")
+
 @export var team_dissection: TeamDissection
 @export var left_solo_room: SoloKeyBuilding
 @export var middle_solo_room: SoloKeyBuilding
 @export var right_solo_room: SoloKeyBuilding
-
 @onready var freeroam_phase: FreeroamPhase = %FreeroamPhase
 @onready var key_building_phase: KeyBuildingPhase = %KeyBuildingPhase
 @onready var ghost_phase: GhostPhase = %GhostPhase
@@ -16,13 +18,17 @@ var _current_phase: EncounterPhase
 
 func _ready() -> void:
 	_initial_setup()
-	
-	_current_phase = freeroam_phase
-	_current_phase.enter()
+	_handle_initial_tutorial()
 
 
 func _process(delta: float) -> void:
-	_current_phase.process(delta)
+	if is_instance_valid(_current_phase):
+		_current_phase.process(delta)
+
+
+func _set_initial_phase() -> void:
+	_current_phase = freeroam_phase
+	_current_phase.enter()
 
 
 func _handle_phase_swap(phase: EncounterPhase) -> void:
@@ -36,8 +42,15 @@ func _on_encounter_starting() -> void:
 
 
 func _on_encounter_resetting() -> void:
-	_is_running = true # TODO: ??
+	_is_running = false # TODO: ??
 	#_handle_phase_swap(freeroam_phase)
+
+
+func _handle_initial_tutorial() -> void:
+	var tutorial := DES_TUTORIAL.instantiate()
+	tutorial.finished.connect(_set_initial_phase)
+	get_tree().root.add_child.call_deferred(tutorial)
+	tutorial.start.call_deferred()
 
 
 func _initial_setup() -> void:

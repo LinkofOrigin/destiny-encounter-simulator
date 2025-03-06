@@ -11,6 +11,8 @@ signal expired(effect: Effect)
 
 
 func _ready() -> void:
+	if not is_instance_valid(effect):
+		return
 	if effect.data.icon != null:
 		icon_texture.texture = effect.data.icon
 	
@@ -25,8 +27,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var new_time: String = _format_time_for_label(effect.timer.time_left)
-	time_label.text = new_time
+	if is_instance_valid(effect):
+		var new_time: String = _format_time_for_label(effect.timer.time_left)
+		time_label.text = new_time
 
 
 func _format_time_for_label(seconds: float) -> String:

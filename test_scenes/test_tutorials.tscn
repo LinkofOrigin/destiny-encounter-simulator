@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b02ysp6wxm8ig"]
+
+[ext_resource type="PackedScene" uid="uid://b7d6o1x6lr2kv" path="res://ui/player_hud/player_hud.tscn" id="1_d54ts"]
+[ext_resource type="Script" uid="uid://b8mwnr8ey3wxl" path="res://test_scenes/test_tutorials.gd" id="1_qcsyg"]
+[ext_resource type="PackedScene" uid="uid://w3uh624pkya7" path="res://ui/menus/main_menu/player_menu/player_menu.tscn" id="2_qcsyg"]
+[ext_resource type="PackedScene" uid="uid://58ecbsot64wc" path="res://systems/core/tutorials/des_tutorial/des_tutorial.tscn" id="3_vm3yj"]
+
+[node name="TestTutorials" type="Control" node_paths=PackedStringArray("test_hud", "test_menu", "test_tutorial")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qcsyg")
+test_hud = NodePath("PlayerHud")
+test_menu = NodePath("PlayerMenu")
+test_tutorial = NodePath("DesTutorial")
+
+[node name="PlayerHud" parent="." instance=ExtResource("1_d54ts")]
+layer = 3
+visible = false
+
+[node name="PlayerMenu" parent="." instance=ExtResource("2_qcsyg")]
+layer = 3
+
+[node name="DesTutorial" parent="." instance=ExtResource("3_vm3yj")]

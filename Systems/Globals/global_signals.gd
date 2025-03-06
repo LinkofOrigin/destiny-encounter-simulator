@@ -8,6 +8,7 @@ signal player_can_not_interact()
 signal player_interact_progress_made(current_progress: float)
 signal player_interaction_complete(interactable: InteractableComponent)
 signal player_hint_display_on_input(display: bool)
+signal restricted_input_changed(restricted: bool)
 
 
 func emit_player_interaction_allowed(interact_allowed: bool) -> void:
@@ -32,6 +33,11 @@ func emit_player_interaction_complete(interactable: InteractableComponent) -> vo
 
 func emit_player_hint_display_on_input(display: bool) -> void:
 	player_hint_display_on_input.emit(display)
+
+
+# TODO: This signal and it's effects are a bit hacky, lots of copy/paste. May consider changing later
+func emit_restricted_input_changed(restricted: bool) -> void:
+	restricted_input_changed.emit(restricted)
 
 
 ## Buff Effect signals

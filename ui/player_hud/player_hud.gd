@@ -37,6 +37,10 @@ func add_effect(effect: Effect) -> void:
 	effect_display.add_effect(effect)
 
 
+func remove_effect(effect: Effect) -> void:
+	effect_display.remove_effect(effect)
+
+
 ## Encounter Start Display
 func set_encounter_start_progress(percent: float) -> void:
 	start_encounter_display.set_progress_percent(percent)
@@ -68,8 +72,8 @@ func display_hint_on_start(show_on_start: bool) -> void:
 	location_display.show_on_encounter_start = show_on_start
 
 
-func show_location_state() -> void:
-	location_display.show_state()
+func show_location_state(force := false) -> void:
+	location_display.show_state(force)
 
 
 func hide_location_state() -> void:

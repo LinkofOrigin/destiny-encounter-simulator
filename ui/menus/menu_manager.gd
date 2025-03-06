@@ -6,6 +6,10 @@ extends CanvasGroup
 var paused := false
 
 
+func _ready() -> void:
+	GlobalSignals.restricted_input_changed.connect(_on_restricted_input_changed)
+
+
 func is_paused() -> bool:
 	return paused
 
@@ -35,3 +39,10 @@ func _input(event: InputEvent) -> void:
 			unpause_and_hide_menu(is_controller_input)
 		else:
 			pause_and_display_menu()
+
+
+func _on_restricted_input_changed(restricted: bool) -> void:
+	set_process(not restricted)
+	set_process_input(not restricted)
+	set_process_unhandled_input(not restricted)
+	set_physics_process(not restricted)

@@ -23,9 +23,9 @@ func _ready() -> void:
 	hint_display_indicator_container.hide()
 
 
-func show_state() -> void:
+func show_state(force := false) -> void:
 	# TODO: Give this a fade or cooldown or something?
-	if _encounter_running:
+	if _encounter_running or force:
 		full_state_holder.show()
 		display_hints_indicator.text = "[Release] Hide Hints"
 

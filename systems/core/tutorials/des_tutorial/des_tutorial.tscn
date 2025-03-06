@@ -1,0 +1,765 @@
+[gd_scene load_steps=32 format=3 uid="uid://58ecbsot64wc"]
+
+[ext_resource type="Script" uid="uid://cnyf5i7fd1t25" path="res://systems/core/tutorials/des_tutorial/des_tutorial.gd" id="1_55wk2"]
+[ext_resource type="Theme" uid="uid://bnaxa7habx5hw" path="res://systems/core/tutorials/des_tutorial/des_tutorial_theme.tres" id="1_nqtg7"]
+[ext_resource type="Script" uid="uid://038whc2ynyx6" path="res://systems/core/tutorials/tutorial_screen.gd" id="2_pe2x5"]
+[ext_resource type="Script" uid="uid://c8ywwfdue1vtu" path="res://systems/core/tutorials/des_tutorial/hud_screen.gd" id="4_rccr0"]
+[ext_resource type="Script" uid="uid://cp3roqqg4fhs8" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="4_x6aak"]
+[ext_resource type="Script" uid="uid://dma0tb5b2x3rb" path="res://systems/core/tutorials/des_tutorial/menu_screen.gd" id="6_55wk2"]
+[ext_resource type="Script" uid="uid://dyraau1ya214f" path="res://systems/core/components/interaction/interactable/interactable_component.gd" id="6_bie8b"]
+[ext_resource type="Script" uid="uid://cs6cb56mgtfxu" path="res://systems/core/components/interaction/requirements/interaction_requirement.gd" id="7_bng5y"]
+[ext_resource type="Script" uid="uid://h6dtwim8to86" path="res://systems/core/components/interaction/zone/interaction_zone.gd" id="8_62ux8"]
+[ext_resource type="Script" uid="uid://cn7t6uji3joke" path="res://systems/core/components/interaction/target/interaction_target.gd" id="9_h4sio"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6aak"]
+
+[sub_resource type="FontVariation" id="FontVariation_nqtg7"]
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nqtg7"]
+color = Color(0.920995, 0.920995, 0.920995, 1)
+grow_begin = -190.0
+grow_end = -190.0
+thickness = 4
+
+[sub_resource type="Texture2D" id="Texture2D_rccr0"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "MoveForward"
+show_mode = 1
+force_type = 1
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_55wk2"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "MoveLeft"
+show_mode = 1
+force_type = 1
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_mdlwr"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "MoveBackward"
+show_mode = 1
+force_type = 1
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_bie8b"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "MoveRight"
+show_mode = 1
+force_type = 1
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_bng5y"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "joypad/l_stick"
+show_mode = 2
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_62ux8"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "mouse/simple"
+show_mode = 1
+force_type = 1
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_x6aak"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "JoystickCameraLeft"
+show_mode = 2
+force_type = 2
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_h4sio"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "Jump"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_xv00d"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "Interact"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_6da6f"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "Menu"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_73tfj"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "AltMenu"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Resource" id="Resource_62ux8"]
+script = ExtResource("7_bng5y")
+metadata/_custom_type_script = "uid://cs6cb56mgtfxu"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xv00d"]
+
+[sub_resource type="Texture2D" id="Texture2D_k4n8h"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "Menu"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62ux8"]
+content_margin_left = 12.0
+content_margin_top = 2.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.018, 0.018, 0.018, 0.936)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.868985, 0.868985, 0.868985, 1)
+border_blend = true
+
+[sub_resource type="Texture2D" id="Texture2D_bt4ed"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "MenuOptionDecrease"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_fqkc2"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6aak")
+path = "MenuOptionIncrease"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_62ux8"]
+color = Color(0.920995, 0.920995, 0.920995, 1)
+grow_begin = -15.0
+grow_end = -15.0
+thickness = 4
+vertical = true
+
+[node name="DesTutorial" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_55wk2")
+metadata/_custom_type_script = "uid://rhewocas6pks"
+
+[node name="DesTabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nqtg7")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x6aak")
+current_tab = 0
+tabs_visible = false
+
+[node name="WhatIsDESScreen" type="Control" parent="DesTabContainer"]
+layout_mode = 2
+script = ExtResource("2_pe2x5")
+metadata/_custom_type_script = "uid://038whc2ynyx6"
+metadata/_tab_index = 0
+
+[node name="Panel" type="Panel" parent="DesTabContainer/WhatIsDESScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"TutorialScreenPanel"
+
+[node name="WelcomeLabel" type="Label" parent="DesTabContainer/WhatIsDESScreen/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 25.0
+offset_right = 300.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_type_variation = &"WelcomeLabel"
+text = "Welcome to DES!
+- Destiny Encounter Simulator -"
+horizontal_alignment = 1
+
+[node name="Disclaimer" type="Label" parent="DesTabContainer/WhatIsDESScreen/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -219.0
+offset_right = 980.0
+offset_bottom = -108.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(4.04298e-06, 0.735208, 0.979651, 1)
+text = "Disclaimer: Destiny Encounter Simulator (DES) is not affiliated with Bungie or the Destiny Franchise in any way. It is a fan project built from my own passion and desire to see more people enjoy something I love."
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DesTabContainer/WhatIsDESScreen/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -373.0
+offset_bottom = 394.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 139
+alignment = 1
+
+[node name="WhatIsDES" type="VBoxContainer" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer/WhatIsDES"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_nqtg7")
+theme_override_font_sizes/font_size = 39
+text = "What is DES?"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer/WhatIsDES"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_nqtg7")
+
+[node name="Label2" type="Label" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer/WhatIsDES"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+text = "Destiny Encounter Simulator is a tool for learning and practicing raid/dungeon mechanics in a safer and slower environment. In these encounters, it can be difficult to learn in the heat of the moment for any number of reasons.
+
+The goal of DES is to be a training tool that lets you change functionality of the encounter and the mechanics so you can focus on exactly what you want to focus on. You may just want to disable a handful of mechanics so you can focus on the one you want to learn. Or you may want to repeatedly practice something until the motions become second nature."
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="WhatIsDES2" type="VBoxContainer" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer/WhatIsDES2"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_nqtg7")
+theme_override_font_sizes/font_size = 39
+text = "Cont."
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer/WhatIsDES2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_nqtg7")
+
+[node name="Label2" type="Label" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer/WhatIsDES2"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+text = "While DES may try to simulate some of the Destiny experience, it is NOT intended to be a fully detailed or accurate copy. For example, it will not try to replicate enemies, FPS systems, or even general game feel. The focus is on encounter mechanics and systems that can be experienced in a space that is more conducive to learning and mastery. It is also extremely likely that DES will not perfectly match the rules of any given Destiny system (even outside of bugs)."
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DesTabContainer/WhatIsDESScreen/Panel/MarginContainer/HBoxContainer/WhatIsDES2"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "DES attempts to solve for example scenarios such as:
+[ul]
+Feeling overwhelmed and unable to absorb information in the moment
+Watching a tutorial video that just doesn't quite click
+Practicing a role that has limited players or requires RNG to give you that role (eg. relic bearer, forced teleport)
+Focusing on a single mechanic without other distractions or mechanics
+Refreshing your knowledge on an encounter without having to get a checkpoint
+[/ul]"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="CurrentStateScreen" type="Control" parent="DesTabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_pe2x5")
+metadata/_custom_type_script = "uid://038whc2ynyx6"
+metadata/_tab_index = 1
+
+[node name="Panel" type="Panel" parent="DesTabContainer/CurrentStateScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"TutorialScreenPanel"
+
+[node name="Title" type="Label" parent="DesTabContainer/CurrentStateScreen/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 25.0
+offset_right = 300.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_type_variation = &"WelcomeLabel"
+text = "Current State of DES"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="DesTabContainer/CurrentStateScreen/Panel"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -317.0
+offset_right = 500.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "At time of writing, I am only just barely getting the \"Dissection\" mechanic of the Verity encounter to a playable state. I would consider this something like pre-pre-pre-pre-pre-Alpha or something. It's highly unpolished, I have a backlog of both features and bugs to work on, and frankly I have no idea how much time I'll be able to invest towards it in the short term.
+
+In a perfect world, I'd love to implement more encounters/mechanics and even online multiplayer. As of now I've only even considered portions of the Verity encounter. Set expectations accordingly: I have no idea how much of this project I'll be able to complete or how far it will go."
+autowrap_mode = 3
+
+[node name="BasicControlsScreen" type="Control" parent="DesTabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_pe2x5")
+metadata/_custom_type_script = "uid://038whc2ynyx6"
+metadata/_tab_index = 2
+
+[node name="Panel2" type="Panel" parent="DesTabContainer/BasicControlsScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"TutorialScreenPanel"
+
+[node name="Title" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 25.0
+offset_right = 300.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_type_variation = &"WelcomeLabel"
+text = "Basic Controls"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="DesTabContainer/BasicControlsScreen/Panel2"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.0
+offset_top = -362.0
+offset_right = 338.0
+offset_bottom = 362.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="MovementLabel" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move:"
+horizontal_alignment = 2
+
+[node name="Movement" type="HBoxContainer" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Movement"]
+layout_mode = 2
+texture = SubResource("Texture2D_rccr0")
+
+[node name="TextureRect2" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Movement"]
+layout_mode = 2
+texture = SubResource("Texture2D_55wk2")
+
+[node name="TextureRect3" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Movement"]
+layout_mode = 2
+texture = SubResource("Texture2D_mdlwr")
+
+[node name="TextureRect4" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Movement"]
+layout_mode = 2
+texture = SubResource("Texture2D_bie8b")
+
+[node name="TextureRect5" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Movement"]
+layout_mode = 2
+texture = SubResource("Texture2D_bng5y")
+
+[node name="CameraLabel" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Look:"
+horizontal_alignment = 2
+
+[node name="Camera" type="HBoxContainer" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Camera"]
+layout_mode = 2
+texture = SubResource("Texture2D_62ux8")
+
+[node name="TextureRect2" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Camera"]
+layout_mode = 2
+texture = SubResource("Texture2D_x6aak")
+
+[node name="JumpLabel" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Jump:"
+horizontal_alignment = 2
+
+[node name="Jump" type="HBoxContainer" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Jump"]
+layout_mode = 2
+texture = SubResource("Texture2D_h4sio")
+
+[node name="DoubleJumpLabel" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Double Jump:"
+horizontal_alignment = 2
+
+[node name="DoubleJump" type="HBoxContainer" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/DoubleJump"]
+layout_mode = 2
+texture = SubResource("Texture2D_h4sio")
+
+[node name="Label" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/DoubleJump"]
+layout_mode = 2
+text = "while airborne"
+
+[node name="InteractLabel" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interact:"
+horizontal_alignment = 2
+
+[node name="Interact" type="HBoxContainer" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Interact"]
+layout_mode = 2
+texture = SubResource("Texture2D_xv00d")
+
+[node name="MenuLabel" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Menu:"
+horizontal_alignment = 2
+
+[node name="Menu" type="HBoxContainer" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Menu"]
+layout_mode = 2
+texture = SubResource("Texture2D_6da6f")
+
+[node name="AlternateLabel" type="Label" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Alternate:"
+horizontal_alignment = 2
+
+[node name="Alternate" type="HBoxContainer" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/BasicControlsScreen/Panel2/GridContainer/Alternate"]
+layout_mode = 2
+texture = SubResource("Texture2D_73tfj")
+
+[node name="HUDScreen" type="Control" parent="DesTabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("4_rccr0")
+metadata/_custom_type_script = "uid://038whc2ynyx6"
+metadata/_tab_index = 3
+
+[node name="Title" type="Label" parent="DesTabContainer/HUDScreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -763.0
+offset_right = -163.0
+offset_bottom = 113.0
+grow_horizontal = 0
+theme_type_variation = &"WelcomeLabel"
+text = "Reading the HUD"
+horizontal_alignment = 1
+
+[node name="TopLeftInfo" type="Label" parent="DesTabContainer/HUDScreen"]
+layout_mode = 1
+offset_left = 77.0
+offset_top = 239.0
+offset_right = 749.0
+offset_bottom = 578.0
+theme_type_variation = &"HighlightLabel"
+text = "Here in the top-left, you can see contextual information. If the encounter has multiple rooms, it may show a name for that particular room.
+
+It can also show you important info and hints for your current goal. You can change how these hints are displayed in the menus such as always show, always hide, or only show while holding a button."
+autowrap_mode = 3
+
+[node name="BottomRightEffects" type="Label" parent="DesTabContainer/HUDScreen"]
+layout_mode = 1
+offset_left = 129.0
+offset_top = 693.0
+offset_right = 609.0
+offset_bottom = 931.0
+theme_type_variation = &"HighlightLabel"
+text = "Near the bottom-right you will see various buffs and effects appear. For example, if you pick up an object or are selected for a role. Info like the name of the effect or a timer will display here."
+autowrap_mode = 3
+
+[node name="TopTimerAndStarter" type="Label" parent="DesTabContainer/HUDScreen"]
+layout_mode = 1
+offset_left = 857.0
+offset_top = 173.0
+offset_right = 1601.0
+offset_bottom = 436.0
+theme_type_variation = &"HighlightLabel"
+text = "At the top you may see a timer for your current mechanic. This timer can be customized or fully disabled in the menus.
+
+There is also an indicator for starting the encounter. Hold the button shown to start the encounter with your current settings. This panel will hide once the encounter actually starts."
+autowrap_mode = 3
+
+[node name="BottomInteract" type="Label" parent="DesTabContainer/HUDScreen"]
+layout_mode = 1
+offset_left = 899.0
+offset_top = 789.0
+offset_right = 1643.0
+offset_bottom = 956.0
+theme_type_variation = &"HighlightLabel"
+text = "Near the bottom-center of the screen you may see a prompt appear if you are able to interact with something. You will see an icon of a button to hold/press in order to complete that interaction."
+autowrap_mode = 3
+
+[node name="InteractableComponent" type="Node3D" parent="DesTabContainer/HUDScreen"]
+script = ExtResource("6_bie8b")
+requirement = SubResource("Resource_62ux8")
+metadata/_custom_type_script = "uid://dyraau1ya214f"
+
+[node name="InteractionZone" type="Area3D" parent="DesTabContainer/HUDScreen/InteractableComponent"]
+script = ExtResource("8_62ux8")
+metadata/_custom_type_script = "uid://h6dtwim8to86"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DesTabContainer/HUDScreen/InteractableComponent/InteractionZone"]
+shape = SubResource("BoxShape3D_xv00d")
+
+[node name="InteractionTarget" type="Area3D" parent="DesTabContainer/HUDScreen/InteractableComponent"]
+script = ExtResource("9_h4sio")
+metadata/_custom_type_script = "uid://cn7t6uji3joke"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DesTabContainer/HUDScreen/InteractableComponent/InteractionTarget"]
+shape = SubResource("BoxShape3D_xv00d")
+
+[node name="MenuScreen" type="Control" parent="DesTabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("6_55wk2")
+metadata/_custom_type_script = "uid://038whc2ynyx6"
+metadata/_tab_index = 4
+
+[node name="Title" type="Label" parent="DesTabContainer/MenuScreen"]
+layout_mode = 1
+offset_right = 544.0
+offset_bottom = 113.0
+theme_type_variation = &"WelcomeLabel"
+text = "Using the Menu"
+horizontal_alignment = 1
+
+[node name="OpenCloseMenu" type="VBoxContainer" parent="DesTabContainer/MenuScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.164352
+anchor_bottom = 0.164352
+offset_left = 35.0
+offset_top = -103.5
+offset_right = 580.0
+offset_bottom = 81.5
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="DesTabContainer/MenuScreen/OpenCloseMenu"]
+layout_mode = 2
+theme_type_variation = &"HighlightLabel"
+text = "You can open or close the menu at any time.
+This does not pause the game however."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DesTabContainer/MenuScreen/OpenCloseMenu"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DesTabContainer/MenuScreen/OpenCloseMenu/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_k4n8h")
+
+[node name="Label" type="Label" parent="DesTabContainer/MenuScreen/OpenCloseMenu/HBoxContainer"]
+layout_mode = 2
+text = "Open/Close Menu"
+
+[node name="ViewCurrentSettings" type="Label" parent="DesTabContainer/MenuScreen"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 583.0
+offset_top = -241.0
+offset_right = 1034.0
+offset_bottom = -151.0
+grow_vertical = 2
+theme_type_variation = &"HighlightLabel"
+text = "Here you can see what settings are enabled for the current encounter."
+autowrap_mode = 3
+
+[node name="ChangeSettings" type="Label" parent="DesTabContainer/MenuScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.0
+offset_top = 18.0
+offset_right = 321.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_type_variation = &"HighlightLabel"
+text = "You can change the settings for the current encounter here on the right. These can be changed at any time including when the encounter is running, though some changes will not take effect until the encounter is restarted."
+autowrap_mode = 3
+
+[node name="ActionButtons" type="Label" parent="DesTabContainer/MenuScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = 110.0
+offset_right = 285.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HighlightLabel"
+text = "In the middle of the screen you will see buttons relative to the current encounter. Pressing these buttons will show context-relevant info such as detailed descriptions or helpful images.
+
+The \"Restart Encounter\" button will always be available and can be used at any time."
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = 20
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -97.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_62ux8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_bt4ed")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_fqkc2")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Back/Forward"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_62ux8")
+
+[node name="TutorialPageLabel" type="Label" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Page X/Y"

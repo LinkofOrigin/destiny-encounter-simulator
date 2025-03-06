@@ -1,0 +1,127 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcero1kp0gw36"]
+
+[ext_resource type="Theme" uid="uid://btm7x5nbpt5cm" path="res://ui/player_hud/location_display/location_state/dissection/dissection_state_theme.tres" id="1_6d81g"]
+[ext_resource type="Script" uid="uid://b1aufv2n7fgi0" path="res://ui/player_hud/location_display/location_state/location_state.gd" id="2_ayuo3"]
+[ext_resource type="Texture2D" uid="uid://cf41uu5fein3a" path="res://assets/2d_shapes/test/plain-square.png" id="5_w5xjt"]
+
+[node name="TutorialState" type="MarginContainer"]
+offset_right = 468.0
+offset_bottom = 103.0
+theme = ExtResource("1_6d81g")
+script = ExtResource("2_ayuo3")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="KeysTitle" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+theme_type_variation = &"GridItemContainer"
+
+[node name="KeysTitleLabel" type="Label" parent="GridContainer/KeysTitle"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HintTitleLabel"
+text = "Example
+Info"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left2DKey" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="Left2DKey" type="VBoxContainer" parent="GridContainer/Left2DKey"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="GridContainer/Left2DKey/Left2DKey"]
+layout_mode = 2
+text = "Left"
+horizontal_alignment = 1
+
+[node name="Left2DKeyIcon" type="TextureRect" parent="GridContainer/Left2DKey/Left2DKey"]
+self_modulate = Color(0.644063, 0.0490442, 0, 1)
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("5_w5xjt")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Left2DKeyLabel" type="Label" parent="GridContainer/Left2DKey/Left2DKey"]
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "One"
+horizontal_alignment = 1
+
+[node name="Middle2DKey" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="Middle2DKey" type="VBoxContainer" parent="GridContainer/Middle2DKey"]
+layout_mode = 2
+theme_type_variation = &"HintBoxContainer"
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="GridContainer/Middle2DKey/Middle2DKey"]
+layout_mode = 2
+text = "Middle"
+horizontal_alignment = 1
+
+[node name="Middle2DKeyIcon" type="TextureRect" parent="GridContainer/Middle2DKey/Middle2DKey"]
+self_modulate = Color(0, 0.577175, 0.227462, 1)
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("5_w5xjt")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Middle2DKeyLabel" type="Label" parent="GridContainer/Middle2DKey/Middle2DKey"]
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Two"
+horizontal_alignment = 1
+
+[node name="Right2DKey" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"GridItemContainer"
+
+[node name="Right2DKey" type="VBoxContainer" parent="GridContainer/Right2DKey"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HintBoxContainer"
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="GridContainer/Right2DKey/Right2DKey"]
+layout_mode = 2
+text = "Right"
+horizontal_alignment = 1
+
+[node name="Right2DKeyIcon" type="TextureRect" parent="GridContainer/Right2DKey/Right2DKey"]
+self_modulate = Color(0, 0.381961, 0.777113, 1)
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource("5_w5xjt")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Right2DKeyLabel" type="Label" parent="GridContainer/Right2DKey/Right2DKey"]
+layout_mode = 2
+theme_type_variation = &"HintNameLabel"
+text = "Three"
+horizontal_alignment = 1

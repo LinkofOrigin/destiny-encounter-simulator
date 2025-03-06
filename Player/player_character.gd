@@ -23,6 +23,7 @@ var _active_interactable: InteractableComponent
 
 
 func _ready() -> void:
+	GlobalSignals.restricted_input_changed.connect(_on_restricted_input_changed)
 	interactable_detector.can_interact_with.connect(_on_can_interact_with)
 	interactable_detector.can_not_interact.connect(_on_can_not_interact)
 	input_handler.interaction_complete.connect(_on_input_handler_interact_complete)
@@ -90,3 +91,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mouse_motion := input_handler.get_mouse_motion_vector_from_event(event as InputEventMouseMotion)
 		_apply_look_rotation(mouse_motion.x, mouse_motion.y)
+
+
+func _on_restricted_input_changed(restricted: bool) -> void:
+	set_process(not restricted)
+	set_process_input(not restricted)
+	set_process_unhandled_input(not restricted)
+	set_physics_process(not restricted)

@@ -23,6 +23,7 @@ var _show_hints_on_input: bool = false
 func _ready() -> void:
 	GlobalSignals.player_allowed_interaction.connect(_on_player_allowed_interaction_changed)
 	GlobalSignals.player_hint_display_on_input.connect(_on_player_hint_display_on_input)
+	GlobalSignals.restricted_input_changed.connect(_on_restricted_input_changed)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -124,3 +125,10 @@ func _on_player_allowed_interaction_changed(allowed: bool) -> void:
 
 func _on_player_hint_display_on_input(display: bool) -> void:
 	_show_hints_on_input = display
+
+
+func _on_restricted_input_changed(restricted: bool) -> void:
+	set_process(not restricted)
+	set_process_input(not restricted)
+	set_process_unhandled_input(not restricted)
+	set_physics_process(not restricted)
