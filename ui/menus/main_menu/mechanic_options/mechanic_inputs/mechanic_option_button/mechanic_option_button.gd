@@ -34,7 +34,13 @@ func process_shortcut(event: InputEvent) -> bool:
 		select_next_item()
 		processed = true
 	
+	if processed:
+		item_selected.emit(selected)
 	return processed
+
+
+func get_settings_text() -> String:
+	return get_item_text(selected)
 
 
 func _gui_input(event: InputEvent) -> void:

@@ -14,6 +14,22 @@ func _ready() -> void:
 	popup.window_input.connect(_process_popup_input)
 
 
+func get_settings_text() -> String:
+	var settings_text := ""
+	for item_index: int in range(0, popup.item_count):
+		if not popup.is_item_checked(item_index):
+			continue
+		if not settings_text.is_empty():
+			settings_text += " + "
+		var item_text := popup.get_item_text(item_index)
+		item_text = item_text.replace("Show", "")
+		settings_text += item_text.strip_edges(true, true)
+	
+	if settings_text.is_empty():
+		return "- None -"
+	return settings_text
+
+
 func _on_focused() -> void:
 	show_popup()
 
