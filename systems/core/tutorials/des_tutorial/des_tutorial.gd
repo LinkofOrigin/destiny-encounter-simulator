@@ -23,7 +23,6 @@ func finish() -> void:
 
 
 func set_page_label() -> void:
-	print("changing tab")
 	tutorial_page_label.text = "Page %s/%s" % [tab_container.current_tab + 1, tab_container.get_tab_count()]
 
 

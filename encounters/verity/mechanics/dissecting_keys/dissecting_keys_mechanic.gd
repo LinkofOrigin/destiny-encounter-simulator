@@ -56,6 +56,7 @@ func register_menu_option() -> void:
 
 
 func set_timer_duration(duration: float) -> void:
+	print('setting timer to ', duration)
 	timer_duration = duration
 
 
@@ -148,7 +149,7 @@ func handle_dissection_statue_change(left: EffectLibrary.SHAPE_3D_TYPES, middle:
 
 
 func timer_enabled() -> bool:
-	return timer.wait_time > 0
+	return timer_duration >= 1
 
 
 # TODO: Trigger when the phase timer expires, should trigger wipe phase

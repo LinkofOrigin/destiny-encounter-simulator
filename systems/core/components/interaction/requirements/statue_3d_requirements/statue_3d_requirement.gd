@@ -32,7 +32,6 @@ func resolve_interaction(effect_manager: EffectManager) -> void:
 	elif effect_manager.has_effect(second_type):
 		effect_manager.remove_effects_by_data(second_type)
 		primed_with = second_type
-	print("3D Statue cleared effects! Now primed with: ", primed_with.name)
 	
 	primed = true
 	var primed_effects: Array[EffectData] = []

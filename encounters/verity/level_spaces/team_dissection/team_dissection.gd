@@ -209,17 +209,14 @@ func _register_square_consumed() -> void:
 
 
 func _on_left_statue_received_effects(_effects: Array[EffectData]) -> void:
-	print("dissection room received effects in left statue!")
 	handle_primed_statue(left_statue)
 
 
 func _on_center_statue_received_effects(_effects: Array[EffectData]) -> void:
-	print("dissection room received effects in center statue!")
 	handle_primed_statue(middle_statue)
 
 
 func _on_right_statue_received_effects(_effects: Array[EffectData]) -> void:
-	print("dissection room received effects in right statue!")
 	handle_primed_statue(right_statue)
 
 

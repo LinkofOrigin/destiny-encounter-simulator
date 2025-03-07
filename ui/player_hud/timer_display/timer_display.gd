@@ -63,6 +63,7 @@ func _on_timer_timeout() -> void:
 	# TODO: Add visual effect to the time text?
 	pass
 
+
 func _enable_low_time_indicator() -> void:
 	animation_player.play("flash_text")
 

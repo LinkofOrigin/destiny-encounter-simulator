@@ -48,7 +48,6 @@ signal received_effects(effects: Array[EffectData])
 	
 
 func _on_interactable_component_interacted_with(effects: Array[EffectData]) -> void:
-	print("Statue was interacted with!")
 	received_effects.emit(effects)
 
 

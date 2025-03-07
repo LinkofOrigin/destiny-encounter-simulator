@@ -46,7 +46,6 @@ func _handle_despawned() -> void:
 
 
 func _on_interactable_component_interaction_complete() -> void:
-	print("2D Shape interacted with")
 	picked_up.emit()
 	despawn()
 

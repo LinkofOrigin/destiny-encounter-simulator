@@ -48,7 +48,7 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_geq36")
+&"": SubResource("AnimationLibrary_geq36")
 }
 
 [node name="TextContainer" type="HBoxContainer" parent="."]
@@ -60,22 +60,24 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -133.0
+offset_top = 6.0
 offset_right = 133.0
-offset_bottom = 36.0
+offset_bottom = 42.0
 grow_horizontal = 2
-theme_override_constants/separation = 22
+theme_override_constants/separation = 16
 alignment = 1
-
-[node name="TimeLabel" type="Label" parent="TextContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XX:XX"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TextLabel" type="Label" parent="TextContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "TIMER EFFECT"
+text = "Time Left:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="TextContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "XX:XX"
 vertical_alignment = 1

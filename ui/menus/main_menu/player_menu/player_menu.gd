@@ -44,6 +44,7 @@ func return_to_home() -> void:
 func focus_first_menu_option() -> void:
 	home_menu.get_child(0).grab_focus.call_deferred()
 
+
 # TODO: Have menu priority for listing order?
 func add_menu_option(menu: MechanicOptions) -> void:
 	# Set up the menu button to open the sub menu
