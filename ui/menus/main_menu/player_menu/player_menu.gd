@@ -6,8 +6,10 @@ const MENU_META := "mech_menu_meta"
 @onready var main_menu_tab_container: TabContainer = %MainMenuTabContainer
 @onready var home_menu: VBoxContainer = %HomeMenu
 @onready var descriptions_container: VBoxContainer = %DescriptionsContainer
+@onready var encounter_tutorial_container: EncounterPanelContainer = %EncounterTutorialContainer
 @onready var full_shape_ref_container: FullShapeRefContainer = %FullShapeRefContainer
 
+@onready var encounter_tutorial_button: Button = %EncounterTutorialButton
 @onready var show_full_ref_button: Button = %ShowFullRefButton
 @onready var restart_encounter_button: Button = %RestartEncounterButton
 
@@ -39,6 +41,7 @@ func return_to_home() -> void:
 	_set_current_tab(0)
 	focus_first_menu_option()
 	full_shape_ref_container.hide()
+	encounter_tutorial_container.hide()
 
 
 func focus_first_menu_option() -> void:
@@ -98,13 +101,15 @@ func add_menu_option(menu: MechanicOptions) -> void:
 
 
 func _connect_signals() -> void:
-	#key_building_button.pressed.connect(_set_current_tab.bind(2))
-	#ghosts_button.pressed.connect(_set_current_tab.bind(2))
-	#misc_button.pressed.connect(_set_current_tab.bind(2))
+	encounter_tutorial_button.pressed.connect(_on_encounter_tutorial_button_pressed)
 	show_full_ref_button.pressed.connect(_on_show_full_ref_button_pressed)
 	restart_encounter_button.pressed.connect(_on_restart_encounter_pressed)
 	# TODO: Giving focus to button releases focus from this
 	full_shape_ref_container.hidden.connect(focus_first_menu_option)
+	encounter_tutorial_container.hidden.connect(focus_first_menu_option)
+	#key_building_button.pressed.connect(_set_current_tab.bind(2))
+	#ghosts_button.pressed.connect(_set_current_tab.bind(2))
+	#misc_button.pressed.connect(_set_current_tab.bind(2))
 
 
 func _get_menu_settings_on_ready(menu: MechanicOptions, menu_index: int) -> void:
@@ -127,6 +132,10 @@ func _set_current_tab(tab_number: int, menu: Control = null) -> void:
 	main_menu_tab_container.current_tab = tab_number
 	if is_instance_valid(menu) and menu.has_method("focus_first_item"):
 		menu.focus_first_item()
+
+
+func _on_encounter_tutorial_button_pressed() -> void:
+	encounter_tutorial_container.show_extra_menu()
 
 
 func _on_show_full_ref_button_pressed() -> void:
