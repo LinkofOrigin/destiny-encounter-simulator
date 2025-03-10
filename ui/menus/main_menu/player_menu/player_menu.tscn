@@ -112,6 +112,25 @@ size_flags_vertical = 0
 theme_type_variation = &"HeaderMedium"
 text = "Misc (TBD)"
 
+[node name="ShowTutorialButton" type="Button" parent="OpaqueBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -887.0
+offset_top = -450.0
+offset_right = -468.0
+offset_bottom = -387.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_right = NodePath("../EncounterTutorialButton")
+focus_neighbor_bottom = NodePath("../EncounterTutorialButton")
+theme_type_variation = &"MenuActionButton"
+text = "Show Tutorial"
+
 [node name="EncounterTutorialButton" type="Button" parent="OpaqueBackground"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -126,6 +145,11 @@ offset_right = 210.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../ShowTutorialButton")
+focus_neighbor_right = NodePath("../RightMenuContainer")
+focus_neighbor_bottom = NodePath("../ShowFullRefButton")
+focus_next = NodePath("../RightMenuContainer")
+focus_previous = NodePath("../ShowTutorialButton")
 theme_type_variation = &"MenuActionButton"
 text = "Encounter Details"
 
@@ -143,6 +167,12 @@ offset_right = 209.5
 offset_bottom = 64.5
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../ShowTutorialButton")
+focus_neighbor_top = NodePath("../EncounterTutorialButton")
+focus_neighbor_right = NodePath("../RightMenuContainer")
+focus_neighbor_bottom = NodePath("../RestartEncounterButton")
+focus_next = NodePath("../RightMenuContainer")
+focus_previous = NodePath("../ShowTutorialButton")
 theme_type_variation = &"MenuActionButton"
 text = "Full Shape Reference"
 
@@ -160,6 +190,12 @@ offset_right = 179.0
 offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_left = NodePath("../ShowTutorialButton")
+focus_neighbor_top = NodePath("../ShowFullRefButton")
+focus_neighbor_right = NodePath("../RightMenuContainer")
+focus_neighbor_bottom = NodePath("../RightMenuContainer")
+focus_next = NodePath("../RightMenuContainer")
+focus_previous = NodePath("../ShowTutorialButton")
 theme_type_variation = &"MenuActionButton"
 text = "Restart Encounter"
 
@@ -176,6 +212,7 @@ offset_bottom = 511.5
 grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_left = NodePath("../RestartEncounterButton")
+focus_mode = 2
 theme_type_variation = &"RightMenu"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/RightMenuContainer"]

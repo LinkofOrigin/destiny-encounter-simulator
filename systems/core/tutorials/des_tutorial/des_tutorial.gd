@@ -1,3 +1,4 @@
+class_name DESTutorial
 extends Tutorial
 
 @onready var tutorial_page_label: Label = %TutorialPageLabel

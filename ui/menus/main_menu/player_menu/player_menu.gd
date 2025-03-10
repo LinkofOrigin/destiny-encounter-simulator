@@ -2,10 +2,12 @@ class_name PlayerMenu
 extends CanvasLayer
 
 const MENU_META := "mech_menu_meta"
+const DES_TUTORIAL = preload("res://systems/core/tutorials/des_tutorial/des_tutorial.tscn")
 
 @onready var main_menu_tab_container: TabContainer = %MainMenuTabContainer
 @onready var home_menu: VBoxContainer = %HomeMenu
 @onready var descriptions_container: VBoxContainer = %DescriptionsContainer
+@onready var show_tutorial_button: Button = %ShowTutorialButton
 @onready var encounter_tutorial_container: EncounterPanelContainer = %EncounterTutorialContainer
 @onready var full_shape_ref_container: FullShapeRefContainer = %FullShapeRefContainer
 
@@ -101,12 +103,14 @@ func add_menu_option(menu: MechanicOptions) -> void:
 
 
 func _connect_signals() -> void:
+	show_tutorial_button.pressed.connect(_on_show_tutorial_button_pressed)
 	encounter_tutorial_button.pressed.connect(_on_encounter_tutorial_button_pressed)
 	show_full_ref_button.pressed.connect(_on_show_full_ref_button_pressed)
 	restart_encounter_button.pressed.connect(_on_restart_encounter_pressed)
 	# TODO: Giving focus to button releases focus from this
 	full_shape_ref_container.hidden.connect(focus_first_menu_option)
 	encounter_tutorial_container.hidden.connect(focus_first_menu_option)
+	$OpaqueBackground/RightMenuContainer.focus_entered.connect(focus_first_menu_option)
 	#key_building_button.pressed.connect(_set_current_tab.bind(2))
 	#ghosts_button.pressed.connect(_set_current_tab.bind(2))
 	#misc_button.pressed.connect(_set_current_tab.bind(2))
@@ -132,6 +136,13 @@ func _set_current_tab(tab_number: int, menu: Control = null) -> void:
 	main_menu_tab_container.current_tab = tab_number
 	if is_instance_valid(menu) and menu.has_method("focus_first_item"):
 		menu.focus_first_item()
+
+
+func _on_show_tutorial_button_pressed() -> void:
+	var new_tutorial := DES_TUTORIAL.instantiate()
+	get_tree().root.add_child(new_tutorial)
+	MenuManager.unpause_and_hide_menu()
+	new_tutorial.start()
 
 
 func _on_encounter_tutorial_button_pressed() -> void:

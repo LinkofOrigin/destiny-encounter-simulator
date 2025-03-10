@@ -187,10 +187,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nqtg7")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_x6aak")
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="WhatIsDESScreen" type="Control" parent="DesTabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("2_pe2x5")
 metadata/_custom_type_script = "uid://038whc2ynyx6"
@@ -318,7 +319,6 @@ scroll_active = false
 shortcut_keys_enabled = false
 
 [node name="CurrentStateScreen" type="Control" parent="DesTabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("2_pe2x5")
 metadata/_custom_type_script = "uid://038whc2ynyx6"
@@ -361,7 +361,7 @@ offset_right = 500.0
 offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "At time of writing, I am only just barely getting the \"Dissection\" mechanic of the Verity encounter to a playable state. I would consider this something like pre-pre-pre-pre-pre-Alpha or something. It's highly unpolished, I have a backlog of both features and bugs to work on, and frankly I have no idea how much time I'll be able to invest towards it in the short term.
+text = "Currently DES is an extremely early prototype. At time of writing, I am only just barely getting the \"Dissection\" mechanic of the Verity encounter to a playable state. It's highly unpolished, I have a backlog of both features and bugs to work on, and frankly I have no idea how much time I'll be investing towards it in the short term.
 
 In a perfect world, I'd love to implement more encounters/mechanics and even online multiplayer. As of now I've only even considered portions of the Verity encounter. Set expectations accordingly: I have no idea how much of this project I'll be able to complete or how far it will go."
 autowrap_mode = 3
