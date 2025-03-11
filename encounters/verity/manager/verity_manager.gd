@@ -43,7 +43,7 @@ func _on_encounter_starting() -> void:
 
 func _on_encounter_resetting() -> void:
 	_is_running = false # TODO: ??
-	#_handle_phase_swap(freeroam_phase)
+	_handle_phase_swap(freeroam_phase)
 
 
 func _handle_initial_tutorial() -> void:

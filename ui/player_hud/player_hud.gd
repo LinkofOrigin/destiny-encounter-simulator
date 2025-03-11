@@ -48,6 +48,7 @@ func set_encounter_start_progress(percent: float) -> void:
 
 func show_encounter_start_display() -> void:
 	start_encounter_display.show()
+	set_encounter_start_progress(0)
 
 
 func hide_encounter_start_display() -> void:
