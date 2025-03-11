@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://w3uh624pkya7"]
+[gd_scene load_steps=13 format=3 uid="uid://w3uh624pkya7"]
 
 [ext_resource type="Script" uid="uid://bxo6p38nb7cn5" path="res://ui/menus/main_menu/player_menu/player_menu.gd" id="2_d6l5a"]
 [ext_resource type="Theme" uid="uid://c28euvt7baml8" path="res://ui/menus/main_menu/player_menu/player_menu_theme.tres" id="2_exytw"]
@@ -7,6 +7,33 @@
 [ext_resource type="Script" uid="uid://b1mj3yyyoxx13" path="res://ui/menus/main_menu/player_menu/encounter_tutorial_container.gd" id="4_k2ire"]
 [ext_resource type="Script" uid="uid://cimpqrf1607sq" path="res://ui/menus/main_menu/player_menu/full_shape_ref_container.gd" id="4_qnf42"]
 [ext_resource type="Script" uid="uid://cp3roqqg4fhs8" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_6ng77"]
+
+[sub_resource type="Texture2D" id="Texture2D_k2ire"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_6ng77")
+path = "MenuOptionDecrease"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_j8lpu"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_6ng77")
+path = "MenuOptionIncrease"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
+
+[sub_resource type="Texture2D" id="Texture2D_8x0j7"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_6ng77")
+path = "MenuScroll"
+show_mode = 0
+force_type = 0
+metadata/_custom_type_script = "uid://cp3roqqg4fhs8"
 
 [sub_resource type="LabelSettings" id="LabelSettings_cegb4"]
 font_size = 50
@@ -294,7 +321,6 @@ alignment = 0
 
 [node name="EncounterTutorialContainer" type="PanelContainer" parent="OpaqueBackground"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -311,18 +337,87 @@ focus_mode = 2
 theme_type_variation = &"HighLevelPanelContainer"
 script = ExtResource("4_k2ire")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OpaqueBackground/EncounterTutorialContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OpaqueBackground/EncounterTutorialContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 22
+
+[node name="ChangeTabIndicator" type="VBoxContainer" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = -5
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ChangeTabIndicator"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ChangeTabIndicator/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_k2ire")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ChangeTabIndicator/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ChangeTabIndicator/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_j8lpu")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ChangeTabIndicator"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 27
+text = "Change Tab"
+
+[node name="ScrollIndicator" type="VBoxContainer" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = -5
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ScrollIndicator"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ScrollIndicator/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("Texture2D_8x0j7")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="OpaqueBackground/EncounterTutorialContainer/MarginContainer/ScrollIndicator"]
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_font_sizes/font_size = 27
+text = "Scroll"
+horizontal_alignment = 1
+
+[node name="MainEncounterContent" type="VBoxContainer" parent="OpaqueBackground/EncounterTutorialContainer"]
 layout_mode = 2
 theme_override_constants/separation = 35
 alignment = 1
 
-[node name="EncounterTutorialTitleLabel" type="Label" parent="OpaqueBackground/EncounterTutorialContainer/VBoxContainer"]
+[node name="EncounterTutorialTitleLabel" type="Label" parent="OpaqueBackground/EncounterTutorialContainer/MainEncounterContent"]
 layout_mode = 2
 text = "Verity Tutorials"
 label_settings = SubResource("LabelSettings_cegb4")
 horizontal_alignment = 1
 
-[node name="EncounterTutorialTabContainer" type="TabContainer" parent="OpaqueBackground/EncounterTutorialContainer/VBoxContainer"]
+[node name="EncounterTutorialTabContainer" type="TabContainer" parent="OpaqueBackground/EncounterTutorialContainer/MainEncounterContent"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -336,7 +431,7 @@ focus_mode = 2
 current_tab = 0
 tab_focus_mode = 1
 
-[node name="Dissection" type="RichTextLabel" parent="OpaqueBackground/EncounterTutorialContainer/VBoxContainer/EncounterTutorialTabContainer"]
+[node name="Dissection" type="RichTextLabel" parent="OpaqueBackground/EncounterTutorialContainer/MainEncounterContent/EncounterTutorialTabContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -356,7 +451,7 @@ This three person team must start by learning what 2D shapes are held by the sol
 shortcut_keys_enabled = false
 metadata/_tab_index = 0
 
-[node name="HideEncounterTutorialButton" type="Button" parent="OpaqueBackground/EncounterTutorialContainer/VBoxContainer"]
+[node name="HideEncounterTutorialButton" type="Button" parent="OpaqueBackground/EncounterTutorialContainer/MainEncounterContent"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4

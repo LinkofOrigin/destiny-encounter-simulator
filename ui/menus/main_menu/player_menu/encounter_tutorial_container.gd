@@ -9,6 +9,8 @@ var rich_text_label: RichTextLabel
 
 func _ready() -> void:
 	hide_encounter_tutorial_button.pressed.connect(_on_hide_encounter_tutorial_button_pressed)
+	if encounter_tutorial_tab_container.get_tab_count() <= 1:
+		$MarginContainer/ChangeTabIndicator.hide()
 	var rich_text_labels := find_children("*", "RichTextLabel", true)
 	for label in rich_text_labels:
 		if label is RichTextLabel:
