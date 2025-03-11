@@ -28,6 +28,11 @@ var _right_key: EffectLibrary.SHAPE_2D_TYPES
 var _dissection_matches_keys: bool = false
 
 
+func _ready() -> void:
+	if is_instance_valid(team_dissection):
+		dissecting_keys_mechanic.set_team_dissection(team_dissection)
+
+
 ## Entered by a player interacting with a statue in the dissection room while in Freeroam
 ## (TODO: manually via menu for now... will eventually change to match actual encounter, menu shortcut is nice tho)
 func _enter_behavior() -> void:
@@ -70,7 +75,8 @@ func swap_to_freeroam_phase() -> void:
 
 func set_team_dissection(dissection: TeamDissection) -> void:
 	team_dissection = dissection
-	dissecting_keys_mechanic.set_team_dissection(team_dissection)
+	if is_inside_tree():
+		dissecting_keys_mechanic.set_team_dissection(team_dissection)
 
 
 func _connect_signals() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://doh0b47v1pmic"]
+[gd_scene load_steps=20 format=3 uid="uid://doh0b47v1pmic"]
 
 [ext_resource type="Script" uid="uid://bpdcwoukimpes" path="res://encounters/verity/level_spaces/solo_key_building/solo_key_building.gd" id="1_3jf8a"]
 [ext_resource type="Script" uid="uid://bvo35yoewxri6" path="res://encounters/verity/level_spaces/level_geometry.gd" id="1_ngay2"]
@@ -6,38 +6,55 @@
 [ext_resource type="PackedScene" uid="uid://85q2ix0badu6" path="res://encounters/verity/statues/statue_2d/statue_2d.tscn" id="4_as3xx"]
 [ext_resource type="Script" uid="uid://b6woc1wjoadjh" path="res://systems/core/components/interaction/requirements/statue_2d_requirements/statue_2d_requirement.gd" id="5_rtsvd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydc8j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wijjm"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_wijjm"]
 flip_faces = true
 size = Vector2(65.94, 46.22)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntyab"]
+albedo_color = Color(0.505344, 0.505344, 0.505344, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wijjm"]
+size = Vector3(65.94, 46.22, 2)
+
 [sub_resource type="QuadMesh" id="QuadMesh_tta1d"]
+flip_faces = true
 size = Vector2(65.94, 46.22)
 
-[sub_resource type="QuadMesh" id="QuadMesh_3eose"]
-size = Vector2(62.08, 46.22)
+[sub_resource type="BoxShape3D" id="BoxShape3D_tta1d"]
+size = Vector3(65.94, 46.22, 2)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ntyab"]
 flip_faces = true
-size = Vector2(62.08, 46.22)
+size = Vector2(84.87, 46.22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3eose"]
+size = Vector3(84.87, 46.22, 2)
 
 [sub_resource type="QuadMesh" id="QuadMesh_rl6iq"]
-lightmap_size_hint = Vector2i(327, 313)
+flip_faces = true
+size = Vector2(84.87, 46.22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntyab"]
+size = Vector3(84.87, 46.22, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3eose"]
+lightmap_size_hint = Vector2i(327, 420)
 flip_faces = true
 add_uv2 = true
-size = Vector2(65.025, 62.265)
+size = Vector2(65.025, 83.76)
 
-[sub_resource type="Resource" id="Resource_eujof"]
+[sub_resource type="Resource" id="Resource_wijjm"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
-[sub_resource type="Resource" id="Resource_mgah0"]
+[sub_resource type="Resource" id="Resource_tta1d"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
-[sub_resource type="Resource" id="Resource_7ifx7"]
+[sub_resource type="Resource" id="Resource_3eose"]
 resource_local_to_scene = true
 script = ExtResource("5_rtsvd")
 
@@ -72,35 +89,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7559, 1.17274, -22.6136)
 [node name="LevelBox" type="Node3D" parent="LevelGeometry"]
 
 [node name="Floor" type="CSGBox3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.12499)
 use_collision = true
-size = Vector3(63.4383, 0.512695, 59.5238)
-material = SubResource("StandardMaterial3D_ydc8j")
+size = Vector3(63.4383, 0.512695, 83.4775)
+material = SubResource("StandardMaterial3D_wijjm")
 
-[node name="BackWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1755, 28.7186)
+[node name="StaticBodyBackWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
+
+[node name="BackWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyBackWall"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, 41.645)
 visible = false
 mesh = SubResource("QuadMesh_wijjm")
+surface_material_override/0 = SubResource("StandardMaterial3D_ntyab")
 
-[node name="FrontWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1755, -30.6014)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyBackWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, 42.645)
+visible = false
+shape = SubResource("BoxShape3D_wijjm")
+
+[node name="StaticBodyFrontWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
+
+[node name="FrontWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyFrontWall"]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 22.176, -42.453)
 visible = false
 mesh = SubResource("QuadMesh_tta1d")
+surface_material_override/0 = SubResource("StandardMaterial3D_ntyab")
 
-[node name="LeftWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.6463, 22.176, -0.895083)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyFrontWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, -42.453)
 visible = false
-mesh = SubResource("QuadMesh_3eose")
+shape = SubResource("BoxShape3D_tta1d")
 
-[node name="RightWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.553, 22.176, -0.895128)
+[node name="StaticBodyLeftWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
+
+[node name="LeftWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyLeftWall"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.646, 22.176, 0)
 visible = false
 mesh = SubResource("QuadMesh_ntyab")
+surface_material_override/0 = SubResource("StandardMaterial3D_ntyab")
 
-[node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 44.679, -0.755309)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyLeftWall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -32.646, 22.176, 0)
+visible = false
+shape = SubResource("BoxShape3D_3eose")
+
+[node name="StaticBodyRightWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
+
+[node name="RightWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyRightWall"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.553, 22.176, 0)
 visible = false
 mesh = SubResource("QuadMesh_rl6iq")
+surface_material_override/0 = SubResource("StandardMaterial3D_ntyab")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyRightWall"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 32.553, 22.176, 0)
+visible = false
+shape = SubResource("BoxShape3D_ntyab")
+
+[node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 44.679, 0)
+visible = false
+mesh = SubResource("QuadMesh_3eose")
+surface_material_override/0 = SubResource("StandardMaterial3D_ntyab")
 
 [node name="CenterStructure" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.54346)
@@ -158,17 +212,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)
 [node name="LeftStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.405, 0.243139, 1.74767)
-interaction_behavior = SubResource("Resource_eujof")
+interaction_behavior = SubResource("Resource_wijjm")
 
 [node name="CenterStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0543628, 0.243141, 15.7204)
-interaction_behavior = SubResource("Resource_mgah0")
+interaction_behavior = SubResource("Resource_tta1d")
 
 [node name="RightStatue" parent="LevelGeometry/Statues" instance=ExtResource("4_as3xx")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
-interaction_behavior = SubResource("Resource_7ifx7")
+interaction_behavior = SubResource("Resource_3eose")
 
 [node name="BackArea" type="Node3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6734)

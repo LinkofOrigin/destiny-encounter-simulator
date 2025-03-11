@@ -23,9 +23,6 @@ script = ExtResource("5_talw2")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mss3n"]
 albedo_color = Color(0.194349, 0.194349, 0.194349, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wdikw"]
-size = Vector3(65.94, 46.22, 2)
-
 [sub_resource type="QuadMesh" id="QuadMesh_wdikw"]
 flip_faces = true
 size = Vector2(65.94, 46.22)
@@ -33,27 +30,31 @@ size = Vector2(65.94, 46.22)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdikw"]
 albedo_color = Color(0.505344, 0.505344, 0.505344, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_86rec"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdikw"]
 size = Vector3(65.94, 46.22, 2)
 
 [sub_resource type="QuadMesh" id="QuadMesh_86rec"]
-size = Vector2(65.94, 46.22)
+size = Vector2(75, 48)
+center_offset = Vector3(0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86rec"]
+size = Vector3(65.94, 46.22, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m1wvn"]
+size = Vector2(84.875, 48)
 center_offset = Vector3(0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eppfv"]
-size = Vector3(2, 46.22, 85.125)
-
-[sub_resource type="QuadMesh" id="QuadMesh_eppfv"]
-size = Vector2(85.125, 46.22)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m1wvn"]
-size = Vector3(2, 46.22, 85.125)
-
-[sub_resource type="QuadMesh" id="QuadMesh_m1wvn"]
-flip_faces = true
-size = Vector2(85.125, 46.22)
+size = Vector3(84.875, 46.22, 2)
 
 [sub_resource type="QuadMesh" id="QuadMesh_hsjxo"]
+size = Vector2(84.875, 48)
+center_offset = Vector3(0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1wvn"]
+size = Vector3(84.875, 46.22, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_eppfv"]
 lightmap_size_hint = Vector2i(327, 420)
 flip_faces = true
 add_uv2 = true
@@ -154,59 +155,74 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2741, 0.243141, 1.77507)
 interaction_behavior = SubResource("Resource_eppfv")
 
-[node name="LevelBox" type="StaticBody3D" parent="LevelGeometry"]
+[node name="LevelBox" type="Node3D" parent="LevelGeometry"]
 
 [node name="Floor" type="CSGBox3D" parent="LevelGeometry/LevelBox"]
 use_collision = true
 size = Vector3(63.4383, 0.512695, 83.4775)
 material = SubResource("StandardMaterial3D_mss3n")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, 42.645)
-shape = SubResource("BoxShape3D_wdikw")
+[node name="StaticBodyBackWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
 
-[node name="BackWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+[node name="BackWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyBackWall"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, 41.645)
 visible = false
 mesh = SubResource("QuadMesh_wdikw")
-skeleton = NodePath("../../root/@EditorNode@21269/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/TeamDissection/LevelGeometry/LevelBox")
 surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, -42.453)
-shape = SubResource("BoxShape3D_86rec")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyBackWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, 42.645)
+visible = false
+shape = SubResource("BoxShape3D_wdikw")
 
-[node name="FrontWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/CollisionShape3D2"]
+[node name="StaticBodyFrontWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
+
+[node name="FrontWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyFrontWall"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, -42.453)
 visible = false
 mesh = SubResource("QuadMesh_86rec")
-skeleton = NodePath("../../root/@EditorNode@21269/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/TeamDissection/LevelGeometry/LevelBox")
 surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.646, 22.176, 0)
-shape = SubResource("BoxShape3D_eppfv")
-
-[node name="LeftWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/CollisionShape3D3"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 0)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyFrontWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.176, -42.453)
 visible = false
-mesh = SubResource("QuadMesh_eppfv")
-skeleton = NodePath("../../root/@EditorNode@21269/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/TeamDissection/LevelGeometry/LevelBox")
-surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
+shape = SubResource("BoxShape3D_86rec")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.553, 22.176, 0)
-shape = SubResource("BoxShape3D_m1wvn")
+[node name="StaticBodyLeftWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
 
-[node name="RightWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/CollisionShape3D4"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0)
+[node name="LeftWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyLeftWall"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.646, 22.176, 0)
 visible = false
 mesh = SubResource("QuadMesh_m1wvn")
-skeleton = NodePath("../../root/@EditorNode@21269/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11479/@VSplitContainer@11131/@HSplitContainer@11133/@HSplitContainer@11135/@Control@11136/@SubViewportContainer@11137/@SubViewport@11138/TeamDissection/LevelGeometry/LevelBox")
 surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
-[node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 44.679, 0)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyLeftWall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.646, 22.176, 0)
+visible = false
+shape = SubResource("BoxShape3D_eppfv")
+
+[node name="StaticBodyRightWall" type="StaticBody3D" parent="LevelGeometry/LevelBox"]
+
+[node name="RightWall" type="MeshInstance3D" parent="LevelGeometry/LevelBox/StaticBodyRightWall"]
+unique_name_in_owner = true
+transform = Transform3D(-4.34861e-08, 0, -1, 0, 1, 0, 0.994846, 0, -4.37114e-08, 31.553, 22.176, 0)
+visible = false
 mesh = SubResource("QuadMesh_hsjxo")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="LevelGeometry/LevelBox/StaticBodyRightWall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.553, 22.176, 0)
+visible = false
+shape = SubResource("BoxShape3D_m1wvn")
+
+[node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry/LevelBox"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 44.679, 0)
+visible = false
+mesh = SubResource("QuadMesh_eppfv")
 surface_material_override/0 = SubResource("StandardMaterial3D_wdikw")
 
 [node name="FrontStatues" type="Node3D" parent="LevelGeometry"]

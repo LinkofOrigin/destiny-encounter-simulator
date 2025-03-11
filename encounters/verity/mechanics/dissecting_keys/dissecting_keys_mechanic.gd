@@ -24,6 +24,8 @@ var team_dissection: TeamDissection:
 func _ready() -> void:
 	GlobalSignals.encounter_resetting.connect(_on_encounter_resetting)
 	timer.timeout.connect(_on_timer_timeout)
+	if is_instance_valid(team_dissection) and not team_dissection.statue_shapes_updated.is_connected(_on_dissection_statues_updated):
+		team_dissection.statue_shapes_updated.connect(_on_dissection_statues_updated)
 	register_menu_option()
 
 
@@ -113,7 +115,8 @@ func teleport_players_to_solo_rooms() -> void:
 
 func set_team_dissection(new_team_dissection: TeamDissection) -> void:
 	team_dissection = new_team_dissection
-	team_dissection.statue_shapes_updated.connect(_on_dissection_statues_updated)
+	if is_inside_tree():
+		team_dissection.statue_shapes_updated.connect(_on_dissection_statues_updated)
 
 
 func handle_dissection_statue_change(left: EffectLibrary.SHAPE_3D_TYPES, middle: EffectLibrary.SHAPE_3D_TYPES, right: EffectLibrary.SHAPE_3D_TYPES) -> void:
